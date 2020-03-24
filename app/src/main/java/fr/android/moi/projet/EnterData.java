@@ -1,7 +1,6 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class EnterData extends AppCompatActivity {
