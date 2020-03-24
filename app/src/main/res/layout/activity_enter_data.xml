@@ -6,13 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".EnterData">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Data"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="336dp" />
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <EditText
+            android:id="@+id/joueur1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Joueur 1"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="336dp" />
+
+        <EditText
+            android:id="@+id/joueur2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Joueur 2"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="336dp" />
+
+        <Button
+            android:id="@+id/formatMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Format du match" />
+
+        <Button
+            android:id="@+id/formatSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Format du dernier set" />
+
+
+    </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
