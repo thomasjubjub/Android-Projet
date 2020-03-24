@@ -3,8 +3,11 @@ package fr.android.moi.projet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 public class EnterData extends AppCompatActivity {
+
+    private Button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
