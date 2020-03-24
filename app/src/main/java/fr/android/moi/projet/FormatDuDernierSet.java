@@ -1,0 +1,14 @@
+package fr.android.moi.projet;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class FormatDuDernierSet extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_format_du_dernier_set);
+    }
+}
