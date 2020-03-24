@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
         nouveauMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openData();
+                enterData();
             }
         });
     }
 
-    public void openData()
+    public void enterData()
     {
         Intent intent = new Intent(this, EnterData.class);
         startActivity(intent);

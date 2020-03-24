@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormatDuMatch">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/retour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retour" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/tb66a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 6 jeux, Avantage, TB 6-6" />
+
+                <RadioButton
+                    android:id="@+id/tb44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 5 jeux, Pas d'avantage, TB 4-4" />
+
+                <RadioButton
+                    android:id="@+id/tb22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 3 jeux, Pas d'avantage, TB 2-2" />
+
+                <RadioButton
+                    android:id="@+id/tb55a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 5 jeux, Avantage, TB 5-5" />
+
+                <RadioButton
+                    android:id="@+id/tb44a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 4 jeux, Avantage, TB 4-4" />
+
+                <RadioButton
+                    android:id="@+id/tb33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 4 jeux, Pas d'avantage, TB 3-3" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
