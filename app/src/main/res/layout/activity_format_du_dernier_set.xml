@@ -15,16 +15,40 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp"
+            android:weightSum="3"
+            android:background="#007EA7">
+
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="?attr/homeAsUpIndicator" />
+                android:id="@+id/imageBack"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/back"
+                android:adjustViewBounds="true"
+                android:background="#007EA7"
+                android:scaleType="fitStart"
+                android:padding="20dp"
+
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#007EA7"
+                android:gravity="center"
+                android:text="Format du set"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

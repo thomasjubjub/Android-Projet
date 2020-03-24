@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Enregistrement">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+
+            <ImageButton
+                android:id="@+id/imageMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/menu"
+                android:adjustViewBounds="true"
+                android:background="#007EA7"
+                android:scaleType="fitStart"
+                android:padding="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#007EA7"
+                android:gravity="center"
+                android:text="Enregistrement"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Finir"
+                android:textColor="#FFFFFF"
+                android:background="#007EA7"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp"
+                    android:paddingTop="12dp"
+                    >
+
+
+                    <TextView
+                        android:id="@+id/textScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="SCORE"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="20dp"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageButton
+                        android:id="@+id/imageScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/statistics"
+                        android:background="no"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitEnd"
+                        android:padding="5dp"
+                         />
+
+                </LinearLayout>
+                <View android:layout_width="match_parent"
+                    android:background="@android:color/holo_blue_dark"
+                    android:layout_height="2dp" />
+
+
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp">
+
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+                        <TextView
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textAlignment="textEnd"
+                            android:text="JOUEUR 1"
+                            android:paddingRight="12dp"
+                            android:width="100px"
+                            />
+
+                        <TextView
+                            android:id="@+id/textScore1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:background="#BDE3F4"/>
+
+                        <TextView
+                            android:id="@+id/textScore2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-" />
+
+                        <TextView
+                            android:id="@+id/textScore3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:background="#BDE3F4"/>
+
+                        <TextView
+                            android:id="@+id/textScore4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-" />
+                    </TableRow>
+
+                    <View android:layout_width="match_parent"
+                        android:background="@android:color/holo_blue_dark"
+                        android:layout_height="2dp" />
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+                        <TextView
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textAlignment="textEnd"
+                            android:text="JOUEUR 2"
+                            android:width="100px"
+                            android:paddingRight="12dp"
+                            />
+
+
+                        <TextView
+                            android:id="@+id/textScore1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:background="#BDE3F4"/>
+
+
+
+                        <TextView
+                            android:id="@+id/textScore2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-" />
+
+                        <TextView
+                            android:id="@+id/textScore3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:background="#BDE3F4"/>
+
+                        <TextView
+                            android:id="@+id/textScore4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-" />
+                    </TableRow>
+                    <View android:layout_width="match_parent"
+                        android:background="@android:color/holo_blue_dark"
+                        android:layout_height="2dp" />
+
+                </TableLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp"
+                    android:paddingTop="12dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/textScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="SERVEUR"
+                        android:textStyle="bold"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="20dp"
+
+                        />
+
+                    <ImageButton
+                        android:id="@+id/imageRefresh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/refresh"
+                        android:background="no"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitEnd"
+                        android:padding="10dp"
+                         />
+
+                </LinearLayout>
+
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp">
+
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textAlignment="center"
+                            android:text=" 1 ère balle"
+                            android:width="100px"
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textAlignment="center"
+                            android:text=" 2 ème balle"
+                            android:width="100px"
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textAlignment="center"
+                            android:text=" 3 ème balle"
+                            android:width="100px"
+                            />
+
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:weightSum="3"
+                        >
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="ACE"
+                            android:width="100px"
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="ACE"
+                            android:width="100px"
+                            />
+
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp"
+                    android:paddingTop="12dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/textScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="ECHANGE"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="20dp"
+                        android:textStyle="bold"
+
+                        />
+
+                    <ImageButton
+                        android:id="@+id/imageScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/cancel"
+                        android:background="no"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitEnd"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp">
+
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="1"
+                            android:width="100px"
+                            android:autoSizeTextType="uniform"
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Point Gagnant"
+                            android:background="#37DD53"
+                            />
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Faute    Direct"
+                            android:background="#FF3F3F"
+
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Faute     Provo"
+                            android:background="#FFD028"
+
+                            />
+
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        >
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="2"
+
+                            android:autoSizeTextType="uniform"
+
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Point Gagnant"
+                            android:background="#37DD53"
+
+                            />
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Faute Direct"
+                            android:background="#FF3F3F"
+
+                            />
+
+                        <Button
+                            android:id="@+id/textJoueur"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="Faute     Provo"
+                            android:background="#FFD028"
+
+                            />
+
+
+
+                    </TableRow>
+
+
+                </TableLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
