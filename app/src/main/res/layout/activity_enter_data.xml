@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <LinearLayout
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="1dp"
@@ -22,14 +22,16 @@
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="129dp"
-                android:layout_height="46dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:text="Tennis Tracker"
                 android:textColor="#007EA7"/>
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="169dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Nouveau Match"
@@ -38,8 +40,9 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="129dp"
-                android:layout_height="46dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:text="Demarrer"
                 android:textColor="#007EA7"/>
 

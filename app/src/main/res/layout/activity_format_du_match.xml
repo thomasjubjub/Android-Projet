@@ -7,66 +7,70 @@
     tools:context=".FormatDuMatch">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/TB6-6a"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 6 jeux, Avantage, TB 6-6"
-            />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/TB5-5a"
+            <Button
+                android:id="@+id/retour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retour" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 5 jeux, Avantage, TB 5-5" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/TB4-4a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 4 jeux, Avantage, TB 4-4" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/TB4-4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 5 jeux, Pas d'avantage, TB 4-4" />
+                <RadioButton
+                    android:id="@+id/tb66a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 6 jeux, Avantage, TB 6-6" />
 
-        <Button
-            android:id="@+id/TB3-3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 4 jeux, Pas d'avantage, TB 3-3" />
+                <RadioButton
+                    android:id="@+id/tb44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 5 jeux, Pas d'avantage, TB 4-4" />
 
-        <Button
-            android:id="@+id/TB2-2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:gravity="center"
-            android:text="2 sets, 3 jeux, Pas d'avantage, TB 2-2" />
+                <RadioButton
+                    android:id="@+id/tb22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 3 jeux, Pas d'avantage, TB 2-2" />
 
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Button" />
+                <RadioButton
+                    android:id="@+id/tb55a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 5 jeux, Avantage, TB 5-5" />
+
+                <RadioButton
+                    android:id="@+id/tb44a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 4 jeux, Avantage, TB 4-4" />
+
+                <RadioButton
+                    android:id="@+id/tb33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2 sets, 4 jeux, Pas d'avantage, TB 3-3" />
+            </RadioGroup>
+
+
+        </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
