@@ -103,8 +103,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/statistics"
-                        android:background="no"
+
+                        android:src="@drawable/statistics"
+                        android:background="@android:color/background_light"
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
                         android:padding="5dp"
@@ -277,7 +278,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/refresh"
-                        android:background="no"
+                        android:background="@android:color/background_light"
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
                         android:padding="10dp"
@@ -400,7 +401,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/cancel"
-                        android:background="no"
+                        android:background="@android:color/background_light"
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
                         android:padding="12dp" />
@@ -528,4 +529,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

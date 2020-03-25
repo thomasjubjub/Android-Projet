@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterData">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/back"
+                android:textColor="#FFFFFF"
+                android:adjustViewBounds="true"
+                android:background="#007EA7"
+                android:scaleType="fitStart"
+                android:padding="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Nouveau Match"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="#007EA7"/>
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Demarrer"
+                android:textColor="#FFFFFF"
+                android:background="#007EA7"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="729dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <EditText
+                android:id="@+id/joueur1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Joueur 1"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="336dp" />
+
+            <EditText
+                android:id="@+id/joueur2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Joueur 2"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="336dp" />
+
+            <Button
+                android:id="@+id/formatMatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Format du match" />
+
+            <Button
+                android:id="@+id/formatSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Format du dernier set" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

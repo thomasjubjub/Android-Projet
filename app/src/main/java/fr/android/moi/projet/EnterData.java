@@ -1,15 +1,14 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-<<<<<<< HEAD
 
 import android.content.Intent;
-=======
->>>>>>> interfacesGraphiques
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class EnterData extends AppCompatActivity {
@@ -20,6 +19,7 @@ public class EnterData extends AppCompatActivity {
     private String joueur2;
     private Button formatDuMatch;
     private Button formatDuDernierSet;
+    private ImageButton retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,11 @@ public class EnterData extends AppCompatActivity {
         joueur1 = String.valueOf(findViewById(R.id.joueur1));
         joueur2 = String.valueOf(findViewById(R.id.joueur2));
 
+        retour = (ImageButton) findViewById(R.id.imageBack)
+
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
-        
+
         formatDuMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

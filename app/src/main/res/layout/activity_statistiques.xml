@@ -33,7 +33,7 @@
                 android:paddingLeft="10dp"
                 android:textColor="#FFFFFF"
                 android:background="#007EA7"
-                />
+                android:gravity="start" />
 
             <TextView
                 android:id="@+id/textView"
@@ -98,7 +98,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/textJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -106,41 +106,45 @@
                             android:text="JOUEUR 1"
                             android:paddingRight="12dp"
                             android:width="100px"
-                            />
+                            android:gravity="end" />
 
                         <TextView
-                            android:id="@+id/textScore1"
+                            android:id="@+id/textScore1Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore2"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
-
-                        <TextView
-                            android:id="@+id/textScore3"
+                            android:id="@+id/textScore2Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/textScore3Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="-" />
+                            android:text="-"
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/textScore4Joueur1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:gravity="center_horizontal" />
                     </TableRow>
 
                     <View android:layout_width="match_parent"
@@ -152,7 +156,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/textJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -160,44 +164,48 @@
                             android:text="JOUEUR 2"
                             android:width="100px"
                             android:paddingRight="12dp"
-                            />
+                            android:gravity="end" />
 
 
                         <TextView
-                            android:id="@+id/textScore1"
+                            android:id="@+id/textScore1Joueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
 
 
 
                         <TextView
-                            android:id="@+id/textScore2"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
-
-                        <TextView
-                            android:id="@+id/textScore3"
+                            android:id="@+id/textScore2Joueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/textScore3Joueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="-" />
+                            android:text="-"
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/textScore4Joueur2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:text="-"
+                            android:gravity="center_horizontal" />
                     </TableRow>
                     <View android:layout_width="match_parent"
                         android:background="@android:color/holo_blue_dark"
@@ -214,36 +222,40 @@
                     tools:layout_editor_absoluteY="1dp">
 
                     <Button
-                        android:id="@+id/textScore4"
+                        android:id="@+id/match"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="Match" />
+                        android:text="Match"
+                        android:gravity="center_horizontal" />
 
                     <Button
-                        android:id="@+id/textScore4"
+                        android:id="@+id/set1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="Set 1" />
+                        android:text="Set 1"
+                        android:gravity="center_horizontal" />
 
                     <Button
-                        android:id="@+id/textScore4"
+                        android:id="@+id/set2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="Set 2" />
+                        android:text="Set 2"
+                        android:gravity="center_horizontal" />
 
                     <Button
-                        android:id="@+id/textScore4"
+                        android:id="@+id/set3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:text="Set 3" />
+                        android:text="Set 3"
+                        android:gravity="center_horizontal" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -267,7 +279,7 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/statistiques"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -275,23 +287,25 @@
                             android:paddingLeft="20dp"
                             android:text="STATISTIQUES"
                             android:background="#BDE3F4"
-                            />
+                            android:gravity="start" />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/statistiquesJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="Joueur 1"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/statistiquesJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
                             android:text="Joueur 2"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:gravity="center_horizontal" />
 
                     </TableRow>
 
@@ -300,34 +314,36 @@
                             android:layout_height="fill_parent">
 
                             <TextView
-                                android:id="@+id/textScore4"
+                                android:id="@+id/duree"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:textAlignment="textStart"
                                 android:paddingLeft="20dp"
-                                android:text="DURÉE" />
+                                android:text="DURÉE"
+                                android:gravity="start" />
                             <TextView
-                                android:id="@+id/textScore4"
+                                android:id="@+id/dureeMatch"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:textAlignment="center"
                                 android:text="00:00"
-                                />
+                                android:gravity="center_horizontal" />
                     </TableRow>
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/pointGagnes"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
                             android:textAlignment="textStart"
                             android:paddingLeft="20dp"
-                            android:text="POINTS GAGNÉS" />
+                            android:text="POINTS GAGNÉS"
+                            android:gravity="start" />
                         <TextView
                             android:id="@+id/textScore4"
                             android:layout_width="0dp"
@@ -744,4 +760,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
