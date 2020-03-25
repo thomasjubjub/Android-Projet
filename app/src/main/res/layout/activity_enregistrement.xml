@@ -103,7 +103,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/statistics"
+                        android:src="@drawable/statistics"
                         android:background="@android:color/background_light"
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
@@ -277,7 +277,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/refresh"
-
+                        android:background="@android:color/background_light"
                         android:adjustViewBounds="true"
                         android:scaleType="fitEnd"
                         android:padding="10dp"
