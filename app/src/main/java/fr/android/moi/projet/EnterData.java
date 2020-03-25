@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 public class EnterData extends AppCompatActivity {
 
-    /*    private EditText nomJoueur1;
-        private EditText nomJoueur2;*/
+    private EditText nomJoueur1;
+    private EditText nomJoueur2;
     private String joueur1;
     private String joueur2;
     private Button formatDuMatch;
@@ -28,8 +28,8 @@ public class EnterData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_data);
 
-        joueur1 = String.valueOf(findViewById(R.id.joueur1));
-        joueur2 = String.valueOf(findViewById(R.id.joueur2));
+        nomJoueur2 = (EditText) findViewById(R.id.joueur2);
+        nomJoueur1 = (EditText) findViewById(R.id.joueur1);
 
         demarrer = (Button) findViewById(R.id.demarrer);
 
@@ -70,9 +70,18 @@ public class EnterData extends AppCompatActivity {
 
     public void enregistrement() {
 
-        Intent intent = new Intent(this, Enregistrement.class);
-        startActivity(intent);
+        joueur1 = nomJoueur1.getText().toString();
+        joueur2 = nomJoueur2.getText().toString();
+
+        Intent intentJoueur = new Intent(this, Enregistrement.class);
+
+        intentJoueur.putExtra("nomDuJoueur1",joueur1);
+        intentJoueur.putExtra("nomDuJoueur2", joueur2);
+
+        startActivity(intentJoueur);
+
     }
+
 
 
     public void formatDuDernierSet() {
