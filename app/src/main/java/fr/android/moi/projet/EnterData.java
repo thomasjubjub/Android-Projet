@@ -19,7 +19,9 @@ public class EnterData extends AppCompatActivity {
     private String joueur2;
     private Button formatDuMatch;
     private Button formatDuDernierSet;
+    private Button demarrer;
     private ImageButton retour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,9 @@ public class EnterData extends AppCompatActivity {
         joueur1 = String.valueOf(findViewById(R.id.joueur1));
         joueur2 = String.valueOf(findViewById(R.id.joueur2));
 
-        retour = (ImageButton) findViewById(R.id.imageBack)
+        demarrer = (Button) findViewById(R.id.demarrer);
+
+        retour = (ImageButton) findViewById(R.id.imageButton);
 
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
@@ -38,6 +42,7 @@ public class EnterData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 formatDuMatch();
+
             }
         });
 
@@ -47,7 +52,28 @@ public class EnterData extends AppCompatActivity {
                 formatDuDernierSet();
             }
         });
+
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        demarrer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enregistrement();
+            }
+        });
     }
+
+    public void enregistrement() {
+
+        Intent intent = new Intent(this, Enregistrement.class);
+        startActivity(intent);
+    }
+
 
     public void formatDuDernierSet() {
         Intent intent = new Intent(this, FormatDuDernierSet.class);

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 
 public class FormatDuMatch extends AppCompatActivity {
@@ -14,6 +15,8 @@ public class FormatDuMatch extends AppCompatActivity {
     private RadioButton tb44;
     private RadioButton tb33;
     private RadioButton tb22;
+
+    private ImageButton retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,14 @@ public class FormatDuMatch extends AppCompatActivity {
         tb44 = (RadioButton) findViewById(R.id.tb44);
         tb33 = (RadioButton) findViewById(R.id.tb33);
         tb22 = (RadioButton) findViewById(R.id.tb22);
+
+        retour = (ImageButton) findViewById(R.id.imageBack);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 
