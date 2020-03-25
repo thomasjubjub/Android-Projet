@@ -21,7 +21,7 @@
             tools:layout_editor_absoluteY="1dp">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageBack"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -45,7 +45,7 @@
                 android:background="#007EA7"/>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/demarrer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

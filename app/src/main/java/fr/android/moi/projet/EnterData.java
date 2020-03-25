@@ -2,8 +2,10 @@ package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,9 @@ public class EnterData extends AppCompatActivity {
     private String joueur2;
     private Button formatDuMatch;
     private Button formatDuDernierSet;
+    private Button demarrer;
     private ImageButton retour;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +33,8 @@ public class EnterData extends AppCompatActivity {
         joueur1 = String.valueOf(findViewById(R.id.joueur1));
         joueur2 = String.valueOf(findViewById(R.id.joueur2));
 
-        retour = (ImageButton) findViewById(R.id.imageBack)
-
+        retour = (ImageButton) findViewById(R.id.imageBack);
+        demarrer = (Button) findViewById(R.id.demarrer);
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
 
@@ -40,13 +44,34 @@ public class EnterData extends AppCompatActivity {
                 formatDuMatch();
             }
         });
-
         formatDuDernierSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 formatDuDernierSet();
             }
         });
+        demarrer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                demarrer();
+            }
+        });
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                retour();
+            }
+        });
+    }
+
+    public void demarrer() {
+        Intent intent = new Intent(this, Enregistrement.class);
+        startActivity(intent);
+    }
+
+    public void retour() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void formatDuDernierSet() {
@@ -58,4 +83,5 @@ public class EnterData extends AppCompatActivity {
         Intent intent = new Intent(this, FormatDuMatch.class);
         startActivity(intent);
     }
+
 }
