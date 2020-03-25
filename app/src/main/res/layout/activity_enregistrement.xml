@@ -116,7 +116,7 @@
                     android:layout_height="2dp" />
 
 
-                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
@@ -183,17 +183,17 @@
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        >
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/textJoueur"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
-                            android:textAlignment="textEnd"
-                            android:text="JOUEUR 2"
                             android:width="100px"
                             android:paddingRight="12dp"
-                            />
+                            android:text="JOUEUR 2"
+                            android:textAlignment="textEnd" />
 
 
                         <TextView
@@ -201,10 +201,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
+                            android:background="#BDE3F4"
                             android:text="-"
-                            android:background="#BDE3F4"/>
-
+                            android:textAlignment="center" />
 
 
                         <TextView
@@ -212,25 +211,25 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
+                            android:text="-"
+                            android:textAlignment="center" />
 
                         <TextView
                             android:id="@+id/textScore3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
+                            android:background="#BDE3F4"
                             android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:textAlignment="center" />
 
                         <TextView
                             android:id="@+id/textScore4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
+                            android:text="-"
+                            android:textAlignment="center" />
                     </TableRow>
                     <View android:layout_width="match_parent"
                         android:background="@android:color/holo_blue_dark"
@@ -519,6 +518,7 @@
                 </TableLayout>
 
             </LinearLayout>
+
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -541,20 +541,67 @@
 
                     />
 
-                <TextView
-                    android:id="@+id/lat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="latitude"
+                <LinearLayout
 
-                    />
-                <TextView
-                    android:id="@+id/longi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:layout_editor_absoluteY="1dp">
 
-                    />
+                    <TableLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="vertical"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="1dp">
+
+                        <TableRow>
+                            <TextView
+                                android:id="@+id/lat"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:paddingLeft="8dp"
+                                android:text="latitude"
+
+                                />
+                        </TableRow>
+                        <TableRow>
+
+                            <TextView
+                                android:id="@+id/longi"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="longitude"
+                                android:paddingLeft="8dp"
+                                />
+                        </TableRow>
+                    </TableLayout>
+                    <LinearLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="1dp">
+
+                        <ImageButton
+                            android:id="@+id/imagePhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:srcCompat="@drawable/camera"
+                            android:background="@android:color/background_light"
+                            android:padding="30dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"/>
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 

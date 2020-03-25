@@ -7,27 +7,27 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="0.5"
             android:layout_height="0dp"
-            android:orientation="vertical" >
+            android:layout_weight="0.5"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="53dp"
-                android:text="Tennis Tracker"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:background="#007EA7"
                 android:gravity="center"
-                android:background="#007EA7"/>
+                android:text="Tennis Tracker"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView"
