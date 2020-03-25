@@ -1,11 +1,10 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-<<<<<<< HEAD
+
 
 import android.content.Intent;
-=======
->>>>>>> interfacesGraphiques
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
