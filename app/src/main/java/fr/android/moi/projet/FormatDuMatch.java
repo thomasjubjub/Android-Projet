@@ -2,6 +2,7 @@ package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -30,11 +31,16 @@ public class FormatDuMatch extends AppCompatActivity {
         tb33 = (RadioButton) findViewById(R.id.tb33);
         tb22 = (RadioButton) findViewById(R.id.tb22);
 
+
+
         retour = (ImageButton) findViewById(R.id.imageBack);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 onBackPressed();
+
+
             }
         });
 
@@ -43,14 +49,7 @@ public class FormatDuMatch extends AppCompatActivity {
     public void onRadioButtonClicked(View view)
     {
         boolean checked = ((RadioButton) view).isChecked();
+        Intent intent = new Intent(this, EnterData.class);
 
-        switch (view.getId())
-        {
-            case R.id.tb66a :
-                if(checked)
-                {
-
-                }
-        }
     }
 }
