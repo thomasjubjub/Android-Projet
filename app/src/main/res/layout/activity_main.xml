@@ -25,8 +25,15 @@
                 android:layout_height="53dp"
                 android:text="Tennis Tracker"
                 android:textStyle="bold"
-                android:textColor="#007EA7"
-                android:gravity="center"/>
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:background="#007EA7"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/balle" />
 
         </LinearLayout>
 
@@ -54,4 +61,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
