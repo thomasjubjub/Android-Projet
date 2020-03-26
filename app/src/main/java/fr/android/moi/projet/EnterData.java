@@ -53,6 +53,10 @@ public class EnterData extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        String boutonCoché = intent.getStringExtra("boutonCoché");
+        formatDuMatch.setText(boutonCoché);
+
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

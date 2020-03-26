@@ -33,23 +33,76 @@ public class FormatDuMatch extends AppCompatActivity {
 
 
 
+
+
         retour = (ImageButton) findViewById(R.id.imageBack);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
+
                 onBackPressed();
-
-
             }
         });
 
     }
 
-    public void onRadioButtonClicked(View view)
+    public void checkIfClicked(View view)
     {
-        boolean checked = ((RadioButton) view).isChecked();
+        boolean checked =((RadioButton) view).isChecked();
         Intent intent = new Intent(this, EnterData.class);
+        String boutonCoché;
+        switch(view.getId())
+        {
+            case R.id.tb66a :
+                if(checked)
+                {
+                     boutonCoché = "tb66a";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
 
+            case R.id.tb55a :
+                if(checked)
+                {
+                     boutonCoché = "tb55a";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
+
+            case R.id.tb44a :
+                if(checked)
+                {
+                     boutonCoché = "tb44a";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
+
+            case R.id.tb44 :
+                if(checked)
+                {
+                     boutonCoché = "tb44";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
+
+            case R.id.tb33 :
+                if(checked)
+                {
+                     boutonCoché = "tb33";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
+
+            case R.id.tb22 :
+                if(checked)
+                {
+                     boutonCoché = "tb22";
+                    intent.putExtra("boutonCoché", boutonCoché);
+                }
+                break;
+        }
+        startActivity(intent);
     }
+
 }
