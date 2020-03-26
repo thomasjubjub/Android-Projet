@@ -16,12 +16,15 @@ import android.location.LocationProvider;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.graphics.Bitmap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,7 +36,6 @@ public class Enregistrement extends AppCompatActivity {
         private ImageButton buttonPhoto;
         private LocationManager locationManager;
         private LocationListener locationListener;
-        private Camera mCamera = null;
 
 
         @Override
@@ -45,10 +47,11 @@ public class Enregistrement extends AppCompatActivity {
                 latitude=(TextView) findViewById(R.id.lat);
                 buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
 
+
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                //takePicture();
+                                takePicture();
                         }
                 });
 
@@ -100,41 +103,11 @@ public class Enregistrement extends AppCompatActivity {
                 }
 
         }
-/*/
-        private void takePicture(Camera camera) {
-                // Jouera un son au moment où on prend une photo
-                Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
-                        public void onShutter() {
-                                MediaPlayer media = MediaPlayer.create(getBaseContext(), R.raw.sonnerie);
-                                media.start();
-                                // Une fois la lecture terminée
-                                media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                        public  void onCompletion(MediaPlayer mp) {
-                                                // On libère le lecteur multimédia
-                                                mp.release();
-                                        }
-                                });
-                        }
-                };
 
-                // Sera lancée une fois l'image traitée, on enregistre l'image sur le support externe
-                Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
-                        public void onPictureTaken(byte[] data, Camera camera) {
-                                FileOutputStream stream = null;
-                                try {
-                                        String path = Environment.getExternalStorageDirectory() + "\\photo.jpg";
-                                        stream = new FileOutputStream(path);
-                                        stream.write(data);
-                                } catch (Exception e) {
-
-                                } finally {
-                                        try { stream.close();} catch (Exception e) {}
-                                }
-                        }
-                };
-
-                camera.takePicture(shutterCallback, null, jpegCallback);
+        public void takePicture()
+        {
+                Intent intent = new Intent(this, Photo.class);
+                startActivity(intent);
         }
-/*/
 
 }
