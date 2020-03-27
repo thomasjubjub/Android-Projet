@@ -77,25 +77,21 @@ public class EnterData extends AppCompatActivity {
             }
         });
 
-
-
-
-
-                retour.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onBackPressed();
-                    }
-                });
-
-                demarrer.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        enregistrement();
-
-                    }
-                });
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
+        });
+
+        demarrer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enregistrement();
+
+            }
+        });
+    }
 
 
             public void demarrer() {

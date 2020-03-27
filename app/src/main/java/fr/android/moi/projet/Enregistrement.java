@@ -40,6 +40,9 @@ public class Enregistrement extends AppCompatActivity {
         private LocationManager locationManager;
         private LocationListener locationListener;
         private String provider;
+        private String nomJoueur1;
+        private String nomJoueur2;
+
 
 
         @Override
@@ -49,6 +52,10 @@ public class Enregistrement extends AppCompatActivity {
                 setContentView(R.layout.activity_enregistrement);
                 longitude = (TextView) findViewById(R.id.longi);
                 latitude = (TextView) findViewById(R.id.lat);
+
+                Intent intent = getIntent();
+                nomJoueur1 = intent.getStringExtra("nomDuJoueur1");
+                nomJoueur2 = intent.getStringExtra("nomDuJoueur2");
 
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
