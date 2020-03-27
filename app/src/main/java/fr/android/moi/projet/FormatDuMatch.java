@@ -41,67 +41,49 @@ public class FormatDuMatch extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                onBackPressed();
+                checkIfClicked();
             }
         });
 
     }
 
-    public void checkIfClicked(View view)
+    public void checkIfClicked()
     {
-        boolean checked =((RadioButton) view).isChecked();
         Intent intent = new Intent(this, EnterData.class);
-        String boutonCoché;
-        switch(view.getId())
+        String typeMatchChoisi;
+
+        if(tb66a.isChecked())
         {
-            case R.id.tb66a :
-                if(checked)
-                {
-                     boutonCoché = "tb66a";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
-
-            case R.id.tb55a :
-                if(checked)
-                {
-                     boutonCoché = "tb55a";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
-
-            case R.id.tb44a :
-                if(checked)
-                {
-                     boutonCoché = "tb44a";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
-
-            case R.id.tb44 :
-                if(checked)
-                {
-                     boutonCoché = "tb44";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
-
-            case R.id.tb33 :
-                if(checked)
-                {
-                     boutonCoché = "tb33";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
-
-            case R.id.tb22 :
-                if(checked)
-                {
-                     boutonCoché = "tb22";
-                    intent.putExtra("boutonCoché", boutonCoché);
-                }
-                break;
+            typeMatchChoisi = "tb66a";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
         }
+        else if(tb55a.isChecked())
+        {
+            typeMatchChoisi = "tb55a";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+        }
+        else if(tb44a.isChecked())
+        {
+            typeMatchChoisi = "tb44a";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+        }
+        else if (tb44.isChecked())
+        {
+            typeMatchChoisi = "tb44";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+        }
+        else if(tb33.isChecked())
+        {
+            typeMatchChoisi = "tb33";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+        }
+        else if(tb22.isChecked())
+        {
+            typeMatchChoisi = "tb22";
+            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+        }
+
+
         startActivity(intent);
     }
 

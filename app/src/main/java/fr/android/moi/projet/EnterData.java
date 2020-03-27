@@ -54,8 +54,17 @@ public class EnterData extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String boutonCoché = intent.getStringExtra("boutonCoché");
-        formatDuMatch.setText(boutonCoché);
+        String typeMatchChoisi = intent.getStringExtra("typeMatchChoisi");
+        String typeSetChoisi = intent.getStringExtra("setChoisi");
+        if(typeMatchChoisi!=null)
+        {
+            formatDuMatch.setText(typeMatchChoisi);
+        }
+        if (typeSetChoisi!=null)
+        {
+            formatDuDernierSet.setText(typeSetChoisi);
+        }
+
 
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
