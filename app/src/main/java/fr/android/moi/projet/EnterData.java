@@ -21,7 +21,7 @@ public class EnterData extends AppCompatActivity {
     private Button formatDuDernierSet;
     private Button demarrer;
     private ImageButton retour;
-
+    String textButtonFormatDuMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,9 @@ public class EnterData extends AppCompatActivity {
 
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
+
+
+
 
         formatDuMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,10 +59,13 @@ public class EnterData extends AppCompatActivity {
         Intent intent = getIntent();
         String typeMatchChoisi = intent.getStringExtra("typeMatchChoisi");
         String typeSetChoisi = intent.getStringExtra("setChoisi");
-        if(typeMatchChoisi!=null)
+        textButtonFormatDuMatch = typeMatchChoisi;
+
+        if(textButtonFormatDuMatch!=null)
         {
-            formatDuMatch.setText(typeMatchChoisi);
+            formatDuMatch.setText(textButtonFormatDuMatch);
         }
+
         if (typeSetChoisi!=null)
         {
             formatDuDernierSet.setText(typeSetChoisi);
