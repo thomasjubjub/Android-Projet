@@ -1,6 +1,7 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -18,9 +19,17 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import org.w3c.dom.Text;
+
 
 import java.util.ArrayList;
 
@@ -38,8 +47,8 @@ public class Enregistrement extends AppCompatActivity {
 
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_enregistrement);
-                longitude=(TextView) findViewById(R.id.longi);
-                latitude=(TextView) findViewById(R.id.lat);
+                longitude = (TextView) findViewById(R.id.longi);
+                latitude = (TextView) findViewById(R.id.lat);
 
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -47,7 +56,7 @@ public class Enregistrement extends AppCompatActivity {
                 // on cherche un provider
                 ArrayList<LocationProvider> providers = new ArrayList<LocationProvider>();
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
-                for(String name : names) providers.add(locationManager.getProvider(name));
+                for (String name : names) providers.add(locationManager.getProvider(name));
 
                 locationListener = new LocationListener() {
                         @Override
@@ -59,11 +68,14 @@ public class Enregistrement extends AppCompatActivity {
                                 latitude.setText(" latitude:" + lat);
                                 //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                         }
-                        @Override
-                        public void onStatusChanged(String provider, int status, Bundle extras) { }
 
                         @Override
-                        public void onProviderEnabled(String provider) { }
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+                        }
+
+                        @Override
+                        public void onProviderEnabled(String provider) {
+                        }
 
                         // check si GPS est on
                         @Override
@@ -74,19 +86,21 @@ public class Enregistrement extends AppCompatActivity {
                 };
 
                 // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                                 requestPermissions(new String[]{
                                         Manifest.permission.ACCESS_FINE_LOCATION,
                                         Manifest.permission.ACCESS_COARSE_LOCATION,
                                         Manifest.permission.INTERNET
-                                },10);
+                                }, 10);
                                 return;
-                        }
-                        else{
+                        } else {
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                         }
                 }
+
+
+
 
         }
 }

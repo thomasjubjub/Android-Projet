@@ -131,7 +131,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/textJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -185,7 +185,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/textJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -193,7 +193,7 @@
                             android:text="JOUEUR 2"
                             android:width="100px"
                             android:paddingRight="12dp"
-                            />
+                            android:gravity="end" />
 
 
                         <TextView
