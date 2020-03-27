@@ -42,6 +42,8 @@ public class Enregistrement extends AppCompatActivity {
         private String provider;
         private String nomJoueur1;
         private String nomJoueur2;
+        private TextView textJoueur1;
+        private TextView textJoueur2;
 
 
 
@@ -53,9 +55,15 @@ public class Enregistrement extends AppCompatActivity {
                 longitude = (TextView) findViewById(R.id.longi);
                 latitude = (TextView) findViewById(R.id.lat);
 
+                textJoueur1 = (TextView) findViewById(R.id.textJoueur1);
+                textJoueur2 = (TextView) findViewById(R.id.textJoueur2);
+
                 Intent intent = getIntent();
                 nomJoueur1 = intent.getStringExtra("nomDuJoueur1");
                 nomJoueur2 = intent.getStringExtra("nomDuJoueur2");
+
+                textJoueur1.setText(nomJoueur1);
+                textJoueur2.setText(nomJoueur2);
 
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
