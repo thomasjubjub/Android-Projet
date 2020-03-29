@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Historique extends AppCompatActivity extends ActionBarActivity {
+public class Historique extends AppCompatActivity {
 
     private DatabaseManager databaseManager;
     private List<Match> matches;
