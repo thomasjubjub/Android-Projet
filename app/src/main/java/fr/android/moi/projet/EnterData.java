@@ -1,17 +1,13 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import java.util.List;
 
 public class EnterData extends AppCompatActivity {
 
@@ -23,6 +19,8 @@ public class EnterData extends AppCompatActivity {
     private Button formatDuDernierSet;
     private Button demarrer;
     private ImageButton retour;
+    private DatabaseManager databaseManager;
+    private List<Match> matches;
 
 
     @Override
@@ -30,14 +28,16 @@ public class EnterData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_data);
 
+
+        // Link XML
         joueur1 = String.valueOf(findViewById(R.id.joueur1));
         joueur2 = String.valueOf(findViewById(R.id.joueur2));
-
         retour = (ImageButton) findViewById(R.id.imageBack);
         demarrer = (Button) findViewById(R.id.demarrer);
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
 
+        // Ajout listener sur boutton
         formatDuMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +62,17 @@ public class EnterData extends AppCompatActivity {
                 retour();
             }
         });
+
+        databaseManager = new DatabaseManager(this);
+
+        // Inserer dans la bdd
+        databaseManager.insertMatch( "Alexandra", "Thomas", "oui", "non" );
+
+        // Récuperation de liste d'array de match
+        matches = databaseManager.readMatch();
+        //Log.d("InEnterData", matches.toString());
+        databaseManager.close();
+
     }
 
     public void demarrer() {

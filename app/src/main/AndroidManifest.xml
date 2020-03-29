@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Photo"></activity>
+        <activity android:name=".Historique"></activity>
+        <activity android:name=".Photo" />
         <activity android:name=".EnterData" />
         <activity android:name=".FormatDuDernierSet" />
         <activity android:name=".FormatDuMatch" />
