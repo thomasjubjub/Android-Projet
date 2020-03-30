@@ -1,19 +1,17 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.List;
+import android.view.Menu;
+import android.view.View.OnClickListener;
 
-public class Historique extends AppCompatActivity {
+public class Historique extends AppCompatActivity  implements OnClickListener  {
 
     private DatabaseManager databaseManager;
     private List<Match> matches;
@@ -30,6 +28,7 @@ public class Historique extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historique);
 
+        // link XML
         buttonMatch1 = (Button) findViewById(R.id.match1);
         buttonMatch2 = (Button) findViewById(R.id.match2);
         buttonMatch3 = (Button) findViewById(R.id.match3);
@@ -37,14 +36,41 @@ public class Historique extends AppCompatActivity {
         buttonMatch5 = (Button) findViewById(R.id.match5);
         retour = (ImageButton) findViewById(R.id.imageBack);
 
+        // listener
+        buttonMatch1.setOnClickListener(this);
+        buttonMatch2.setOnClickListener(this);
+        buttonMatch3.setOnClickListener(this);
+        buttonMatch4.setOnClickListener(this);
+        buttonMatch5.setOnClickListener(this);
 
-        // Récuperation des infos dans la bdd
+        // Récuperation de la bdd
         databaseManager = new DatabaseManager(this);
         matches = databaseManager.readMatch();
         Log.d("InHistorique", matches.toString());
         databaseManager.close();
 
-        Intent intent = getIntent();
+        matches
+
+
 
     }
+
+
+    public void onClick(View v) {
+
+        Intent intent = new Intent(this, Statistiques.class);
+
+        switch (v.getId()) {
+            case R.id.match1:
+                intent.putExtra("IdMatch", typeMatchChoisi);
+                break;
+
+            case R.id.match2:
+
+                break;
+        }
+
+        startActivity(intent);
+    }
+
 }
