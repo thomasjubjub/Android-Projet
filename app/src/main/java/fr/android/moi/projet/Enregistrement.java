@@ -37,18 +37,43 @@ public class Enregistrement extends AppCompatActivity {
 
         private TextView longitude;
         private TextView latitude;
+
         private ImageButton buttonPhoto;
+
         private LocationManager locationManager;
         private LocationListener locationListener;
         private String provider;
+
         private String nomJoueur1;
         private String nomJoueur2;
+
         private TextView textJoueur1;
         private TextView textJoueur2;
 
+        private Button premiereBalle;
+        private Button deuxiemeBalle;
+        private Button doubleFaute;
+        private Button acePremiereBalle;
+        private Button aceDeuxiemeBalle;
+
+        private TextView scoreSet1Joueur1;
+        private TextView scoreSet2Joueur1;
+        private TextView scoreSet3Joueur1;
+        private TextView scoreSet4Joueur1;
+
+        private TextView scoreSet1Joueur2;
+        private TextView scoreSet2Joueur2;
+        private TextView scoreSet3Joueur2;
+        private TextView scoreSet4Joueur2;
+
+        private int score 
+
+        private boolean joueur1 = true;
 
 
-        @SuppressLint("MissingPermission")
+
+
+      //  @SuppressLint("MissingPermission")
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,6 +104,28 @@ public class Enregistrement extends AppCompatActivity {
 
                 textJoueur1.setText(nomJoueur1);
                 textJoueur2.setText(nomJoueur2);
+
+                scoreSet1Joueur1 = (TextView) findViewById(R.id.scoreSet1Joueur1);
+                scoreSet2Joueur1 = (TextView) findViewById(R.id.scoreSet2Joueur1);
+                scoreSet3Joueur1 = (TextView) findViewById(R.id.scoreSet3Joueur1);
+                scoreSet4Joueur1 = (TextView) findViewById(R.id.scoreSet4Joueur1);
+
+                scoreSet1Joueur2 = (TextView) findViewById(R.id.scoreSet1Joueur2);
+                scoreSet2Joueur2 = (TextView) findViewById(R.id.scoreSet2Joueur2);
+                scoreSet3Joueur2 = (TextView) findViewById(R.id.scoreSet3Joueur2);
+                scoreSet4Joueur2 = (TextView) findViewById(R.id.scoreSet4Joueur2);
+
+                premiereBalle = (Button) findViewById(R.id.premiereBalle);
+                deuxiemeBalle = (Button) findViewById(R.id.deuxiemeBalle);
+                doubleFaute = (Button) findViewById(R.id.doubleFaute);
+                acePremiereBalle = (Button) findViewById(R.id.acePremiereBalle);
+                aceDeuxiemeBalle = (Button) findViewById(R.id.aceDeuxiemeBalle);
+
+                premiereBalle.setOnClickListener((View.OnClickListener) this);
+                deuxiemeBalle.setOnClickListener((View.OnClickListener) this);
+                doubleFaute.setOnClickListener((View.OnClickListener) this);
+                acePremiereBalle.setOnClickListener((View.OnClickListener) this);
+                aceDeuxiemeBalle.setOnClickListener((View.OnClickListener) this);
 
 
                 // on fait appel à un nouveau service système pour accéder à localisation
@@ -131,6 +178,30 @@ public class Enregistrement extends AppCompatActivity {
                 }
         }
 
+
+        }
+
+        public void onClick(View v)
+        {
+                switch (v.getId())
+                {
+                        case R.id.premiereBalle :
+                              //premier service
+                        break;
+
+                        case R.id.deuxiemeBalle :
+                                //deuxieme service
+                        break;
+
+                        case R.id.doubleFaute :
+                                if(joueur1 == true)
+                                {
+                                        if(scoreSet1Joueur1.getText() == "-")
+                                        {
+                                                scoreSet1Joueur1.setText("15");
+                                        }
+                                }
+                }
 
         }
 

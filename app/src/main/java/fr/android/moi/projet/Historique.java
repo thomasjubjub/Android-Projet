@@ -49,7 +49,7 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
         Log.d("InHistorique", matches.toString());
         databaseManager.close();
 
-        matches
+
 
 
 
@@ -62,7 +62,7 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
 
         switch (v.getId()) {
             case R.id.match1:
-                intent.putExtra("IdMatch", typeMatchChoisi);
+                   // intent.putExtra("IdMatch", typeMatchChoisi);
                 break;
 
             case R.id.match2:
