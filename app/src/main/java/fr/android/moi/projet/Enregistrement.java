@@ -3,40 +3,41 @@ package fr.android.moi.projet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.graphics.Bitmap;
 import android.widget.Button;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import org.w3c.dom.Text;
-
-
 import java.util.ArrayList;
 
 public class Enregistrement extends AppCompatActivity {
 
         private TextView longitude;
         private TextView latitude;
+        private ImageButton buttonPhoto;
         private LocationManager locationManager;
         private LocationListener locationListener;
         private String provider;
@@ -47,11 +48,25 @@ public class Enregistrement extends AppCompatActivity {
 
 
 
+        @SuppressLint("MissingPermission")
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_enregistrement);
+
+                longitude=(TextView) findViewById(R.id.longi);
+                latitude=(TextView) findViewById(R.id.lat);
+                buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
+
+
+                buttonPhoto.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                takePicture();
+                        }
+                });
+
                 longitude = (TextView) findViewById(R.id.longi);
                 latitude = (TextView) findViewById(R.id.lat);
 
@@ -64,6 +79,7 @@ public class Enregistrement extends AppCompatActivity {
 
                 textJoueur1.setText(nomJoueur1);
                 textJoueur2.setText(nomJoueur2);
+
 
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -83,6 +99,7 @@ public class Enregistrement extends AppCompatActivity {
                         latitude.setText(" latitude:" + lat);
                         //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                 }
+
 
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -115,7 +132,16 @@ public class Enregistrement extends AppCompatActivity {
         }
 
 
-
-
         }
+
+        public void takePicture()
+        {
+                Intent intent = new Intent(this, Photo.class);
+                startActivity(intent);
+        }
+
 }
+
+
+
+

@@ -25,11 +25,23 @@ public class MainActivity extends AppCompatActivity {
                 enterData();
             }
         });
+        historique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               historique();
+            }
+        });
     }
 
     public void enterData()
     {
         Intent intent = new Intent(this, EnterData.class);
+        startActivity(intent);
+    }
+
+    public void historique()
+    {
+        Intent intent = new Intent(this, Historique.class);
         startActivity(intent);
     }
 
