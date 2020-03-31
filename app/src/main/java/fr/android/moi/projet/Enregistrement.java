@@ -73,46 +73,46 @@ public class Enregistrement extends AppCompatActivity {
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
-                locationListener = new LocationListener() {
-                        @Override
-                        public void onLocationChanged(Location location) {
-                                double lat = location.getLatitude();
-                                double longi = location.getLongitude();
+        locationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                        double lat = location.getLatitude();
+                        double longi = location.getLongitude();
 
-                                longitude.setText(" longitude:" + longi);
-                                latitude.setText(" latitude:" + lat);
-                                //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
-                        }
-
-                        @Override
-                        public void onStatusChanged(String provider, int status, Bundle extras) {
-                        }
-
-                        @Override
-                        public void onProviderEnabled(String provider) {
-                        }
-
-                        // check si GPS est on
-                        @Override
-                        public void onProviderDisabled(String provider) {
-                                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                startActivity(intent);
-                        }
-                };
-
-                // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                                requestPermissions(new String[]{
-                                        Manifest.permission.ACCESS_FINE_LOCATION,
-                                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                                        Manifest.permission.INTERNET
-                                }, 10);
-                                return;
-                        } else {
-                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
-                        }
+                        longitude.setText(" longitude:" + longi);
+                        latitude.setText(" latitude:" + lat);
+                        //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                 }
+
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+                }
+
+                @Override
+                public void onProviderEnabled(String provider) {
+                }
+
+                // check si GPS est on
+                @Override
+                public void onProviderDisabled(String provider) {
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(intent);
+                }
+        };
+
+        // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions(new String[]{
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION,
+                                Manifest.permission.INTERNET
+                        }, 10);
+                        return;
+                } else {
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
+                }
+        }
 
 
 
