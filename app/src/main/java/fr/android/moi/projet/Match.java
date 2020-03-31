@@ -9,6 +9,7 @@ public class Match {
     private String formatSet;
 
 
+    public Match(){}
     public Match(int idMatch, String joueur1, String joueur2, String formatMatch, String formatSet){
 
         this.setIdMatch( idMatch);
