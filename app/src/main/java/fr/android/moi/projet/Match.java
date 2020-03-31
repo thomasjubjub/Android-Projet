@@ -1,6 +1,9 @@
 package fr.android.moi.projet;
 
-public class Match {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Match implements Parcelable{
 
     private int idMatch;
     private String joueur1;
@@ -18,6 +21,28 @@ public class Match {
         this.setFormatMatch( formatMatch );
         this.setFormatSet( formatSet );
     }
+
+    public Match(Parcel in) {
+
+        idMatch = in.readInt();
+        joueur1 = in.readString();
+        joueur2 = in.readString();
+        formatMatch = in.readString();
+        formatSet = in.readString();
+    }
+
+
+    public static final Creator<Match> CREATOR = new Creator<Match>() {
+        @Override
+        public Match createFromParcel(Parcel in) {
+            return new Match(in);
+        }
+
+        @Override
+        public Match[] newArray(int size) {
+            return new Match[size];
+        }
+    };
 
     private void setIdMatch(int idMatch) {
         this.idMatch = idMatch;
@@ -58,5 +83,22 @@ public class Match {
     @Override
     public String toString() {
         return idMatch + ": " + joueur1 + " and " + joueur2 + " plays a " + formatMatch + "with " + formatSet;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        // écrire dans l'ordre les attributs classe
+        dest.writeInt(idMatch);
+        dest.writeString(joueur1);
+        dest.writeString(joueur2);
+        dest.writeString(formatMatch);
+        dest.writeString(formatSet);
+
     }
 }
