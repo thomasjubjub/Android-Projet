@@ -211,12 +211,20 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                         {
                                                joueur1 = !joueur1;
                                         }
-                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        if(scoreJoueur2Jeu <= 6)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                                }
+                                        }
+                                        
+
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
                                         {
-                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
-                                                scoreJoueur1 = 0;
+                                                 scoreJoueur1 = 0;
                                                 scoreJeuJoueur1.setText("0");
                                         }
                                 }
