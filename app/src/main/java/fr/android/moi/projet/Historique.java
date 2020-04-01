@@ -56,9 +56,10 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
 
         switch (v.getId()) {
             case R.id.match1:
-                Match match1 = new Match();
-                match1 = matches.get(1);
-                intent.putExtra("match", match1);
+                Match match_1 = new Match();
+                match_1 = matches.get(1);
+                Log.d("InHistorique", match_1.toString());
+                intent.putExtra("match", match_1);
                 break;
 
             case R.id.match2:

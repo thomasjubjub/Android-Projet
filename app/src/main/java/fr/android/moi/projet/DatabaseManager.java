@@ -83,7 +83,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
         // si le curseur n'a pas lu tout les matches
         while( ! cursor.isAfterLast() ) {
             // creation d'un objet match
-            Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ) );
+            Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ),
+                                    cursor.getInt( 5 ),cursor.getInt( 6),cursor.getInt( 7 ), cursor.getInt( 8 ), cursor.getInt( 9 ),cursor.getInt( 10 ));
            // ajout du match dans l'arraylist
             matches.add( match );
             cursor.moveToNext();

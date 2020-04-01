@@ -67,9 +67,6 @@ public class Enregistrement extends AppCompatActivity {
                         }
                 });
 
-                longitude = (TextView) findViewById(R.id.longi);
-                latitude = (TextView) findViewById(R.id.lat);
-
                 textJoueur1 = (TextView) findViewById(R.id.textJoueur1);
                 textJoueur2 = (TextView) findViewById(R.id.textJoueur2);
 
