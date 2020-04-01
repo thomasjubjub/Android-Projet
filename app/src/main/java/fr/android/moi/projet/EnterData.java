@@ -91,12 +91,11 @@ public class EnterData extends AppCompatActivity {
         });
 
         // DATABASE
-
-        databaseManager = new DatabaseManager(this);
-        databaseManager.insertMatch( "Alexandra", "Thomas", "oui", "non" );
+       // databaseManager = new DatabaseManager(this);
+        //databaseManager.insertMatch( "Alexandra", "Thomas", "oui", "non" );
         // Récuperation de liste d'array de match
-        matches = databaseManager.readMatch();
-        databaseManager.close();
+        //matches = databaseManager.readMatch();
+       // databaseManager.close();
 
     }
 

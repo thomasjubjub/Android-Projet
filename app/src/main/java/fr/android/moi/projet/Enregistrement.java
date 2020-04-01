@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import org.w3c.dom.Text;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Enregistrement extends AppCompatActivity {
 
@@ -45,6 +46,9 @@ public class Enregistrement extends AppCompatActivity {
         private String nomJoueur2;
         private TextView textJoueur1;
         private TextView textJoueur2;
+        private Button buttonFinir;
+        private DatabaseManager databaseManager;
+        private List<Match> matches;
 
 
 
@@ -58,12 +62,20 @@ public class Enregistrement extends AppCompatActivity {
                 longitude=(TextView) findViewById(R.id.longi);
                 latitude=(TextView) findViewById(R.id.lat);
                 buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
+                buttonFinir = (Button) findViewById(R.id.buttonFinir);
 
 
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                                 takePicture();
+                        }
+                });
+
+                buttonFinir.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                finir();
                         }
                 });
 
@@ -86,12 +98,11 @@ public class Enregistrement extends AppCompatActivity {
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
-        locationListener = new LocationListener() {
+                locationListener = new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                         double lat = location.getLatitude();
                         double longi = location.getLongitude();
-
                         longitude.setText(" longitude:" + longi);
                         latitude.setText(" latitude:" + lat);
                         //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
@@ -134,6 +145,25 @@ public class Enregistrement extends AppCompatActivity {
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);
+                startActivity(intent);
+        }
+
+        public void finir(){
+
+                // ENREGISTREMENT DANS LA BDD
+                databaseManager = new DatabaseManager(this);
+                // fakes insertion qu'il faudra remplir avec variable de thomas
+                databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non" );
+                // Récuperation de liste d'array de match
+                matches = databaseManager.readMatch();
+                // fake match à remplir
+                Match match = new Match();
+                databaseManager.close();
+
+                // ENVOI MATCH POUR AFFICHAGE STATISTIQUES
+               // Log.d("EnregistrementFinir", match.toString());
+                Intent intent = new Intent(this, Statistiques.class);
+                intent.putExtra("match", match);
                 startActivity(intent);
         }
 
