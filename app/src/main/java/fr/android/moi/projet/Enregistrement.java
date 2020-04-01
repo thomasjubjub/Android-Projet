@@ -185,6 +185,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                         break;
 
                         case R.id.doubleFaute :
+                                /*
                                 if(joueur1 == false)
                                 {
                                         if(scoreJoueur1 == 0)
@@ -232,6 +233,15 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                                 joueur1 = true;
                                         }
                                         scoreJeuJoueur2.setText(String.valueOf(scoreJoueur2));
+                                }
+                                */
+                                if(joueur1 == true)
+                                {
+                                        siDoubleFaute(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                }
+                                else if (joueur1 == false)
+                                {
+                                        siDoubleFaute(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
                                 }
 
                                 break;
@@ -326,6 +336,33 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
         }
 
+
+        public void siDoubleFaute (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
+        {
+
+                        if(scoreJoueur == 0)
+                        {
+                                scoreJoueur=15;
+
+                        }
+                        else if(scoreJoueur == 15)
+                        {
+                                scoreJoueur =30;
+                        }
+                        else if (scoreJoueur == 30)
+                        {
+                                scoreJoueur =40;
+                        }
+                        else if(scoreJoueur == 40)
+                        {
+                                scoreJoueur = 0;
+                                scoreJoueurJeu++;
+                                scoreSetJoueur.setText(String.valueOf(scoreJoueurJeu));
+                                joueur1 = true;
+                        }
+                        scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
+
+        }
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);
