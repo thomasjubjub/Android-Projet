@@ -4,36 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Camera;
-import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
-import android.graphics.Bitmap;
 import android.widget.Button;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import org.w3c.dom.Text;
 import java.util.ArrayList;
+import android.view.View.OnClickListener;
 
-public class Enregistrement extends AppCompatActivity {
+public class Enregistrement extends AppCompatActivity implements OnClickListener {
 
         private TextView longitude;
         private TextView latitude;
@@ -59,14 +44,19 @@ public class Enregistrement extends AppCompatActivity {
         private TextView scoreSet1Joueur1;
         private TextView scoreSet2Joueur1;
         private TextView scoreSet3Joueur1;
-        private TextView scoreSet4Joueur1;
+        private TextView scoreJeuJoueur1;
 
         private TextView scoreSet1Joueur2;
         private TextView scoreSet2Joueur2;
         private TextView scoreSet3Joueur2;
-        private TextView scoreSet4Joueur2;
+        private TextView scoreJeuJoueur2;
 
-        private int score 
+        private int scoreJoueur1Set = 0;
+        private int scoreJoueur1Jeu = 0;
+        private int scoreJoueur1 = 0;
+        private int scoreJoueur2Set = 0;
+        private int scoreJoueur2Jeu = 0;
+        private int scoreJoueur2 = 0;
 
         private boolean joueur1 = true;
 
@@ -108,12 +98,12 @@ public class Enregistrement extends AppCompatActivity {
                 scoreSet1Joueur1 = (TextView) findViewById(R.id.scoreSet1Joueur1);
                 scoreSet2Joueur1 = (TextView) findViewById(R.id.scoreSet2Joueur1);
                 scoreSet3Joueur1 = (TextView) findViewById(R.id.scoreSet3Joueur1);
-                scoreSet4Joueur1 = (TextView) findViewById(R.id.scoreSet4Joueur1);
+                scoreJeuJoueur1 = (TextView) findViewById(R.id.scoreJeuJoueur1);
 
                 scoreSet1Joueur2 = (TextView) findViewById(R.id.scoreSet1Joueur2);
                 scoreSet2Joueur2 = (TextView) findViewById(R.id.scoreSet2Joueur2);
                 scoreSet3Joueur2 = (TextView) findViewById(R.id.scoreSet3Joueur2);
-                scoreSet4Joueur2 = (TextView) findViewById(R.id.scoreSet4Joueur2);
+                scoreJeuJoueur2 = (TextView) findViewById(R.id.scoreJeuJoueur2);
 
                 premiereBalle = (Button) findViewById(R.id.premiereBalle);
                 deuxiemeBalle = (Button) findViewById(R.id.deuxiemeBalle);
@@ -121,11 +111,11 @@ public class Enregistrement extends AppCompatActivity {
                 acePremiereBalle = (Button) findViewById(R.id.acePremiereBalle);
                 aceDeuxiemeBalle = (Button) findViewById(R.id.aceDeuxiemeBalle);
 
-                premiereBalle.setOnClickListener((View.OnClickListener) this);
-                deuxiemeBalle.setOnClickListener((View.OnClickListener) this);
-                doubleFaute.setOnClickListener((View.OnClickListener) this);
-                acePremiereBalle.setOnClickListener((View.OnClickListener) this);
-                aceDeuxiemeBalle.setOnClickListener((View.OnClickListener) this);
+                premiereBalle.setOnClickListener(this);
+                deuxiemeBalle.setOnClickListener(this);
+                doubleFaute.setOnClickListener(this);
+                acePremiereBalle.setOnClickListener(this);
+                aceDeuxiemeBalle.setOnClickListener(this);
 
 
                 // on fait appel à un nouveau service système pour accéder à localisation
@@ -136,6 +126,7 @@ public class Enregistrement extends AppCompatActivity {
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
+                /*
         locationListener = new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
@@ -176,7 +167,7 @@ public class Enregistrement extends AppCompatActivity {
                 } else {
                         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                 }
-        }
+        } */
 
 
         }
@@ -196,10 +187,26 @@ public class Enregistrement extends AppCompatActivity {
                         case R.id.doubleFaute :
                                 if(joueur1 == true)
                                 {
-                                        if(scoreSet1Joueur1.getText() == "-")
+                                        if(scoreJoueur1 == 0)
                                         {
-                                                scoreSet1Joueur1.setText("15");
+                                                scoreJoueur1=15;
+
                                         }
+                                        else if(scoreJoueur1 == 15)
+                                        {
+                                                scoreJoueur1 =30;
+                                        }
+                                        else if (scoreJoueur1 == 30)
+                                        {
+                                                scoreJoueur1 =40;
+                                        }
+                                        else if(scoreJoueur1 == 40)
+                                        {
+                                                scoreJoueur1 = 0;
+                                                scoreJoueur1Jeu++;
+                                                scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
+                                        }
+                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
                                 }
                 }
 
