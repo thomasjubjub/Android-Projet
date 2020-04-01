@@ -422,8 +422,8 @@
                         android:layout_height="fill_parent"
                         >
 
-                        <Button
-                            android:id="@+id/textJoueur"
+                        <TextView
+                            android:id="@+id/echangeJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -434,7 +434,7 @@
                             />
 
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/pointGagnantJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -443,7 +443,7 @@
                             android:background="#37DD53"
                             />
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/fauteDirectJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -454,7 +454,7 @@
                             />
 
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/fauteProvoqueeJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -471,8 +471,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         >
-                        <Button
-                            android:id="@+id/textJoueur"
+                        <TextView
+                            android:id="@+id/echangeJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -484,7 +484,7 @@
                             />
 
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/pointGagnantJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -494,7 +494,7 @@
 
                             />
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/fauteDirectJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -505,7 +505,7 @@
                             />
 
                         <Button
-                            android:id="@+id/textJoueur"
+                            android:id="@+id/fauteProvoqueeJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"

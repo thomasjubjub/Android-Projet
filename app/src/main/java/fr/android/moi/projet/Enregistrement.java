@@ -40,6 +40,12 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
         private Button doubleFaute;
         private Button acePremiereBalle;
         private Button aceDeuxiemeBalle;
+        private Button pointGagnantJoueur1;
+        private Button pointGagnantJoueur2;
+        private Button fauteDirecteJoueur1;
+        private Button fauteDirecteJoueur2;
+        private Button fauteProvoqueeJoueur1;
+        private Button fauteProvoqueeJoueur2;
 
         private TextView scoreSet1Joueur1;
         private TextView scoreSet2Joueur1;
@@ -110,12 +116,24 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                 doubleFaute = (Button) findViewById(R.id.doubleFaute);
                 acePremiereBalle = (Button) findViewById(R.id.acePremiereBalle);
                 aceDeuxiemeBalle = (Button) findViewById(R.id.aceDeuxiemeBalle);
+                pointGagnantJoueur1 = (Button) findViewById(R.id.pointGagnantJoueur1);
+                pointGagnantJoueur2 = (Button) findViewById(R.id.pointGagnantJoueur2);
+                fauteDirecteJoueur1 = (Button) findViewById(R.id.fauteDirectJoueur1);
+                fauteDirecteJoueur2 = (Button) findViewById(R.id.fauteDirectJoueur2);
+                fauteProvoqueeJoueur1 = (Button) findViewById(R.id.fauteProvoqueeJoueur1);
+                fauteProvoqueeJoueur2 = (Button) findViewById(R.id.fauteProvoqueeJoueur2);
 
                 premiereBalle.setOnClickListener(this);
                 deuxiemeBalle.setOnClickListener(this);
                 doubleFaute.setOnClickListener(this);
                 acePremiereBalle.setOnClickListener(this);
                 aceDeuxiemeBalle.setOnClickListener(this);
+                pointGagnantJoueur1.setOnClickListener(this);
+                pointGagnantJoueur2.setOnClickListener(this);
+                fauteDirecteJoueur1.setOnClickListener(this);
+                fauteDirecteJoueur2.setOnClickListener(this);
+                fauteProvoqueeJoueur2.setOnClickListener(this);
+                fauteProvoqueeJoueur1.setOnClickListener(this);
 
 
                 // on fait appel à un nouveau service système pour accéder à localisation
@@ -174,6 +192,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
         public void onClick(View v)
         {
+
                 switch (v.getId())
                 {
                         case R.id.premiereBalle :
@@ -185,159 +204,129 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                         break;
 
                         case R.id.doubleFaute :
-                                /*
-                                if(joueur1 == false)
-                                {
-                                        if(scoreJoueur1 == 0)
-                                        {
-                                                scoreJoueur1=15;
 
-                                        }
-                                        else if(scoreJoueur1 == 15)
-                                        {
-                                                scoreJoueur1 =30;
-                                        }
-                                        else if (scoreJoueur1 == 30)
-                                        {
-                                                scoreJoueur1 =40;
-                                        }
-                                        else if(scoreJoueur1 == 40)
-                                        {
-                                                scoreJoueur1 = 0;
-                                                scoreJoueur1Jeu++;
-                                                scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
-                                                joueur1 = true;
-                                        }
-                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
-                                }
-                                else if(joueur1 == true)
+                                if(joueur1)
                                 {
+                                        if(scoreJoueur2 == 40)
+                                        {
+                                               joueur1 = !joueur1;
+                                        }
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
                                         {
-                                                scoreJoueur2=15;
-
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                                scoreJoueur1 = 0;
+                                                scoreJeuJoueur1.setText("0");
                                         }
-                                        else if(scoreJoueur2 == 15)
+                                }
+                                else
+                                {
+                                        if(scoreJoueur2 == 40)
                                         {
-                                                scoreJoueur2 =30;
+                                                joueur1 = !joueur1;
                                         }
-                                        else if (scoreJoueur2 == 30)
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
                                         {
-                                                scoreJoueur2 =40;
-                                        }
-                                        else if(scoreJoueur2 == 40)
-                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
                                                 scoreJoueur2 = 0;
-                                                scoreJoueur2Jeu++;
-                                                scoreSet1Joueur2.setText(String.valueOf(scoreJoueur2Jeu));
-                                                joueur1 = true;
+                                                scoreJeuJoueur2.setText("0");
                                         }
-                                        scoreJeuJoueur2.setText(String.valueOf(scoreJoueur2));
-                                }
-                                */
-                                if(joueur1 == true)
-                                {
-                                        siDoubleFaute(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
-                                }
-                                else if (joueur1 == false)
-                                {
-                                        siDoubleFaute(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
                                 }
 
                                 break;
                         case R.id.acePremiereBalle :
-                                if(joueur1 == false)
+
+                        case R.id.aceDeuxiemeBalle :
+
+
+                                if(!joueur1)
                                 {
-                                        switch (scoreJoueur2)
+                                        if(scoreJoueur2 == 40)
                                         {
-                                                case 0 :
-                                                        scoreJoueur2 = 15;
-                                                        break;
-
-                                                case 15 :
-                                                        scoreJoueur2 = 30;
-                                                        break;
-
-                                                case 30 :
-                                                        scoreJoueur2 = 40;
-                                                        break;
-
-                                                case 40 : scoreJoueur2 = 0;
-                                                scoreJoueur2Jeu ++;
-                                                scoreSet1Joueur2.setText(String.valueOf(scoreJoueur2Jeu));
-                                                joueur1 = true;
-                                                break;
+                                                joueur1 = !joueur1;
 
                                         }
-                                        scoreJeuJoueur2.setText(String.valueOf(scoreJoueur2));
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                                scoreJoueur1 = 0;
+                                                scoreJeuJoueur1.setText("0");
+                                        }
                                 }
-                                else if (joueur1 == true)
+                                else
                                 {
-                                        switch (scoreJoueur1)
+                                        if(scoreJoueur1 == 40)
                                         {
-                                                case 0 :
-                                                        scoreJoueur1 = 15;
-                                                        break;
-
-                                                case 15 :
-                                                        scoreJoueur1 = 30;
-                                                        break;
-
-                                                case 30 :
-                                                        scoreJoueur1 = 40;
-                                                        break;
-
-                                                case 40 : scoreJoueur1 = 0;
-                                                        scoreJoueur1Jeu ++;
-                                                        scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
-                                                        joueur1 = true;
-                                                        break;
-
+                                                joueur1 = !joueur1;
                                         }
-                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
-
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                                scoreJoueur2 =0;
+                                                scoreJeuJoueur2.setText("0");
+                                        }
                                 }
                                 break;
 
-                        case R.id.aceDeuxiemeBalle :
-                                if(joueur1 == true)
+                        case R.id.fauteDirectJoueur2 :
+
+                        case R.id.pointGagnantJoueur1 :
+
+                        case R.id.fauteProvoqueeJoueur2 :
+
+                                if(scoreJoueur1 == 40)
                                 {
-                                        switch (scoreJoueur1)
-                                        {
-                                                case 0 :
-                                                        scoreJoueur1 = 15;
-                                                        break;
-
-                                                case 15 :
-                                                        scoreJoueur1 = 30;
-                                                        break;
-
-                                                case 30 :
-                                                        scoreJoueur1 = 40;
-                                                        break;
-
-                                                case 40 :
-                                                        scoreJoueur1 = 0;
-                                                        scoreJoueur1Jeu++;
-                                                        scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
-                                                        joueur1 = false;
-                                                        break;
-
-                                        }
-                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
+                                        joueur1 = !joueur1;
                                 }
+                                marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                if(scoreJoueur1 == 0)
+                                {
+                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                        scoreJoueur2 =0;
+                                        scoreJeuJoueur2.setText("0");
+                                }
+                                break;
 
-                                else if(joueur1 == false)
-                                        {
+                        case R.id.fauteDirectJoueur1 :
 
-                                        }
+                        case R.id.pointGagnantJoueur2 :
+
+                        case R.id.fauteProvoqueeJoueur1 :
+
+                                if(scoreJoueur2 == 40)
+                                {
+                                        joueur1 = !joueur1;
+
+                                }
+                                marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                if(scoreJoueur2 == 0)
+                                {
+                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                        scoreJoueur1 = 0;
+                                        scoreJeuJoueur1.setText("0");
+                                }
+                                break;
+
+
+
+
 
                 }
+
 
         }
 
 
-        public void siDoubleFaute (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
+        public void marqueUnPoint (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
         {
 
                         if(scoreJoueur == 0)
@@ -358,7 +347,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                 scoreJoueur = 0;
                                 scoreJoueurJeu++;
                                 scoreSetJoueur.setText(String.valueOf(scoreJoueurJeu));
-                                joueur1 = true;
+
                         }
                         scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
 
