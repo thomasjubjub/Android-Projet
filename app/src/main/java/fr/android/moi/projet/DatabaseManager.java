@@ -20,7 +20,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // constucteur
     public DatabaseManager( Context context ) {
@@ -38,10 +38,18 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    joueur2 text not null,"
                 + "    formatSet text not null,"
                 + "    formatMatch text not null"
+                + "    scoreJ1Set1 int not null"
+                +"     scoreJ1Set1 int not null"
+                + "    scoreJ1Set2 int not null"
+                + "    scoreJ1Set3 int not null"
+                + "    scoreJ2Set1 int not null"
+                + "    scoreJ2Set2 int not null"
+                + "    scoreJ2Set3 int not null"
                 + ")";
 
         db.execSQL( strSql );
-        Log.i( "DATABASE", "Dans onCreate" );
+
+
     }
 
     @Override
@@ -50,7 +58,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     }
 
-    public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch){
+    public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch,
+                            int scoreJ1Set1, int scoreJ1Set2, int scoreJ1Set3, int scoreJ2Set1, int scoreJ2Set2, int scoreJ2Set3 ){
 
         // pour mettre les string entre ''
         joueur1 = joueur1.replace( "'", "''" );
@@ -58,10 +67,16 @@ public class DatabaseManager extends SQLiteOpenHelper{
         formatSet = formatSet.replace( "'", "''" );
         formatMatch = formatMatch.replace( "'", "''" );
 
-        String strSql = "insert into T_Match (joueur1, joueur2, formatSet, formatMatch) values ('"
-                + joueur1 + "', '" + joueur2 + "', '"+ formatSet +"', '"+ formatMatch +"')";
-        // pour la date: new Date().getTime()
 
+        Log.i( "DATABASE", "preinsertMatch" );
+
+        String strSql = "insert into T_Match (joueur1, joueur2, formatSet, formatMatch," +
+                "  scoreJ1Set1, scoreJ1Set2, scoreJ1Set3, scoreJ2Set1, scoreJ2Set2, scoreJ2Set3) " +
+                "values ('" + joueur1 + "', '" + joueur2 + "', '"+ formatSet +"', '"+ formatMatch +"', " +
+                " '"+ scoreJ1Set1 +"', '"+ scoreJ1Set2 +"', '"+ scoreJ1Set3 +"'," +
+                "'"+ scoreJ2Set1 +"','"+ scoreJ2Set2 +"','"+ scoreJ2Set3 +"')";
+
+        // pour la date: new Date().getTime()
         // envoyer cette requete à la database
         // this = datamanager
         this.getWritableDatabase().execSQL( strSql );
@@ -76,7 +91,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
         // definition d'un curseur + lecture de la table + décalage du curseur
         Cursor cursor = this.getReadableDatabase().query( "T_match",
-                new String[] { "idMatch", "joueur1", "joueur2", "formatSet", "formatMatch" },
+                new String[] { "idMatch", "joueur1", "joueur2", "formatSet", "formatMatch", "scoreJ1Set1", "scoreJ1Set2", "scoreJ1Set3", "scoreJ2Set1", "scoreJ2Set2", "scoreJ2Set3"},
                 null, null, null, null, null, "10" );
         cursor.moveToFirst();
 

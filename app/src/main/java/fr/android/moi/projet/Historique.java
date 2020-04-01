@@ -47,6 +47,7 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
         databaseManager = new DatabaseManager(this);
         matches = databaseManager.readMatch();
         Log.d("InHistorique", matches.toString());
+
         databaseManager.close();
     }
 
@@ -64,6 +65,34 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
 
             case R.id.match2:
 
+                Match match_2 = new Match();
+                match_2 = matches.get(2);
+                Log.d("InHistorique", match_2.toString());
+                intent.putExtra("match", match_2);
+                break;
+
+            case R.id.match3:
+
+                Match match_3 = new Match();
+                match_3 = matches.get(3);
+                Log.d("InHistorique", match_3.toString());
+                intent.putExtra("match", match_3);
+                break;
+
+            case R.id.match4:
+
+                Match match_4 = new Match();
+                match_4 = matches.get(4);
+                Log.d("InHistorique", match_4.toString());
+                intent.putExtra("match", match_4);
+                break;
+
+            case R.id.match5:
+
+                Match match_5 = new Match();
+                match_5 = matches.get(5);
+                Log.d("InHistorique", match_5.toString());
+                intent.putExtra("match", match_5);
                 break;
         }
 

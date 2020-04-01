@@ -50,6 +50,13 @@ public class Enregistrement extends AppCompatActivity {
         private DatabaseManager databaseManager;
         private List<Match> matches;
 
+        private int scoreJ1Set1 = 0;
+        private int scoreJ1Set2 = 0;
+        private int scoreJ1Set3 = 0;
+        private int scoreJ2Set1 = 0;
+        private int scoreJ2Set2 = 0;
+        private int scoreJ2Set3 = 0;
+
 
 
         @SuppressLint("MissingPermission")
@@ -150,14 +157,25 @@ public class Enregistrement extends AppCompatActivity {
 
         public void finir(){
 
+                // FAKE REMPLISSAGE DES RÉSULTATS
+
+                scoreJ1Set1 = 5;
+                scoreJ1Set2 = 7;
+                scoreJ1Set3 = 45;
+                scoreJ2Set1 = 8;
+                scoreJ2Set2 = 9;
+                scoreJ2Set3 = 1;
+
                 // ENREGISTREMENT DANS LA BDD
+
                 databaseManager = new DatabaseManager(this);
                 // fakes insertion qu'il faudra remplir avec variable de thomas
-                databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non" );
-                // Récuperation de liste d'array de match
-                matches = databaseManager.readMatch();
-                // fake match à remplir
+                databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
+                        scoreJ1Set1,scoreJ1Set2,scoreJ1Set3,scoreJ2Set1,scoreJ2Set1,scoreJ2Set1);
+                matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
+                Log.i("post_insert_enregistremnt", "ok");
                 Match match = new Match();
+                match = matches.get(1); // récupère le match qu'on vietn d'ajouter
                 databaseManager.close();
 
                 // ENVOI MATCH POUR AFFICHAGE STATISTIQUES
