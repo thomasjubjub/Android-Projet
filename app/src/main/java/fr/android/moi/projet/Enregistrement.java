@@ -185,7 +185,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                         break;
 
                         case R.id.doubleFaute :
-                                if(joueur1 == true)
+                                if(joueur1 == false)
                                 {
                                         if(scoreJoueur1 == 0)
                                         {
@@ -205,9 +205,123 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                                 scoreJoueur1 = 0;
                                                 scoreJoueur1Jeu++;
                                                 scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
+                                                joueur1 = true;
                                         }
                                         scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
                                 }
+                                else if(joueur1 == true)
+                                {
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2=15;
+
+                                        }
+                                        else if(scoreJoueur2 == 15)
+                                        {
+                                                scoreJoueur2 =30;
+                                        }
+                                        else if (scoreJoueur2 == 30)
+                                        {
+                                                scoreJoueur2 =40;
+                                        }
+                                        else if(scoreJoueur2 == 40)
+                                        {
+                                                scoreJoueur2 = 0;
+                                                scoreJoueur2Jeu++;
+                                                scoreSet1Joueur2.setText(String.valueOf(scoreJoueur2Jeu));
+                                                joueur1 = true;
+                                        }
+                                        scoreJeuJoueur2.setText(String.valueOf(scoreJoueur2));
+                                }
+
+                                break;
+                        case R.id.acePremiereBalle :
+                                if(joueur1 == false)
+                                {
+                                        switch (scoreJoueur2)
+                                        {
+                                                case 0 :
+                                                        scoreJoueur2 = 15;
+                                                        break;
+
+                                                case 15 :
+                                                        scoreJoueur2 = 30;
+                                                        break;
+
+                                                case 30 :
+                                                        scoreJoueur2 = 40;
+                                                        break;
+
+                                                case 40 : scoreJoueur2 = 0;
+                                                scoreJoueur2Jeu ++;
+                                                scoreSet1Joueur2.setText(String.valueOf(scoreJoueur2Jeu));
+                                                joueur1 = true;
+                                                break;
+
+                                        }
+                                        scoreJeuJoueur2.setText(String.valueOf(scoreJoueur2));
+                                }
+                                else if (joueur1 == true)
+                                {
+                                        switch (scoreJoueur1)
+                                        {
+                                                case 0 :
+                                                        scoreJoueur1 = 15;
+                                                        break;
+
+                                                case 15 :
+                                                        scoreJoueur1 = 30;
+                                                        break;
+
+                                                case 30 :
+                                                        scoreJoueur1 = 40;
+                                                        break;
+
+                                                case 40 : scoreJoueur1 = 0;
+                                                        scoreJoueur1Jeu ++;
+                                                        scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
+                                                        joueur1 = true;
+                                                        break;
+
+                                        }
+                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
+
+                                }
+                                break;
+
+                        case R.id.aceDeuxiemeBalle :
+                                if(joueur1 == true)
+                                {
+                                        switch (scoreJoueur1)
+                                        {
+                                                case 0 :
+                                                        scoreJoueur1 = 15;
+                                                        break;
+
+                                                case 15 :
+                                                        scoreJoueur1 = 30;
+                                                        break;
+
+                                                case 30 :
+                                                        scoreJoueur1 = 40;
+                                                        break;
+
+                                                case 40 :
+                                                        scoreJoueur1 = 0;
+                                                        scoreJoueur1Jeu++;
+                                                        scoreSet1Joueur1.setText(String.valueOf(scoreJoueur1Jeu));
+                                                        joueur1 = false;
+                                                        break;
+
+                                        }
+                                        scoreJeuJoueur1.setText(String.valueOf(scoreJoueur1));
+                                }
+
+                                else if(joueur1 == false)
+                                        {
+
+                                        }
+
                 }
 
         }
