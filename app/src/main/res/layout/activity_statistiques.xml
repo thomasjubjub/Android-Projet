@@ -98,7 +98,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur1"
+                            android:id="@+id/nomJ1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -109,7 +109,7 @@
                             android:gravity="end" />
 
                         <TextView
-                            android:id="@+id/textScore1Joueur1"
+                            android:id="@+id/scoreJ1Set1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -119,7 +119,7 @@
                             android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore2Joueur1"
+                            android:id="@+id/scoreJ1Set2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -128,7 +128,7 @@
                             android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore3Joueur1"
+                            android:id="@+id/scoreJ1Set3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -156,7 +156,7 @@
                         android:layout_height="fill_parent"
                         >
                         <TextView
-                            android:id="@+id/textJoueur2"
+                            android:id="@+id/nomJ2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
@@ -168,7 +168,7 @@
 
 
                         <TextView
-                            android:id="@+id/textScore1Joueur2"
+                            android:id="@+id/scoreJ2Set1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -180,7 +180,7 @@
 
 
                         <TextView
-                            android:id="@+id/textScore2Joueur2"
+                            android:id="@+id/scoreJ2Set2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -189,7 +189,7 @@
                             android:gravity="center_horizontal" />
 
                         <TextView
-                            android:id="@+id/textScore3Joueur2"
+                            android:id="@+id/scoreJ2Set3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"

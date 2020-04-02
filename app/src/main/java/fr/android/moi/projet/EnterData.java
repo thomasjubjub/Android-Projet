@@ -34,15 +34,10 @@ public class EnterData extends AppCompatActivity {
 
 
         // Link XML
-        joueur1 = String.valueOf(findViewById(R.id.joueur1));
-        joueur2 = String.valueOf(findViewById(R.id.joueur2));
-
         nomJoueur2 = (EditText) findViewById(R.id.joueur2);
         nomJoueur1 = (EditText) findViewById(R.id.joueur1);
-
         retour = (ImageButton) findViewById(R.id.imageBack);
         demarrer = (Button) findViewById(R.id.demarrer);
-
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
 
@@ -61,7 +56,6 @@ public class EnterData extends AppCompatActivity {
             formatDuDernierSet.setText(typeSetChoisi);
         }
 
-
         formatDuMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,14 +68,12 @@ public class EnterData extends AppCompatActivity {
                 formatDuDernierSet();
             }
         });
-
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
         demarrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +83,11 @@ public class EnterData extends AppCompatActivity {
         });
 
         // DATABASE
-
-        databaseManager = new DatabaseManager(this);
-        databaseManager.insertMatch( "Alexandra", "Thomas", "oui", "non" );
+       // databaseManager = new DatabaseManager(this);
+        //databaseManager.insertMatch( "Alexandra", "Thomas", "oui", "non" );
         // Récuperation de liste d'array de match
-        matches = databaseManager.readMatch();
-        databaseManager.close();
+        //matches = databaseManager.readMatch();
+       // databaseManager.close();
 
     }
 
@@ -113,7 +104,6 @@ public class EnterData extends AppCompatActivity {
             intentJoueur.putExtra("nomDuJoueur2", joueur2);
 
             startActivity(intentJoueur);
-
 
         }
 

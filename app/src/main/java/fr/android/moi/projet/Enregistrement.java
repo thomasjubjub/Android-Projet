@@ -11,12 +11,14 @@ import android.location.LocationListener;
 import android.location.LocationProvider;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
+import java.util.List;
 
 public class Enregistrement extends AppCompatActivity implements OnClickListener {
 
@@ -34,6 +36,16 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
         private TextView textJoueur1;
         private TextView textJoueur2;
+        private Button buttonFinir;
+        private DatabaseManager databaseManager;
+        private List<Match> matches;
+
+        private int scoreJ1Set1 = 0;
+        private int scoreJ1Set2 = 0;
+        private int scoreJ1Set3 = 0;
+        private int scoreJ2Set1 = 0;
+        private int scoreJ2Set2 = 0;
+        private int scoreJ2Set3 = 0;
 
         private Button premiereBalle;
         private Button deuxiemeBalle;
@@ -79,17 +91,19 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                 longitude=(TextView) findViewById(R.id.longi);
                 latitude=(TextView) findViewById(R.id.lat);
                 buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
+                buttonFinir = (Button) findViewById(R.id.buttonFinir);
 
 
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
+                        public void onClick(View v) { takePicture(); }
+                });
+                buttonFinir.setOnClickListener(new View.OnClickListener() {
+                        @Override
                         public void onClick(View v) {
-                                takePicture();
+                                finir();
                         }
                 });
-
-                longitude = (TextView) findViewById(R.id.longi);
-                latitude = (TextView) findViewById(R.id.lat);
 
                 textJoueur1 = (TextView) findViewById(R.id.textJoueur1);
                 textJoueur2 = (TextView) findViewById(R.id.textJoueur2);
@@ -144,6 +158,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
+
                 /*
         locationListener = new LocationListener() {
                 @Override
@@ -156,39 +171,54 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                         //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                 }
 
+=======
+                locationListener = new LocationListener() {
+                        @Override
+                        public void onLocationChanged(Location location) {
+                                double lat = location.getLatitude();
+                                double longi = location.getLongitude();
+                                longitude.setText(" longitude:" + longi);
+                                latitude.setText(" latitude:" + lat);
+                                //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
+                        }
+>>>>>>> origin/statistiques
 
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-                }
+                        @Override
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+                        }
 
-                @Override
-                public void onProviderEnabled(String provider) {
-                }
+                        @Override
+                        public void onProviderEnabled(String provider) {
+                        }
 
-                // check si GPS est on
-                @Override
-                public void onProviderDisabled(String provider) {
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(intent);
-                }
-        };
+                        // check si GPS est on
+                        @Override
+                        public void onProviderDisabled(String provider) {
+                                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(intent);
+                        }
+                };
 
-        // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.ACCESS_COARSE_LOCATION,
-                                Manifest.permission.INTERNET
-                        }, 10);
-                        return;
-                } else {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
+                // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                requestPermissions(new String[]{
+                                        Manifest.permission.ACCESS_FINE_LOCATION,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                                        Manifest.permission.INTERNET
+                                }, 10);
+                                return;
+                        }
+                        else {
+                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
+                        }
                 }
+<<<<<<< HEAD
         } */
 
 
         }
+
 
         public void onClick(View v)
         {
@@ -363,6 +393,39 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);
+                startActivity(intent);
+        }
+
+        public void finir(){
+
+                // FAKE REMPLISSAGE DES RÉSULTATS
+
+                scoreJ1Set1 = 5;
+                scoreJ1Set2 = 7;
+                scoreJ1Set3 = 45;
+                scoreJ2Set1 = 8;
+                scoreJ2Set2 = 9;
+                scoreJ2Set3 = 1;
+
+                // ENREGISTREMENT DANS LA BDD
+
+                databaseManager = new DatabaseManager(this);
+                // fakes insertion qu'il faudra remplir avec variable de thomas
+                databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
+                        scoreJ1Set1,scoreJ1Set2,scoreJ1Set3,scoreJ2Set1,scoreJ2Set1,scoreJ2Set1);
+                Log.d("joueur1", nomJoueur1);
+                Log.d("joueur2", nomJoueur2);
+
+                matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
+                Match match = new Match();
+                match = matches.get(0); // récupère le match qu'on vietn d'ajouter
+                Log.d("InEnregistrement", match.toString());
+                databaseManager.close();
+
+                // ENVOI MATCH POUR AFFICHAGE STATISTIQUES
+               // Log.d("EnregistrementFinir", match.toString());
+                Intent intent = new Intent(this, Statistiques.class);
+                intent.putExtra("match", match);
                 startActivity(intent);
         }
 
