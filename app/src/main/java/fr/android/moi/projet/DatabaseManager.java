@@ -20,7 +20,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 9;
 
     // constucteur
     public DatabaseManager( Context context ) {
@@ -38,12 +38,12 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    joueur2 text not null,"
                 + "    formatSet text not null,"
                 + "    formatMatch text not null"
-                +"     scoreJ1Set1 int not null"
-                + "    scoreJ1Set2 int not null"
-                + "    scoreJ1Set3 int not null"
-                + "    scoreJ2Set1 int not null"
-                + "    scoreJ2Set2 int not null"
-                + "    scoreJ2Set3 int not null"
+                + "    scoreJ1Set1 text not null"
+                + "    scoreJ1Set2 text not null"
+                + "    scoreJ1Set3 text not null"
+                + "    scoreJ2Set1 text not null"
+                + "    scoreJ2Set2 text not null"
+                + "    scoreJ2Set3 text not null"
                 + ")";
 
         db.execSQL( strSql );
@@ -55,18 +55,46 @@ public class DatabaseManager extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         // si il y a une mise à jour de la BDD
 
-        /*
+       // db.execSQL("DROP TABLE T_match"); // supprimer la table
+
+        Log.i( "DATABASE", "newVersion" );
         if (newVersion > oldVersion) {
-            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set2 INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set3 INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set1 INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set2 INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set3 INTEGER DEFAULT 0");
-        }*/
+            String strSql = "create table T_Match ("
+                    + "    idMatch integer primary key autoincrement," // autoincrementation
+                    + "    joueur1 text not null,"
+                    + "    joueur2 text not null,"
+                    + "    formatSet text not null,"
+                    + "    formatMatch text not null,"
+                    + "    scoreJ1Set1 text not null,"
+                    + "    scoreJ1Set2 text not null,"
+                    + "    scoreJ1Set3 text not null,"
+                    + "    scoreJ2Set1 text not null,"
+                    + "    scoreJ2Set2 text not null,"
+                    + "    scoreJ2Set3 text not null"
+                    + ")";
+
+            db.execSQL( strSql );
+            /*
+            db.execSQL("ALTER TABLE T_match ADD COLUMN joueur1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN joueur2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN formatSet TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN formatMatch TEXT DEFAULT null");
+
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set3 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set3 TEXT DEFAULT null");
+
+             */
+        }
+
+
     }
 
     public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch,
-                            int scoreJ1Set1, int scoreJ1Set2, int scoreJ1Set3, int scoreJ2Set1, int scoreJ2Set2, int scoreJ2Set3 ){
+                            String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3 ){
 
         // pour mettre les string entre ''
         joueur1 = joueur1.replace( "'", "''" );
@@ -105,7 +133,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
                     //String info = cursor.getString(cursor.getColumnIndex("idMatch"));
                     // creation d'un objet match
                     Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ),
-                            cursor.getInt( 5 ),cursor.getInt( 6),cursor.getInt( 7 ), cursor.getInt( 8 ), cursor.getInt( 9 ),cursor.getInt( 10 ));
+                            cursor.getString( 5 ),cursor.getString( 6),cursor.getString( 7 ), cursor.getString( 8 ), cursor.getString( 9 ),cursor.getString( 10 ));
                     // ajout du match dans l'arraylist
                     matches.add( match );
                 }while (cursor.moveToPrevious());

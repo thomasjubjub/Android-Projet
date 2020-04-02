@@ -40,12 +40,6 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
         private DatabaseManager databaseManager;
         private List<Match> matches;
 
-        private int scoreJ1Set1 = 0;
-        private int scoreJ1Set2 = 0;
-        private int scoreJ1Set3 = 0;
-        private int scoreJ2Set1 = 0;
-        private int scoreJ2Set2 = 0;
-        private int scoreJ2Set3 = 0;
 
         private Button premiereBalle;
         private Button deuxiemeBalle;
@@ -171,7 +165,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                         //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                 }
 
-=======
+
                 locationListener = new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
@@ -181,7 +175,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                 latitude.setText(" latitude:" + lat);
                                 //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                         }
->>>>>>> origin/statistiques
+
 
                         @Override
                         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -213,7 +207,6 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                         }
                 }
-<<<<<<< HEAD
         } */
 
 
@@ -398,21 +391,12 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
         public void finir(){
 
-                // FAKE REMPLISSAGE DES RÉSULTATS
-
-                scoreJ1Set1 = 5;
-                scoreJ1Set2 = 7;
-                scoreJ1Set3 = 45;
-                scoreJ2Set1 = 8;
-                scoreJ2Set2 = 9;
-                scoreJ2Set3 = 1;
-
                 // ENREGISTREMENT DANS LA BDD
 
                 databaseManager = new DatabaseManager(this);
                 // fakes insertion qu'il faudra remplir avec variable de thomas
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
-                        scoreJ1Set1,scoreJ1Set2,scoreJ1Set3,scoreJ2Set1,scoreJ2Set1,scoreJ2Set1);
+                        scoreSet1Joueur1.getText().toString(), scoreSet2Joueur1.getText().toString(), scoreSet3Joueur1.getText().toString(), scoreSet1Joueur2.getText().toString(), scoreSet2Joueur2.getText().toString(), scoreSet3Joueur2.getText().toString());
                 Log.d("joueur1", nomJoueur1);
                 Log.d("joueur2", nomJoueur2);
 

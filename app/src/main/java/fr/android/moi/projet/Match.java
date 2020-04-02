@@ -11,12 +11,12 @@ public class Match implements Parcelable{
     private String formatMatch;
     private String formatSet;
 
-    private int scoreJ1Set1 = 0;
-    private int scoreJ1Set2 = 0;
-    private int scoreJ1Set3 = 0;
-    private int scoreJ2Set1 = 0;
-    private int scoreJ2Set2 = 0;
-    private int scoreJ2Set3 = 0;
+    private String scoreJ1Set1 ;
+    private String scoreJ1Set2 ;
+    private String scoreJ1Set3 ;
+    private String scoreJ2Set1 ;
+    private String scoreJ2Set2 ;
+    private String scoreJ2Set3 ;
 
     private boolean J1Gagnant  = true;
 
@@ -24,7 +24,7 @@ public class Match implements Parcelable{
 
     public Match(){}
     public Match(int idMatch, String nomJ1, String nomJ2, String formatMatch, String formatSet,
-                 int scoreJ1Set1, int scoreJ1Set2, int scoreJ1Set3, int scoreJ2Set1, int scoreJ2Set2, int scoreJ2Set3){
+                 String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3){
 
         this.setIdMatch( idMatch);
         this.setJoueur1( nomJ1 );
@@ -48,12 +48,12 @@ public class Match implements Parcelable{
         formatMatch = in.readString();
         formatSet = in.readString();
 
-        scoreJ1Set1 = in.readInt();
-        scoreJ1Set2 = in.readInt();
-        scoreJ1Set3 = in.readInt();
-        scoreJ2Set1 = in.readInt();
-        scoreJ2Set2 = in.readInt();
-        scoreJ2Set3 = in.readInt();
+        scoreJ1Set1 = in.readString();
+        scoreJ1Set2 = in.readString();
+        scoreJ1Set3 = in.readString();
+        scoreJ2Set1 = in.readString();
+        scoreJ2Set2 = in.readString();
+        scoreJ2Set3 = in.readString();
     }
 
 
@@ -91,12 +91,12 @@ public class Match implements Parcelable{
         dest.writeString(formatMatch);
         dest.writeString(formatSet);
 
-        dest.writeInt(scoreJ1Set1);
-        dest.writeInt(scoreJ1Set2);
-        dest.writeInt(scoreJ1Set3);
-        dest.writeInt(scoreJ2Set1);
-        dest.writeInt(scoreJ2Set2);
-        dest.writeInt(scoreJ2Set3);
+        dest.writeString(scoreJ1Set1);
+        dest.writeString(scoreJ1Set2);
+        dest.writeString(scoreJ1Set3);
+        dest.writeString(scoreJ2Set1);
+        dest.writeString(scoreJ2Set2);
+        dest.writeString(scoreJ2Set3);
 
 
     }
@@ -137,51 +137,51 @@ public class Match implements Parcelable{
     public void setFormatSet(String formatSet) {
         this.formatSet = formatSet;
     }
-    public int getScoreJ1Set1() {
+    public String getScoreJ1Set1() {
         return scoreJ1Set1;
     }
 
-    public void setScoreJ1Set1(int scoreJ1Set1) {
+    public void setScoreJ1Set1(String scoreJ1Set1) {
         this.scoreJ1Set1 = scoreJ1Set1;
     }
 
-    public int getScoreJ1Set2() {
+    public String getScoreJ1Set2() {
         return scoreJ1Set2;
     }
 
-    public void setScoreJ1Set2(int scoreJ1Set2) {
+    public void setScoreJ1Set2(String scoreJ1Set2) {
         this.scoreJ1Set2 = scoreJ1Set2;
     }
 
-    public int getScoreJ1Set3() {
+    public String getScoreJ1Set3() {
         return scoreJ1Set3;
     }
 
-    public void setScoreJ1Set3(int scoreJ1Set3) {
+    public void setScoreJ1Set3(String scoreJ1Set3) {
         this.scoreJ1Set3 = scoreJ1Set3;
     }
 
-    public int getScoreJ2Set1() {
+    public String getScoreJ2Set1() {
         return scoreJ2Set1;
     }
 
-    public void setScoreJ2Set1(int scoreJ2Set1) {
+    public void setScoreJ2Set1(String scoreJ2Set1) {
         this.scoreJ2Set1 = scoreJ2Set1;
     }
 
-    public int getScoreJ2Set2() {
+    public String getScoreJ2Set2() {
         return scoreJ2Set2;
     }
 
-    public void setScoreJ2Set2(int scoreJ2Set2) {
+    public void setScoreJ2Set2(String scoreJ2Set2) {
         this.scoreJ2Set2 = scoreJ2Set2;
     }
 
-    public int getScoreJ2Set3() {
+    public String getScoreJ2Set3() {
         return scoreJ2Set3;
     }
 
-    public void setScoreJ2Set3(int scoreJ2Set3) {
+    public void setScoreJ2Set3(String scoreJ2Set3) {
         this.scoreJ2Set3 = scoreJ2Set3;
     }
 
