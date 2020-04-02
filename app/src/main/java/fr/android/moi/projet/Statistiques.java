@@ -42,20 +42,21 @@ public class Statistiques extends AppCompatActivity {
 
 
         // récupère l'objet match que dont on souhait afficher les infos
-        Intent i = new Intent();
-       // Match match = i.getParcelableExtra("match");
+        Intent i = new Intent();;
         Match match = getIntent().getParcelableExtra("match");
         Log.d("InStatistiques", String.valueOf(match));
 
         // affichage des données
         nomJ1.setText(match.getJoueur1());
-        scoreJ1Set1.setText(match.getJoueur2());
-        scoreJ1Set2.setText(match.getJoueur2());
-        scoreJ1Set3.setText(match.getJoueur2());
-        nomJ1.setText(match.getJoueur2());
-        scoreJ2Set1.setText(match.getJoueur2());
-        scoreJ2Set2.setText(match.getJoueur2());
-        scoreJ2Set3.setText(match.getJoueur2());
+        Log.d("InStatistiques", match.getJoueur1());
+        scoreJ1Set1.setText(match.getScoreJ1Set1());
+        //Log.d("InStatistiques", match.getScoreJ1Set1());
+        scoreJ1Set2.setText(match.getScoreJ1Set2());
+        scoreJ1Set3.setText(match.getScoreJ1Set3());
+        nomJ2.setText(match.getJoueur2());
+        scoreJ2Set1.setText(match.getScoreJ2Set1());
+        scoreJ2Set2.setText(match.getScoreJ2Set2());
+        scoreJ2Set3.setText(match.getScoreJ2Set3());
 
 
     }

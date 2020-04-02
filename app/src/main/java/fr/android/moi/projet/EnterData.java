@@ -105,7 +105,6 @@ public class EnterData extends AppCompatActivity {
 
             startActivity(intentJoueur);
 
-
         }
 
         public void formatDuDernierSet () {
