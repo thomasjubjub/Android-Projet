@@ -94,8 +94,29 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
         //creation arraylist
         List<Match> matches = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selectQuery = "SELECT * FROM " + "T_Match" ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        try{
+            if (cursor.moveToLast()) {
+
+                do{
+                    //String info = cursor.getString(cursor.getColumnIndex("idMatch"));
+                    // creation d'un objet match
+                    Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ),
+                            cursor.getInt( 5 ),cursor.getInt( 6),cursor.getInt( 7 ), cursor.getInt( 8 ), cursor.getInt( 9 ),cursor.getInt( 10 ));
+                    // ajout du match dans l'arraylist
+                    matches.add( match );
+                }while (cursor.moveToPrevious());
+            }
+        }
+        finally{
+            cursor.close();
+        }
 
         // definition d'un curseur + lecture de la table + décalage du curseur
+        /*
         Cursor cursor = this.getReadableDatabase().query( "T_match",
                 new String[] { "idMatch", "joueur1", "joueur2", "formatSet", "formatMatch", "scoreJ1Set1", "scoreJ1Set2", "scoreJ1Set3", "scoreJ2Set1", "scoreJ2Set2", "scoreJ2Set3"},
                 null, null, null, null, "idMatch", "10" );
@@ -111,7 +132,10 @@ public class DatabaseManager extends SQLiteOpenHelper{
             cursor.moveToNext();
         }
         cursor.close();
-        // Log.d("InReadMatch", matches.toString());
+
+         */
+
+        Log.d("InReadMatch", matches.toString());
         // retourne arraylist de matches
         return matches;
 

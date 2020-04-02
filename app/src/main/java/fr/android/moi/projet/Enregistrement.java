@@ -169,9 +169,11 @@ public class Enregistrement extends AppCompatActivity {
                 // fakes insertion qu'il faudra remplir avec variable de thomas
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
                         scoreJ1Set1,scoreJ1Set2,scoreJ1Set3,scoreJ2Set1,scoreJ2Set1,scoreJ2Set1);
+
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
                 Match match = new Match();
-                match = matches.get(1); // récupère le match qu'on vietn d'ajouter
+                match = matches.get(0); // récupère le match qu'on vietn d'ajouter
+                Log.d("InEnregistrement", match.toString());
                 databaseManager.close();
 
                 // ENVOI MATCH POUR AFFICHAGE STATISTIQUES
