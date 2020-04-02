@@ -219,7 +219,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                                 }
                                         }
-                                        
+
 
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
