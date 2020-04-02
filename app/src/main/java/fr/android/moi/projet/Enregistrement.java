@@ -74,11 +74,8 @@ public class Enregistrement extends AppCompatActivity {
 
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
-                                takePicture();
-                        }
+                        public void onClick(View v) { takePicture(); }
                 });
-
                 buttonFinir.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -106,45 +103,45 @@ public class Enregistrement extends AppCompatActivity {
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
                 locationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                        double lat = location.getLatitude();
-                        double longi = location.getLongitude();
-                        longitude.setText(" longitude:" + longi);
-                        latitude.setText(" latitude:" + lat);
-                        //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
-                }
+                        @Override
+                        public void onLocationChanged(Location location) {
+                                double lat = location.getLatitude();
+                                double longi = location.getLongitude();
+                                longitude.setText(" longitude:" + longi);
+                                latitude.setText(" latitude:" + lat);
+                                //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
+                        }
 
+                        @Override
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+                        }
 
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-                }
+                        @Override
+                        public void onProviderEnabled(String provider) {
+                        }
 
-                @Override
-                public void onProviderEnabled(String provider) {
-                }
+                        // check si GPS est on
+                        @Override
+                        public void onProviderDisabled(String provider) {
+                                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(intent);
+                        }
+                };
 
-                // check si GPS est on
-                @Override
-                public void onProviderDisabled(String provider) {
-                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(intent);
+                // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                requestPermissions(new String[]{
+                                        Manifest.permission.ACCESS_FINE_LOCATION,
+                                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                                        Manifest.permission.INTERNET
+                                }, 10);
+                                return;
+                        }
+                        else {
+                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
+                        }
                 }
-        };
-
-        // attributs: provider, nb de sec entre chaque refresh, distance à laquelle on update position, listener
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        requestPermissions(new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.ACCESS_COARSE_LOCATION,
-                                Manifest.permission.INTERNET
-                        }, 10);
-                        return;
-                } else {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
-                }
-        }
 
 
         }
@@ -173,7 +170,6 @@ public class Enregistrement extends AppCompatActivity {
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
                         scoreJ1Set1,scoreJ1Set2,scoreJ1Set3,scoreJ2Set1,scoreJ2Set1,scoreJ2Set1);
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
-                Log.i("post_insert_enregistremnt", "ok");
                 Match match = new Match();
                 match = matches.get(1); // récupère le match qu'on vietn d'ajouter
                 databaseManager.close();

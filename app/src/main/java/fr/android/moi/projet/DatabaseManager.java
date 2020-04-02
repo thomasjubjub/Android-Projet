@@ -20,7 +20,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
 
     // constucteur
     public DatabaseManager( Context context ) {
@@ -38,7 +38,6 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    joueur2 text not null,"
                 + "    formatSet text not null,"
                 + "    formatMatch text not null"
-                + "    scoreJ1Set1 int not null"
                 +"     scoreJ1Set1 int not null"
                 + "    scoreJ1Set2 int not null"
                 + "    scoreJ1Set3 int not null"
@@ -56,6 +55,14 @@ public class DatabaseManager extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         // si il y a une mise à jour de la BDD
 
+        /*
+        if (newVersion > oldVersion) {
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set2 INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ1Set3 INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set1 INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set2 INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set3 INTEGER DEFAULT 0");
+        }*/
     }
 
     public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch,
@@ -85,14 +92,13 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     public List<Match> readMatch(){
 
-        Log.i( "readMatch", "ok" );
         //creation arraylist
         List<Match> matches = new ArrayList<>();
 
         // definition d'un curseur + lecture de la table + décalage du curseur
         Cursor cursor = this.getReadableDatabase().query( "T_match",
                 new String[] { "idMatch", "joueur1", "joueur2", "formatSet", "formatMatch", "scoreJ1Set1", "scoreJ1Set2", "scoreJ1Set3", "scoreJ2Set1", "scoreJ2Set2", "scoreJ2Set3"},
-                null, null, null, null, null, "10" );
+                null, null, null, null, "idMatch", "10" );
         cursor.moveToFirst();
 
         // si le curseur n'a pas lu tout les matches
