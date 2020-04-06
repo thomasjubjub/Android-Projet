@@ -25,9 +25,9 @@ public class EnterData extends AppCompatActivity {
     private ImageButton retour;
     private DatabaseManager databaseManager;
     private List<Match> matches;
+    private Match match;
     String textButtonFormatDuMatch;
     String textButtonFormatSet;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,34 @@ public class EnterData extends AppCompatActivity {
         formatDuMatch = (Button) findViewById(R.id.formatMatch);
         formatDuDernierSet = (Button) findViewById(R.id.formatSet);
 
-        // Ajout listener sur boutton
+        // récupère les données match si on les a récupérer avant
         Intent intent = getIntent();
-        String typeMatchChoisi = intent.getStringExtra("typeMatchChoisi");
-        String typeSetChoisi = intent.getStringExtra("setChoisi");
+        Match match_format_match = getIntent().getParcelableExtra("match_format_match");
+        Match match_format_set = getIntent().getParcelableExtra("match_format_set");
 
+        String typeMatchChoisi = match_format_match.getFormatMatch();
+        String typeSetChoisi = match_format_set.getFormatSet();
+        match.setFormatMatch(typeMatchChoisi);
+        match.setFormatSet(typeSetChoisi);
+
+        Log.d("InStatistiques", String.valueOf(match));
+
+
+        if(typeMatchChoisi != null) {
+            match.setFormatMatch(typeMatchChoisi);
+            formatDuMatch.setText(textButtonFormatDuMatch);
+        }
+        else{
+            textButtonFormatDuMatch = savedInstanceState.getString(BUNDLE_STATE_MATCH);
+            if(textButtonFormatDuMatch!= null){
+                formatDuMatch.setText(textButtonFormatDuMatch);
+            }
+        }
+
+        if(typeSetChoisi != null) {
+            match.setFormatSet(typeSetChoisi);
+            formatDuDernierSet.setText(typeSetChoisi);
+        }
 
         // si un des deux ou les deux sont save
         if (savedInstanceState != null) {
@@ -83,7 +106,6 @@ public class EnterData extends AppCompatActivity {
             }
         }
 
-
         formatDuMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,8 +137,6 @@ public class EnterData extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
-        // nomJ1 = nomJoueur1.getText().toString();
-        // nomJ2 = nomJoueur2.getText().toString();
         outState.putString(BUNDLE_STATE_MATCH, textButtonFormatDuMatch);
         outState.putString(BUNDLE_STATE_SET, textButtonFormatSet);
         outState.putString(BUNDLE_STATE_J1, nomJoueur1.getText().toString());
@@ -135,8 +155,8 @@ public class EnterData extends AppCompatActivity {
 
     public void enregistrement () {
 
-        nomJoueur1.setText(nomJ1);
-        nomJoueur2.setText(nomJ2);
+        //nomJoueur1.setText(nomJ1);
+       // nomJoueur2.setText(nomJ2);
 
         nomJ1 = nomJoueur1.getText().toString();
         nomJ2 = nomJoueur2.getText().toString();
@@ -145,17 +165,21 @@ public class EnterData extends AppCompatActivity {
         intentJoueur.putExtra("nomDuJoueur1", nomJ1);
         intentJoueur.putExtra("nomDuJoueur2", nomJ2);
 
+        intentJoueur.putExtra("match", match);
+
         startActivity(intentJoueur);
 
     }
 
     public void formatDuDernierSet () {
         Intent intent = new Intent(this, FormatDuDernierSet.class);
+        intent.putExtra("match", match);
         startActivity(intent);
     }
 
     public void formatDuMatch () {
         Intent intent = new Intent(this, FormatDuMatch.class);
+        intent.putExtra("match", match);
         startActivity(intent);
     }
 

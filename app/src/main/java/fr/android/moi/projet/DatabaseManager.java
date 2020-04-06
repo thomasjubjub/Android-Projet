@@ -20,14 +20,14 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION =9;
 
     // constucteur
     public DatabaseManager( Context context ) {
         super( context, DATABASE_NAME, null, DATABASE_VERSION );
     }
 
-    // C'est le système qui invoque ces classes
+    // C'est le système qui invoque ces classe
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -37,17 +37,16 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    joueur1 text not null,"
                 + "    joueur2 text not null,"
                 + "    formatSet text not null,"
-                + "    formatMatch text not null"
-                + "    scoreJ1Set1 text not null"
-                + "    scoreJ1Set2 text not null"
-                + "    scoreJ1Set3 text not null"
-                + "    scoreJ2Set1 text not null"
-                + "    scoreJ2Set2 text not null"
+                + "    formatMatch text not null,"
+                + "    scoreJ1Set1 text not null,"
+                + "    scoreJ1Set2 text not null,"
+                + "    scoreJ1Set3 text not null,"
+                + "    scoreJ2Set1 text not null,"
+                + "    scoreJ2Set2 text not null,"
                 + "    scoreJ2Set3 text not null"
                 + ")";
 
         db.execSQL( strSql );
-
 
     }
 
