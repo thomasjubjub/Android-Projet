@@ -66,7 +66,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private int scoreJoueur2Jeu = 0;
         private int scoreJoueur2 = 0;
 
-
         private boolean joueur1 = true;
 
         enum NumeroJeu
@@ -75,7 +74,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 SET2,
                 SET3
         };
-        private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
+
+        private NumeroJeu numeroDeJeu;
 
 
 
@@ -626,8 +626,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 databaseManager = new DatabaseManager(this);
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
                         scoreSet1Joueur1.getText().toString(), scoreSet2Joueur1.getText().toString(), scoreSet3Joueur1.getText().toString(), scoreSet1Joueur2.getText().toString(), scoreSet2Joueur2.getText().toString(), scoreSet3Joueur2.getText().toString());
-                Log.d("joueur1", nomJoueur1);
-                Log.d("joueur2", nomJoueur2);
 
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
                 Match match = new Match();

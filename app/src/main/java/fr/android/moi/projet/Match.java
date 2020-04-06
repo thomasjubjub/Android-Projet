@@ -98,7 +98,6 @@ public class Match implements Parcelable{
         dest.writeString(scoreJ2Set2);
         dest.writeString(scoreJ2Set3);
 
-
     }
 
     // getter and setter

@@ -18,6 +18,7 @@ public class FormatDuMatch extends AppCompatActivity {
     private RadioButton tb22;
 
     private ImageButton retour;
+    private Match match;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,8 @@ public class FormatDuMatch extends AppCompatActivity {
         tb44 = (RadioButton) findViewById(R.id.tb44);
         tb33 = (RadioButton) findViewById(R.id.tb33);
         tb22 = (RadioButton) findViewById(R.id.tb22);
-
-
-
-
-
         retour = (ImageButton) findViewById(R.id.imageBack);
+
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -45,6 +42,8 @@ public class FormatDuMatch extends AppCompatActivity {
             }
         });
 
+        match = getIntent().getParcelableExtra("match");
+
     }
 
     public void checkIfClicked()
@@ -52,39 +51,19 @@ public class FormatDuMatch extends AppCompatActivity {
         Intent intent = new Intent(this, EnterData.class);
         String typeMatchChoisi;
 
-        if(tb66a.isChecked())
-        {
-            typeMatchChoisi = "tb66a";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
-        }
-        else if(tb55a.isChecked())
-        {
-            typeMatchChoisi = "tb55a";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
-        }
-        else if(tb44a.isChecked())
-        {
-            typeMatchChoisi = "tb44a";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
-        }
-        else if (tb44.isChecked())
+        if (tb44.isChecked())
         {
             typeMatchChoisi = "tb44";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+            match.setFormatSet(typeMatchChoisi);
+            intent.putExtra("match_format_match", match);
         }
         else if(tb33.isChecked())
         {
             typeMatchChoisi = "tb33";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
-        }
-        else if(tb22.isChecked())
-        {
-            typeMatchChoisi = "tb22";
-            intent.putExtra("typeMatchChoisi", typeMatchChoisi);
+            intent.putExtra("match_format_match", match);
         }
 
-
-        startActivity(intent);
+            startActivity(intent);
     }
 
 }

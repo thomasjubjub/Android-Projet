@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import android.view.View.OnClickListener;
 import java.util.List;
 
-public class Tb44 extends AppCompatActivity implements OnClickListener {
+public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
     private TextView longitude;
     private TextView latitude;
