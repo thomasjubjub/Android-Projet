@@ -235,9 +235,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:textAlignment="center"
+                        android:gravity="center_horizontal"
                         android:text="Set 1"
-                        android:gravity="center_horizontal" />
+                        android:textAlignment="center" />
 
                     <Button
                         android:id="@+id/set2"
