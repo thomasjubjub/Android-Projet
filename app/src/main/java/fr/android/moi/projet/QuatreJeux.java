@@ -2,14 +2,10 @@ package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.core.app.ActivityCompat;
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +16,7 @@ import java.util.ArrayList;
 import android.view.View.OnClickListener;
 import java.util.List;
 
-public class Enregistrement extends AppCompatActivity implements OnClickListener {
+public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         private TextView longitude;
         private TextView latitude;
@@ -88,7 +84,7 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
         protected void onCreate(Bundle savedInstanceState) {
 
                 super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_enregistrement);
+                setContentView(R.layout.activity_tb33);
 
                 longitude=(TextView) findViewById(R.id.longi);
                 latitude=(TextView) findViewById(R.id.lat);

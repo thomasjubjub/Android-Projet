@@ -3,7 +3,6 @@ package fr.android.moi.projet;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,8 @@ public class EnterData extends AppCompatActivity {
     private DatabaseManager databaseManager;
     private List<Match> matches;
     String textButtonFormatDuMatch;
+
+
 
 
 
@@ -48,8 +49,11 @@ public class EnterData extends AppCompatActivity {
         String typeSetChoisi = intent.getStringExtra("setChoisi");
         textButtonFormatDuMatch = typeMatchChoisi;
 
+
+
         if (textButtonFormatDuMatch != null) {
             formatDuMatch.setText(textButtonFormatDuMatch);
+
         }
 
         if (typeSetChoisi != null) {
@@ -77,7 +81,7 @@ public class EnterData extends AppCompatActivity {
         demarrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enregistrement();
+                enregistrement(textButtonFormatDuMatch);
 
             }
         });
@@ -93,17 +97,33 @@ public class EnterData extends AppCompatActivity {
 
 
 
-        public void enregistrement () {
+        public void enregistrement (String formatMatch) {
 
             joueur1 = nomJoueur1.getText().toString();
             joueur2 = nomJoueur2.getText().toString();
 
-            Intent intentJoueur = new Intent(this, Enregistrement.class);
+            String coucou = formatMatch;
 
-            intentJoueur.putExtra("nomDuJoueur1", joueur1);
-            intentJoueur.putExtra("nomDuJoueur2", joueur2);
+            Intent cinqJeux = new Intent(this, Tb44.class);
+            Intent quatreJeux = new Intent(this, QuatreJeux.class);
 
-            startActivity(intentJoueur);
+            quatreJeux.putExtra("nomDuJoueur1", joueur1);
+            quatreJeux.putExtra("nomDuJoueur2", joueur2);
+            cinqJeux.putExtra("nomDuJoueur1", joueur1);
+            cinqJeux.putExtra("nomDuJoueur2", joueur2);
+
+            if(coucou == "tb44")
+            {
+                System.out.println("Je suis tb44");
+            }
+            else if(coucou == "tb33")
+            {
+                System.out.println("Je suis tb33");
+            }
+
+            System.out.println(formatMatch);
+
+
 
         }
 
