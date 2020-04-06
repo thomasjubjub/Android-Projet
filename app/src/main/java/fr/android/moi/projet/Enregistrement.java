@@ -69,8 +69,17 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
         private int scoreJoueur2Set = 0;
         private int scoreJoueur2Jeu = 0;
         private int scoreJoueur2 = 0;
+
         private boolean joueur1 = true;
 
+        enum NumeroJeu
+        {
+                SET1,
+                SET2,
+                SET3
+        };
+
+        private NumeroJeu numeroDeJeu;
 
 
 
@@ -233,12 +242,43 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                         {
                                                joueur1 = !joueur1;
                                         }
-                                        if(scoreJoueur2Jeu <= 6)
+                                        if(numeroDeJeu == NumeroJeu.SET1)
                                         {
                                                 marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                                 if(scoreJoueur2 == 0)
                                                 {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET2;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET2)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet2Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET3)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
                                                 }
                                         }
 
@@ -246,24 +286,66 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
                                         {
-                                                 scoreJoueur1 = 0;
+                                                scoreJoueur1 = 0;
                                                 scoreJeuJoueur1.setText("0");
                                         }
                                 }
                                 else
                                 {
-                                        if(scoreJoueur2 == 40)
+                                        if(scoreJoueur1 == 40)
                                         {
                                                 joueur1 = !joueur1;
                                         }
-                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+
+                                        if(numeroDeJeu == NumeroJeu.SET1)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if (scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                                }
+                                                if(scoreJoueur1Jeu == 6 || scoreJoueur2Jeu==6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET2;
+                                                        scoreJoueur1Jeu = 0;
+                                                        scoreJoueur2Jeu = 0;
+                                                }
+
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET2)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet2Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if (scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET3)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if(scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+                                                }
+                                        }
+
                                         scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
                                         if(scoreJoueur1 == 0)
                                         {
-                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
                                                 scoreJoueur2 = 0;
                                                 scoreJeuJoueur2.setText("0");
                                         }
+
                                 }
 
                                 break;
@@ -277,13 +359,51 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                         if(scoreJoueur2 == 40)
                                         {
                                                 joueur1 = !joueur1;
-
                                         }
-                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+
+                                        if(numeroDeJeu == NumeroJeu.SET1)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET2;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET2)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet2Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET3)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                                if(scoreJoueur2 == 0)
+                                                {
+                                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
+                                                }
+                                        }
+
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
                                         {
-                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                                 scoreJoueur1 = 0;
                                                 scoreJeuJoueur1.setText("0");
                                         }
@@ -294,12 +414,50 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
                                         {
                                                 joueur1 = !joueur1;
                                         }
-                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
-                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+
+                                        if(numeroDeJeu == NumeroJeu.SET1)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if(scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET2;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET2)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet2Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if (scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
+                                                }
+                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+
+                                        }
+                                        else if (numeroDeJeu == NumeroJeu.SET3)
+                                        {
+                                                marqueUnPoint(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                                if(scoreJoueur1 == 0)
+                                                {
+                                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+                                                }
+                                        }
                                         if(scoreJoueur1 == 0)
                                         {
-                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
-                                                scoreJoueur2 =0;
+                                                scoreJoueur2 = 0;
                                                 scoreJeuJoueur2.setText("0");
                                         }
                                 }
@@ -311,18 +469,58 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
                         case R.id.fauteProvoqueeJoueur2 :
 
+                        {
                                 if(scoreJoueur1 == 40)
                                 {
                                         joueur1 = !joueur1;
                                 }
-                                marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
-                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+
+                                if(numeroDeJeu == NumeroJeu.SET1)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET2;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET2)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet2Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if (scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET3)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+                                        }
+                                }
                                 if(scoreJoueur1 == 0)
                                 {
-                                        scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
-                                        scoreJoueur2 =0;
+                                        scoreJoueur2 = 0;
                                         scoreJeuJoueur2.setText("0");
                                 }
+                        }
                                 break;
 
                         case R.id.fauteDirectJoueur1 :
@@ -331,23 +529,60 @@ public class Enregistrement extends AppCompatActivity implements OnClickListener
 
                         case R.id.fauteProvoqueeJoueur1 :
 
+                        {
                                 if(scoreJoueur2 == 40)
                                 {
                                         joueur1 = !joueur1;
-
                                 }
-                                marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+
+                                if(numeroDeJeu == NumeroJeu.SET1)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET2;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET2)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet2Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET3)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
+                                        }
+                                }
+
                                 scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                 if(scoreJoueur2 == 0)
                                 {
-                                        scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                         scoreJoueur1 = 0;
                                         scoreJeuJoueur1.setText("0");
                                 }
+                        }
                                 break;
-
-
-
 
 
                 }
