@@ -1,12 +1,18 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -156,20 +162,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
-
-                /*
-        locationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                        double lat = location.getLatitude();
-                        double longi = location.getLongitude();
-
-                        longitude.setText(" longitude:" + longi);
-                        latitude.setText(" latitude:" + lat);
-                        //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
-                }
-
-
                 locationListener = new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
@@ -179,7 +171,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 latitude.setText(" latitude:" + lat);
                                 //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                         }
-
 
                         @Override
                         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -211,10 +202,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                         }
                 }
-        } */
-
-
         }
+
 
 
         public void onClick(View v)
