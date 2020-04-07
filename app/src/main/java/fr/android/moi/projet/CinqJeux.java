@@ -75,7 +75,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         SET2,
         SET3
     };
-    private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
+    private NumeroJeu numeroDeJeu;
 
 
 

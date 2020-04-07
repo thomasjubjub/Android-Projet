@@ -93,7 +93,6 @@
                         android:layout_weight="1"
                         android:text="SCORE"
                         android:paddingLeft="4dp"
-                        android:paddingTop="20dp"
                         android:textStyle="bold"
 
                         />
@@ -268,7 +267,6 @@
                         android:text="SERVEUR"
                         android:textStyle="bold"
                         android:paddingLeft="4dp"
-                        android:paddingTop="20dp"
 
                         />
 
@@ -390,7 +388,6 @@
                         android:layout_weight="1"
                         android:text="ECHANGE"
                         android:paddingLeft="4dp"
-                        android:paddingTop="20dp"
                         android:textStyle="bold"
 
                         />
@@ -538,7 +535,6 @@
 
                     android:text="LIEU"
                     android:paddingLeft="4dp"
-                    android:paddingTop="20dp"
                     android:textStyle="bold"
 
                     />
