@@ -563,9 +563,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
             }
             break;
 
-
         }
-
 
     }
 

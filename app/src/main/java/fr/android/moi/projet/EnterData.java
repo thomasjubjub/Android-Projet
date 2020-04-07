@@ -38,8 +38,6 @@ public class EnterData extends AppCompatActivity {
     private Match match;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +52,7 @@ public class EnterData extends AppCompatActivity {
         tb33 = (RadioButton) findViewById(R.id.tb33);
         troisiemeSet = (RadioButton) findViewById(R.id.troisiemeSet);
         tieBreak = (RadioButton) findViewById(R.id.tieBreak);
-
-
-
-
-
-
+        retour = (ImageButton) findViewById(R.id.imageBack);
 
         // Listener
         retour.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +61,7 @@ public class EnterData extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
         demarrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,8 +90,6 @@ public class EnterData extends AppCompatActivity {
 
         super.onSaveInstanceState(outState);
     }
-
-
 
     public void enregistrement () {
 

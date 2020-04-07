@@ -602,6 +602,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
 
         }
+
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);
