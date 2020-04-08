@@ -104,13 +104,13 @@
                     android:id="@+id/tb33"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tb33" />
+                    android:text="Cinq Jeux" />
 
                 <RadioButton
                     android:id="@+id/tb44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="tb44" />
+                    android:text="Quatre Jeux" />
 
             </RadioGroup>
         </LinearLayout>

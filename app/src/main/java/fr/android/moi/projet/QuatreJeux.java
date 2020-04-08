@@ -67,15 +67,17 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private int scoreJoueur2 = 0;
 
         private boolean joueur1 = true;
+        private boolean tieBreak;
 
         enum NumeroJeu
         {
                 SET1,
                 SET2,
-                SET3
+                SET3,
+                TIEBREAK
         };
 
-        private NumeroJeu numeroDeJeu;
+        private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
 
 
 
@@ -109,6 +111,15 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 Intent intent = getIntent();
                 nomJoueur1 = intent.getStringExtra("nomDuJoueur1");
                 nomJoueur2 = intent.getStringExtra("nomDuJoueur2");
+
+                if(intent.getStringExtra("formatSet") == "tieBreak")
+                {
+                        tieBreak = true;
+                }
+                else if (intent.getStringExtra("formatSet") == "troisiemeSet")
+                {
+                        tieBreak = false;
+                }
 
                 textJoueur1.setText(nomJoueur1);
                 textJoueur2.setText(nomJoueur2);
@@ -246,7 +257,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET2;
                                                         scoreJoueur2Jeu = 0;
@@ -261,9 +272,15 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                                else if ((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && tieBreak)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.TIEBREAK;
                                                         scoreJoueur2Jeu = 0;
                                                         scoreJoueur1Jeu = 0;
                                                 }
@@ -277,6 +294,12 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
                                                 }
                                         }
+                                        else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                        {
+                                                marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+
+                                        }
 
 
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
@@ -284,6 +307,10 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         {
                                                 scoreJoueur1 = 0;
                                                 scoreJeuJoueur1.setText("0");
+                                        }
+                                        else if (scoreJoueur2 == 7 && tieBreak)
+                                        {
+                                                System.out.println("Jeu fini");
                                         }
                                 }
                                 else
@@ -301,7 +328,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
                                                 }
-                                                if(scoreJoueur1Jeu == 6 || scoreJoueur2Jeu==6)
+                                                if(scoreJoueur1Jeu == 4 || scoreJoueur2Jeu==4)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET2;
                                                         scoreJoueur1Jeu = 0;
@@ -317,9 +344,15 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET3;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                                else if ((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && tieBreak)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.TIEBREAK;
                                                         scoreJoueur2Jeu = 0;
                                                         scoreJoueur1Jeu = 0;
                                                 }
@@ -334,12 +367,21 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
                                                 }
                                         }
+                                        else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                        {
+                                                marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+                                        }
 
                                         scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
                                         if(scoreJoueur1 == 0)
                                         {
                                                 scoreJoueur2 = 0;
                                                 scoreJeuJoueur2.setText("0");
+                                        }
+                                        else if(scoreJoueur1 == 7 && tieBreak)
+                                        {
+                                                System.out.println("Jeu fini");
                                         }
 
                                 }
@@ -365,7 +407,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET2;
                                                         scoreJoueur2Jeu = 0;
@@ -380,7 +422,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET3;
                                                         scoreJoueur2Jeu = 0;
@@ -396,12 +438,21 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                         scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
                                                 }
                                         }
+                                        else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                        {
+                                                marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        }
 
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         if(scoreJoueur2 == 0)
                                         {
                                                 scoreJoueur1 = 0;
                                                 scoreJeuJoueur1.setText("0");
+                                        }
+                                        else if (scoreJoueur2 == 7 && tieBreak)
+                                        {
+                                                System.out.println("Jeu fini");
                                         }
                                 }
                                 else
@@ -419,7 +470,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET2;
                                                         scoreJoueur2Jeu = 0;
@@ -434,7 +485,13 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
                                                 }
-                                                if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                                if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4 && tieBreak)
+                                                {
+                                                        numeroDeJeu = NumeroJeu.TIEBREAK;
+                                                        scoreJoueur2Jeu = 0;
+                                                        scoreJoueur1Jeu = 0;
+                                                }
+                                                else if (scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4 && !tieBreak)
                                                 {
                                                         numeroDeJeu = NumeroJeu.SET3;
                                                         scoreJoueur2Jeu = 0;
@@ -451,10 +508,19 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                         scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
                                                 }
                                         }
+                                        else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                        {
+                                                marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                                scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        }
                                         if(scoreJoueur1 == 0)
                                         {
                                                 scoreJoueur2 = 0;
                                                 scoreJeuJoueur2.setText("0");
+                                        }
+                                        else if (scoreJoueur1 == 7 && tieBreak)
+                                        {
+                                                System.out.println("Jeu fini");
                                         }
                                 }
                                 break;
@@ -479,7 +545,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         {
                                                 scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
                                         }
-                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                         {
                                                 numeroDeJeu = NumeroJeu.SET2;
                                                 scoreJoueur2Jeu = 0;
@@ -494,9 +560,15 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         {
                                                 scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
                                         }
-                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
                                         {
                                                 numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                        else if ((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.TIEBREAK;
                                                 scoreJoueur2Jeu = 0;
                                                 scoreJoueur1Jeu = 0;
                                         }
@@ -511,10 +583,20 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
                                         }
                                 }
+                                else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                {
+                                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                }
+
                                 if(scoreJoueur1 == 0)
                                 {
                                         scoreJoueur2 = 0;
                                         scoreJeuJoueur2.setText("0");
+                                }
+                                else if(scoreJoueur1 == 7 && tieBreak)
+                                {
+                                        System.out.println("Jeu fini");
                                 }
                         }
                                 break;
@@ -539,7 +621,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         {
                                                 scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
                                         }
-                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
                                         {
                                                 numeroDeJeu = NumeroJeu.SET2;
                                                 scoreJoueur2Jeu = 0;
@@ -554,9 +636,15 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         {
                                                 scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
                                         }
-                                        if(scoreJoueur2Jeu == 6 || scoreJoueur1Jeu == 6)
+                                        if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
                                         {
                                                 numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                        else if ((scoreJoueur2Jeu == 4 || scoreJoueur1 == 4) && tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.TIEBREAK;
                                                 scoreJoueur2Jeu = 0;
                                                 scoreJoueur1Jeu = 0;
                                         }
@@ -570,12 +658,21 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                                 scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
                                         }
                                 }
+                                else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                {
+                                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                }
 
                                 scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                 if(scoreJoueur2 == 0)
                                 {
                                         scoreJoueur1 = 0;
                                         scoreJeuJoueur1.setText("0");
+                                }
+                                else if (scoreJoueur2 == 7 && tieBreak)
+                                {
+                                        System.out.println("Jeu fini");
                                 }
                         }
                                 break;
@@ -613,6 +710,13 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
 
         }
+
+        public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
+        {
+                scoreJoueur++;
+                scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
+        }
+
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);

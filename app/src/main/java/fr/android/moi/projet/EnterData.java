@@ -40,6 +40,8 @@ public class EnterData extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +131,7 @@ public class EnterData extends AppCompatActivity {
             Intent intent = new Intent(this, CinqJeux.class);
             intent.putExtra("nomDuJoueur1", nomJ1);
             intent.putExtra("nomDuJoueur2", nomJ2);
+            intent.putExtra("formatSet", dernierSet);
             startActivity(intent);
         }
 

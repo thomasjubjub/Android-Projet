@@ -27,7 +27,7 @@
                 android:id="@+id/imageMenu"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 app:srcCompat="@drawable/menu"
                 android:adjustViewBounds="true"
                 android:background="#007EA7"
@@ -42,7 +42,7 @@
                 android:layout_weight="1"
                 android:background="#007EA7"
                 android:gravity="center"
-                android:text="Enregistrement"
+                android:text="Quatre Jeux"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
