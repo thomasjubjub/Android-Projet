@@ -24,18 +24,30 @@ import android.view.View.OnClickListener;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
-        private TextView longitude;
-        private TextView latitude;
 
-        private ImageButton buttonPhoto;
-
+        //GPS
         private LocationManager locationManager;
         private LocationListener locationListener;
         private String provider;
+        private TextView longitude;
+        private TextView latitude;
 
+        //PHOTO
+        private ImageButton buttonPhoto;
+        static final int REQUEST_IMAGE_CAPTURE = 1;
+        private ImageView imageView;
+        private ImageButton back;
+        private Bitmap imageBitmap;
+
+
+        //JEU
         private String nomJoueur1;
         private String nomJoueur2;
         private String dernierSet;
@@ -180,7 +192,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 fauteProvoqueeJoueur2.setOnClickListener(this);
                 fauteProvoqueeJoueur1.setOnClickListener(this);
 
-
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -188,8 +199,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 ArrayList<LocationProvider> providers = new ArrayList<LocationProvider>();
                 ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
                 for (String name : names) providers.add(locationManager.getProvider(name));
-
-
 
                 locationListener = new LocationListener() {
                         @Override
@@ -200,7 +209,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 latitude.setText(" latitude:" + lat);
                                 //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                         }
-
 
                         @Override
                         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -233,9 +241,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         }
                 }
         }
-
-
-
 
 
         public void onClick(View v)
@@ -882,16 +887,28 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         }
 
+
         public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur,  int scoreJoueur)
         {
                 scoreJoueur++;
                 scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
                 scoreSetJoueur.setText(String.valueOf(scoreJoueur));
         }
+
         public void takePicture()
         {
-                Intent intent = new Intent(this, Photo.class);
-                startActivity(intent);
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+        }
+
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                        Bundle extras = data.getExtras();
+                        imageBitmap = (Bitmap) extras.get("data");
+                }
         }
 
         public void finir(){
