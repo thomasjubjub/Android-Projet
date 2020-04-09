@@ -54,8 +54,6 @@ public class Photo extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Intent intent = new Intent(this, Statistiques.class);
-        intent.putExtra("imageBitmap", imageBitmap);
-        startActivity(intent);
+
     }
 }
