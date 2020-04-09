@@ -22,7 +22,6 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
     private Button buttonMatch5;
     private ImageButton retour;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,13 @@ public class Historique extends AppCompatActivity  implements OnClickListener  {
         buttonMatch3.setOnClickListener(this);
         buttonMatch4.setOnClickListener(this);
         buttonMatch5.setOnClickListener(this);
+
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Récuperation de la bdd
         databaseManager = new DatabaseManager(this);

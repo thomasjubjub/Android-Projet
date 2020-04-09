@@ -2,6 +2,7 @@ package fr.android.moi.projet;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 
 import androidx.core.app.ActivityCompat;
@@ -25,7 +26,7 @@ import android.view.View.OnClickListener;
 import java.util.List;
 
 
-public class CinqJeux extends AppCompatActivity implements OnClickListener {
+public abstract class CinqJeux extends AppCompatActivity implements OnClickListener {
 
 
     private TextView longitude;
@@ -92,19 +93,14 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
     private TextView scoreSet3Joueur2;
     private TextView scoreJeuJoueur2;
 
-
-
     private int scoreJoueur1Jeu = 0;
     private int scoreJoueur1 = 0;
     private int scoreJoueur2Jeu = 0;
     private int scoreJoueur2 = 0;
 
 
-
-
     private boolean joueur1 = true;
     private boolean tieBreak;
-
 
 
     enum NumeroJeu
@@ -116,9 +112,6 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         JEUFINI
     };
     private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
-
-
-
 
 
 
@@ -212,8 +205,6 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         fauteProvoqueeJoueur1.setOnClickListener(this);
 
 
-
-
         // on fait appel à un nouveau service système pour accéder à localisation
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -222,9 +213,6 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         ArrayList<LocationProvider> providers = new ArrayList<LocationProvider>();
         ArrayList<String> names = (ArrayList<String>) locationManager.getProviders(true);
         for (String name : names) providers.add(locationManager.getProvider(name));
-
-
-
 
 
 
@@ -924,12 +912,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
             break;
 
-
-
-
         }
-
-
 
 
     }
