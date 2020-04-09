@@ -1,12 +1,18 @@
 package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +35,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         private String nomJoueur1;
         private String nomJoueur2;
+        private String dernierSet;
 
         private TextView textJoueur1;
         private TextView textJoueur2;
@@ -74,7 +81,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 SET1,
                 SET2,
                 SET3,
-                TIEBREAK
+                TIEBREAK,
+                JEUFINI
         };
 
         private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
@@ -111,17 +119,18 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 Intent intent = getIntent();
                 nomJoueur1 = intent.getStringExtra("nomDuJoueur1");
                 nomJoueur2 = intent.getStringExtra("nomDuJoueur2");
+                dernierSet = intent.getStringExtra("formatSet");
+                Log.i("tieBreak", dernierSet);
 
-                if(intent.getStringExtra("formatSet") == "tieBreak")
+                if(dernierSet.equals("tieBreak"))
                 {
                         tieBreak = true;
-                        Log.d("tieBreak", "tie Break est activé");
-
+                        Log.i("tieBreak", "tiebreak == true");
                 }
-                else if (intent.getStringExtra("formatSet") == "troisiemeSet")
+                else if (dernierSet.equals("troisiemeSet"))
                 {
                         tieBreak = false;
-                        Log.d("tieBreak", "tieBreak n'est pas activé");
+                        Log.i("tieBreak", "tiebreak == false");
                 }
 
                 textJoueur1.setText(nomJoueur1);
@@ -171,18 +180,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 for (String name : names) providers.add(locationManager.getProvider(name));
 
 
-                /*
-        locationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                        double lat = location.getLatitude();
-                        double longi = location.getLongitude();
-
-                        longitude.setText(" longitude:" + longi);
-                        latitude.setText(" latitude:" + lat);
-                        //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
-                }
-
 
                 locationListener = new LocationListener() {
                         @Override
@@ -225,10 +222,10 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                         }
                 }
-        } */
-
-
         }
+
+
+
 
 
         public void onClick(View v)
@@ -299,8 +296,9 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         }
                                         else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                         {
-                                                marqueUnPointBreak(scoreSet3Joueur2,  scoreJoueur2);
+                                                marqueUnPointBreak(scoreSet3Joueur2, scoreSet3Joueur2, scoreJoueur2);
                                                 scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+
 
                                         }
 
@@ -314,6 +312,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         else if (scoreJoueur2 == 7 && tieBreak)
                                         {
                                                 System.out.println("Jeu fini");
+                                                numeroDeJeu = NumeroJeu.JEUFINI;
                                         }
                                 }
                                 else
@@ -372,7 +371,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         }
                                         else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                         {
-                                                marqueUnPointBreak(scoreJeuJoueur1,  scoreJoueur1);
+                                                marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                                                 scoreJoueur1 = Integer.parseInt(scoreSet3Joueur1.getText().toString());
                                         }
 
@@ -385,6 +384,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         else if(scoreJoueur1 == 7 && tieBreak)
                                         {
                                                 System.out.println("Jeu fini");
+                                                numeroDeJeu = NumeroJeu.JEUFINI;
                                         }
 
                                 }
@@ -443,7 +443,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         }
                                         else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                         {
-                                                marqueUnPointBreak(scoreJeuJoueur2,  scoreJoueur2);
+                                                marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2);
                                                 scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                         }
 
@@ -456,6 +456,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         else if (scoreJoueur2 == 7 && tieBreak)
                                         {
                                                 System.out.println("Jeu fini");
+                                                numeroDeJeu = NumeroJeu.JEUFINI;
                                         }
                                 }
                                 else
@@ -513,7 +514,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         }
                                         else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                         {
-                                                marqueUnPointBreak(scoreJeuJoueur1,  scoreJoueur1);
+                                                marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                                                 scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
                                         }
                                         if(scoreJoueur1 == 0)
@@ -524,6 +525,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         else if (scoreJoueur1 == 7 && tieBreak)
                                         {
                                                 System.out.println("Jeu fini");
+                                                numeroDeJeu= NumeroJeu.JEUFINI;
                                         }
                                 }
                                 break;
@@ -588,7 +590,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 }
                                 else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                 {
-                                        marqueUnPointBreak(scoreJeuJoueur1,  scoreJoueur1);
+                                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                                         scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
                                 }
 
@@ -600,6 +602,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 else if(scoreJoueur1 == 7 && tieBreak)
                                 {
                                         System.out.println("Jeu fini");
+                                        numeroDeJeu = NumeroJeu.JEUFINI;
                                 }
                         }
                                 break;
@@ -663,7 +666,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 }
                                 else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                                 {
-                                        marqueUnPointBreak(scoreJeuJoueur2,  scoreJoueur2);
+                                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2);
                                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                                 }
 
@@ -676,6 +679,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 else if (scoreJoueur2 == 7 && tieBreak)
                                 {
                                         System.out.println("Jeu fini");
+                                        numeroDeJeu = NumeroJeu.JEUFINI;
                                 }
                         }
                                 break;
@@ -714,12 +718,12 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         }
 
-        public void marqueUnPointBreak (TextView scoreJeuJoueur, int scoreJoueur)
+        public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur,  int scoreJoueur)
         {
                 scoreJoueur++;
                 scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
+                scoreSetJoueur.setText(String.valueOf(scoreJoueur));
         }
-
         public void takePicture()
         {
                 Intent intent = new Intent(this, Photo.class);

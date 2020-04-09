@@ -8,11 +8,13 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
     private String nomJoueur1;
     private String nomJoueur2;
+    private String dernierSet;
 
 
     private TextView textJoueur1;
@@ -102,9 +105,10 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         SET1,
         SET2,
         SET3,
-        TIEBREAK
+        TIEBREAK,
+        JEUFINI
     };
-    private NumeroJeu numeroDeJeu;
+    private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
 
 
 
@@ -147,12 +151,13 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
         Intent intent = getIntent();
         nomJoueur1 = intent.getStringExtra("nomDuJoueur1");
         nomJoueur2 = intent.getStringExtra("nomDuJoueur2");
+        dernierSet = intent.getStringExtra("formatSet");
 
-        if(intent.getStringExtra("formatSet") == "tieBreak")
+        if(dernierSet.equals("tieBreak") )
         {
             tieBreak = true;
         }
-        else if (intent.getStringExtra("formatSet") == "troisiemeSet")
+        else if (dernierSet.equals("troisiemeSet"))
         {
             tieBreak = false;
         }
@@ -214,19 +219,8 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
 
 
-                /*
-        locationListener = new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-                        double lat = location.getLatitude();
-                        double longi = location.getLongitude();
 
-                        longitude.setText(" longitude:" + longi);
-                        latitude.setText(" latitude:" + lat);
-                        //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
-                }
 
-=======
                 locationListener = new LocationListener() {
                         @Override
                         public void onLocationChanged(Location location) {
@@ -236,7 +230,6 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                                 latitude.setText(" latitude:" + lat);
                                 //localisation.setText("Latitude:" + latitude + " longitude" + longitude);
                         }
->>>>>>> origin/statistiques
 
                         @Override
                         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -268,13 +261,12 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, locationListener);
                         }
                 }
-<<<<<<< HEAD
-        } */
+        }
 
 
 
 
-    }
+
 
 
 
@@ -351,7 +343,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     }
                     else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                     {
-                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2,  scoreJoueur2);
                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
                     }
 
@@ -367,6 +359,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     else if (scoreJoueur2 == 7 && tieBreak)
                     {
                         System.out.println("Jeu fini");
+                        numeroDeJeu = NumeroJeu.JEUFINI;
                     }
                 }
                 else
@@ -428,7 +421,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     }
                     else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                     {
-                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                         scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
 
                     }
@@ -443,6 +436,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     else if (scoreJoueur1 == 7 && tieBreak)
                     {
                         System.out.println("Jeu fini");
+                        numeroDeJeu = NumeroJeu.JEUFINI;
                     }
 
 
@@ -513,7 +507,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     }
                     else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                     {
-                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2);
                         scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
 
                     }
@@ -528,6 +522,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     else if (scoreJoueur2 == 7 && tieBreak)
                     {
                         System.out.println("Jeu fini");
+                        numeroDeJeu = NumeroJeu.JEUFINI;
                     }
                 }
                 else
@@ -587,7 +582,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     }
                     else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                     {
-                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                         scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
 
                     }
@@ -600,6 +595,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                     else if (scoreJoueur2 == 7 && tieBreak)
                     {
                         System.out.println("Jeu fini");
+                        numeroDeJeu = NumeroJeu.JEUFINI;
                     }
                 }
                 break;
@@ -670,7 +666,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                 }
                 else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                 {
-                    marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                    marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
                     scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
 
                 }
@@ -683,6 +679,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                 else if (scoreJoueur1 == 7 && tieBreak)
                 {
                     System.out.println("Jeu fini");
+                    numeroDeJeu = NumeroJeu.JEUFINI;
                 }
             }
             break;
@@ -751,7 +748,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                 }
                 else if (numeroDeJeu == NumeroJeu.TIEBREAK)
                 {
-                    marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                    marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2);
                     scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
 
                 }
@@ -766,6 +763,7 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
                 else if (scoreJoueur2 == 7 && tieBreak)
                 {
                     System.out.println("Jeu fini");
+                    numeroDeJeu = NumeroJeu.JEUFINI;
                 }
             }
             break;
@@ -813,10 +811,11 @@ public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
     }
 
-    public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
+    public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur,  int scoreJoueur)
     {
         scoreJoueur++;
         scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
+        scoreSetJoueur.setText(String.valueOf(scoreJoueur));
     }
     public void takePicture()
     {
