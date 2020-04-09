@@ -21,7 +21,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
 
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
 
 
     // constucteur

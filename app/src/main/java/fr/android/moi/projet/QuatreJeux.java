@@ -6,17 +6,20 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.location.LocationProvider;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
@@ -25,12 +28,13 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
+import static fr.android.moi.projet.Photo.REQUEST_IMAGE_CAPTURE;
+
 public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         private TextView longitude;
         private TextView latitude;
 
-        private ImageButton buttonPhoto;
 
         private LocationManager locationManager;
         private LocationListener locationListener;
@@ -97,6 +101,12 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         private NumeroJeu numeroDeJeu = NumeroJeu.SET1;
 
+        //PHOTO
+        private ImageButton buttonPhoto;
+        static final int REQUEST_IMAGE_CAPTURE = 1;
+        private ImageView imageView;
+        private ImageButton back;
+        private Bitmap imageBitmap;
 
 
       //  @SuppressLint("MissingPermission")
@@ -890,8 +900,11 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         }
         public void takePicture()
         {
-                Intent intent = new Intent(this, Photo.class);
-                startActivity(intent);
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+                {
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
         }
 
         public void finir(){

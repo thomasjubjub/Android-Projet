@@ -256,7 +256,6 @@
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="1dp"
                     tools:layout_editor_absoluteY="1dp"
-                    android:paddingTop="12dp"
                     >
 
                     <TextView
@@ -378,7 +377,6 @@
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="1dp"
                     tools:layout_editor_absoluteY="1dp"
-                    android:paddingTop="12dp"
                     >
 
                     <TextView
@@ -578,6 +576,7 @@
                                 />
                         </TableRow>
                     </TableLayout>
+
                     <LinearLayout
 
                         android:layout_width="0dp"
