@@ -20,6 +20,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 public class QuatreJeux extends AppCompatActivity implements OnClickListener {
@@ -66,12 +69,19 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private TextView scoreSet3Joueur2;
         private TextView scoreJeuJoueur2;
 
-        private int scoreJoueur1Set = 0;
         private int scoreJoueur1Jeu = 0;
         private int scoreJoueur1 = 0;
-        private int scoreJoueur2Set = 0;
         private int scoreJoueur2Jeu = 0;
         private int scoreJoueur2 = 0;
+
+        private int doubleFauteJoueur1 = 0;
+        private int doubleFauteJoueur2 = 0;
+        private int aceJoueur1 = 0;
+        private int aceJoueur2 = 0;
+        private int gagnantJoueur1 = 0;
+        private int gagnantJoueur2 = 0;
+        private int fauteJoueur1 = 0;
+        private int fauteJoueur2 = 0;
 
         private boolean joueur1 = true;
         private boolean tieBreak;
@@ -245,6 +255,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
                                 if(joueur1)
                                 {
+                                        doubleFauteJoueur1 ++;
                                         if(scoreJoueur2 == 40)
                                         {
                                                joueur1 = !joueur1;
@@ -317,6 +328,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 }
                                 else
                                 {
+                                        doubleFauteJoueur2++ ;
                                         if(scoreJoueur1 == 40)
                                         {
                                                 joueur1 = !joueur1;
@@ -397,6 +409,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
                                 if(!joueur1)
                                 {
+                                        aceJoueur2 ++;
                                         if(scoreJoueur2 == 40)
                                         {
                                                 joueur1 = !joueur1;
@@ -461,6 +474,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 }
                                 else
                                 {
+                                        aceJoueur1 ++;
                                         if(scoreJoueur1 == 40)
                                         {
                                                 joueur1 = !joueur1;
@@ -530,13 +544,12 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                 }
                                 break;
 
-                        case R.id.fauteDirectJoueur2 :
+
 
                         case R.id.pointGagnantJoueur1 :
 
-                        case R.id.fauteProvoqueeJoueur2 :
+                                gagnantJoueur1 ++;
 
-                        {
                                 if(scoreJoueur1 == 40)
                                 {
                                         joueur1 = !joueur1;
@@ -604,16 +617,167 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         System.out.println("Jeu fini");
                                         numeroDeJeu = NumeroJeu.JEUFINI;
                                 }
-                        }
+
                                 break;
 
-                        case R.id.fauteDirectJoueur1 :
+                        case R.id.fauteDirectJoueur2 :
+                        case R.id.fauteProvoqueeJoueur2 :
+
+                                fauteJoueur2 ++;
+
+                                if(scoreJoueur1 == 40)
+                                {
+                                        joueur1 = !joueur1;
+                                }
+
+                                if(numeroDeJeu == NumeroJeu.SET1)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet1Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET2;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET2)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet2Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if (scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet2Joueur1.getText().toString());
+                                        }
+                                        if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                        else if ((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.TIEBREAK;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET3)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1, scoreJoueur1Jeu);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                        if(scoreJoueur1 == 0)
+                                        {
+                                                scoreJoueur1Jeu = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                {
+                                        marqueUnPointBreak(scoreJeuJoueur1, scoreSet3Joueur1, scoreJoueur1);
+                                        scoreJoueur1 = Integer.parseInt(scoreJeuJoueur1.getText().toString());
+                                }
+
+                                if(scoreJoueur1 == 0)
+                                {
+                                        scoreJoueur2 = 0;
+                                        scoreJeuJoueur2.setText("0");
+                                }
+                                else if(scoreJoueur1 == 7 && tieBreak)
+                                {
+                                        System.out.println("Jeu fini");
+                                        numeroDeJeu = NumeroJeu.JEUFINI;
+                                }
+
+                                break;
+
+
 
                         case R.id.pointGagnantJoueur2 :
 
+                                gagnantJoueur2 ++;
+                                if(scoreJoueur2 == 40)
+                                {
+                                        joueur1 = !joueur1;
+                                }
+
+                                if(numeroDeJeu == NumeroJeu.SET1)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet1Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+                                        }
+                                        if(scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET2;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET2)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet2Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet2Joueur2.getText().toString());
+                                        }
+                                        if((scoreJoueur2Jeu == 4 || scoreJoueur1Jeu == 4) && !tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.SET3;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                        else if ((scoreJoueur2Jeu == 4 || scoreJoueur1 == 4) && tieBreak)
+                                        {
+                                                numeroDeJeu = NumeroJeu.TIEBREAK;
+                                                scoreJoueur2Jeu = 0;
+                                                scoreJoueur1Jeu = 0;
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.SET3)
+                                {
+                                        marqueUnPoint(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2, scoreJoueur2Jeu);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                        if(scoreJoueur2 == 0)
+                                        {
+                                                scoreJoueur2Jeu = Integer.parseInt(scoreSet3Joueur2.getText().toString());
+                                        }
+                                }
+                                else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+                                {
+                                        marqueUnPointBreak(scoreJeuJoueur2, scoreSet3Joueur2, scoreJoueur2);
+                                        scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                }
+
+                                scoreJoueur2 = Integer.parseInt(scoreJeuJoueur2.getText().toString());
+                                if(scoreJoueur2 == 0)
+                                {
+                                        scoreJoueur1 = 0;
+                                        scoreJeuJoueur1.setText("0");
+                                }
+                                else if (scoreJoueur2 == 7 && tieBreak)
+                                {
+                                        System.out.println("Jeu fini");
+                                        String messageDeFin = "Jeu fini";
+                                        Snackbar jeuFini = Snackbar.make(v, messageDeFin, Snackbar.LENGTH_LONG);
+                                        numeroDeJeu = NumeroJeu.JEUFINI;
+                                        jeuFini.show();
+                                }
+
+                                break;
+
+                        case R.id.fauteDirectJoueur1 :
                         case R.id.fauteProvoqueeJoueur1 :
 
-                        {
+                                fauteJoueur1 ++;
+
                                 if(scoreJoueur2 == 40)
                                 {
                                         joueur1 = !joueur1;
@@ -681,7 +845,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                                         System.out.println("Jeu fini");
                                         numeroDeJeu = NumeroJeu.JEUFINI;
                                 }
-                        }
+
                                 break;
 
 
