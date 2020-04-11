@@ -23,10 +23,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.List;
 
 
-public abstract class CinqJeux extends AppCompatActivity implements OnClickListener {
+public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
 
     private TextView longitude;
@@ -914,11 +917,105 @@ public abstract class CinqJeux extends AppCompatActivity implements OnClickListe
 
         }
 
+        scoreJ1Set1 = Integer.parseInt(scoreSet1Joueur1.getText().toString());
+        scoreJ1Set2 = Integer.parseInt(scoreSet2Joueur1.getText().toString());
+        scoreJ1Set3 = Integer.parseInt(scoreSet3Joueur1.getText().toString());
+
+        scoreJ2Set1 = Integer.parseInt(scoreSet1Joueur2.getText().toString());
+        scoreJ2Set2 = Integer.parseInt(scoreSet2Joueur2.getText().toString());
+        scoreJ2Set3 = Integer.parseInt(scoreSet3Joueur2.getText().toString());
+
+        detectionDeVictoire(scoreJ1Set1, scoreJ1Set2, scoreJ1Set3,
+                scoreJ2Set1, scoreJ2Set2, scoreJ2Set3,
+                nomJoueur1, nomJoueur2,
+                v);
 
     }
 
 
 
+    public void detectionDeVictoire (int scoreSet1Joueur1, int scoreSet2Joueur1, int scoreSet3Joueur1,
+                                     int scoreSet1Joueur2, int scoreSet2Joueur2, int scoreSet3Joueur2,
+                                     String nomJoueur1, String nomJoueur2,
+                                     View view)
+    {
+
+        boolean victoireSet1Joueur1 = false;
+        boolean victoireSet1Joueur2 = false;
+        boolean victoireSet2Joueur1 = false;
+        boolean victoireSet2Joueur2 = false;
+        boolean victoireSet3Joueur1 = false;
+        boolean victoireSet3Joueur2 = false;
+
+        if(scoreSet1Joueur1 == 5)
+        {
+               victoireSet1Joueur1 = true;
+        }
+        else if (scoreSet1Joueur2 == 5)
+        {
+                victoireSet1Joueur2 = true;
+        }
+
+        if(scoreSet2Joueur1 == 5)
+        {
+            victoireSet2Joueur1 = true;
+        }
+        else if (scoreSet2Joueur2 == 5)
+        {
+            victoireSet2Joueur2 = true;
+        }
+
+        if(numeroDeJeu == NumeroJeu.SET3)
+        {
+            if(scoreSet3Joueur1 == 5)
+            {
+                victoireSet3Joueur1 = true;
+            }
+            else if (scoreSet3Joueur2 == 5)
+            {
+                victoireSet3Joueur2 = true;
+            }
+        }
+        else if (numeroDeJeu == NumeroJeu.TIEBREAK)
+        {
+            if (scoreSet3Joueur1 == 7)
+            {
+                victoireSet3Joueur1 = true;
+                System.out.println("victoireset3j1 =true");
+            }
+            else if (scoreSet3Joueur2 == 7)
+            {
+                victoireSet3Joueur2 = true;
+                System.out.println("victoireset3j2 =true");
+
+            }
+        }
+        if(victoireSet1Joueur1 && victoireSet2Joueur1)
+        {
+            affichageVictoire(nomJoueur1, view);
+        }
+        else if (victoireSet1Joueur2 && victoireSet2Joueur2)
+        {
+            affichageVictoire(nomJoueur2, view);
+        }
+        else if(victoireSet1Joueur1 && victoireSet3Joueur1)
+        {
+            affichageVictoire(nomJoueur1, view);
+        }
+        else if(victoireSet1Joueur2 && victoireSet3Joueur2)
+        {
+            affichageVictoire(nomJoueur2, view);
+        }
+    }
+
+    public void affichageVictoire(String nomJoueur, View view)
+    {
+        numeroDeJeu = NumeroJeu.JEUFINI;
+        String joueurGagne = "Jeu fini, "+nomJoueur+" l'emporte !";
+        Snackbar snackbar = Snackbar.make(view, joueurGagne, Snackbar.LENGTH_LONG);
+        snackbar.show();
+
+    }
 
     public void marqueUnPoint (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
     {
@@ -950,7 +1047,7 @@ public abstract class CinqJeux extends AppCompatActivity implements OnClickListe
 
     }
 
-    public void marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur,  int scoreJoueur)
+    public void  marqueUnPointBreak (TextView scoreJeuJoueur, TextView scoreSetJoueur,  int scoreJoueur)
     {
         scoreJoueur++;
         scoreJeuJoueur.setText(String.valueOf(scoreJoueur));

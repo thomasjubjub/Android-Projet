@@ -145,34 +145,34 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:text="0"
+                            android:textAlignment="center" />
 
                         <TextView
                             android:id="@+id/scoreSet1Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
+                            android:text="0"
+                            android:textAlignment="center" />
 
                         <TextView
                             android:id="@+id/scoreSet2Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-"
-                            android:background="#BDE3F4"/>
+                            android:background="#BDE3F4"
+                            android:text="0"
+                            android:textAlignment="center" />
 
                         <TextView
                             android:id="@+id/scoreSet3Joueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="-" />
+                            android:text="0"
+                            android:textAlignment="center" />
                     </TableRow>
 
                     <View android:layout_width="match_parent"
@@ -196,14 +196,13 @@
                             android:gravity="end" />
 
 
-
                         <TextView
                             android:id="@+id/scoreJeuJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="#BDE3F4"
-                            android:text="-"
+                            android:text="0"
                             android:textAlignment="center" />
 
 
@@ -212,7 +211,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="-"
+                            android:text="0"
                             android:textAlignment="center" />
 
                         <TextView
@@ -221,7 +220,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="#BDE3F4"
-                            android:text="-"
+                            android:text="0"
                             android:textAlignment="center" />
 
                         <TextView
@@ -229,7 +228,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="-"
+                            android:text="0"
                             android:textAlignment="center" />
                     </TableRow>
                     <View android:layout_width="match_parent"
