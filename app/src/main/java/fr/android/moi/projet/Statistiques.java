@@ -39,6 +39,15 @@ public class Statistiques extends AppCompatActivity {
         TextView scoreJ2Set2 = (TextView) findViewById(R.id.scoreJ2Set2);
         TextView scoreJ2Set3 = (TextView) findViewById(R.id.scoreJ2Set3);
 
+        TextView gagnantJoueur1 = (TextView) findViewById(R.id.gagnantJoueur1);
+        TextView gagnantJoueur2 = (TextView) findViewById(R.id.gagnantJoueur2);
+        TextView aceJoueur1 = (TextView) findViewById(R.id.aceJoueur1);
+        TextView aceJoueur2 = (TextView) findViewById(R.id.aceJoueur2);
+        TextView doubleFauteJoueur1 = (TextView) findViewById(R.id.doubleFauteJoueur1);
+        TextView doubleFauteJoueur2 = (TextView) findViewById(R.id.doubleFauteJoueur2);
+        TextView fauteJoueur1 = (TextView) findViewById(R.id.fauteJoueur1);
+        TextView fauteJoueur2 = (TextView) findViewById(R.id.fauteJoueur2);
+
 
 
         // récupère l'objet match que dont on souhait afficher les infos
@@ -48,15 +57,28 @@ public class Statistiques extends AppCompatActivity {
 
         // affichage des données
         nomJ1.setText(match.getJoueur1());
-        Log.d("InStatistiques", match.getJoueur1());
         scoreJ1Set1.setText(match.getScoreJ1Set1());
-        //Log.d("InStatistiques", match.getScoreJ1Set1());
         scoreJ1Set2.setText(match.getScoreJ1Set2());
         scoreJ1Set3.setText(match.getScoreJ1Set3());
         nomJ2.setText(match.getJoueur2());
         scoreJ2Set1.setText(match.getScoreJ2Set1());
         scoreJ2Set2.setText(match.getScoreJ2Set2());
         scoreJ2Set3.setText(match.getScoreJ2Set3());
+
+        gagnantJoueur1.setText(match.getGagnantJoueur1());
+        Log.d("InStatistiques", "gagnant J1" + match.getGagnantJoueur1());
+        gagnantJoueur2.setText(match.getGagnantJoueur2());
+        aceJoueur1.setText(match.getAceJoueur1());
+        Log.d("InStatistiques", "ace J1" +match.getAceJoueur1());
+        aceJoueur2.setText(match.getAceJoueur2());
+        doubleFauteJoueur1.setText(match.getDoubleFauteJoueur1());
+        Log.d("InStatistiques", "doublefaute J1" +match.getDoubleFauteJoueur1());
+        doubleFauteJoueur2.setText(match.getDoubleFauteJoueur2());
+        fauteJoueur1.setText(match.getFauteJoueur1());
+        Log.d("InStatistiques", "faute J1" + match.getFauteJoueur1());
+        fauteJoueur2.setText(match.getFauteJoueur2());
+
+
 
 
     }

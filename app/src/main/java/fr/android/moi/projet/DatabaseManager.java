@@ -21,7 +21,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
 
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 11;
 
 
     // constucteur
@@ -40,12 +40,22 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    joueur2 text not null,"
                 + "    formatSet text not null,"
                 + "    formatMatch text not null,"
+
                 + "    scoreJ1Set1 text not null,"
                 + "    scoreJ1Set2 text not null,"
                 + "    scoreJ1Set3 text not null,"
                 + "    scoreJ2Set1 text not null,"
                 + "    scoreJ2Set2 text not null,"
-                + "    scoreJ2Set3 text not null"
+                + "    scoreJ2Set3 text not null,"
+
+                + "    doubleFauteJoueur1 text not null,"
+                + "    doubleFauteJoueur2 text not null,"
+                + "    aceJoueur1 text not null,"
+                + "    aceJoueur2 text not null,"
+                + "    gagnantJoueur1 text not null,"
+                + "    gagnantJoueur2 text not null,"
+                + "    fauteJoueur1 text not null,"
+                + "    fauteJoueur2 text not null"
                 + ")";
 
         db.execSQL( strSql );
@@ -56,7 +66,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         // si il y a une mise à jour de la BDD
 
-      // db.execSQL("DROP TABLE T_match"); // supprimer la table
+      db.execSQL("DROP TABLE T_match"); // supprimer la table
 
         Log.i( "DATABASE", "newVersion" );
         if (newVersion > oldVersion) {
@@ -66,12 +76,22 @@ public class DatabaseManager extends SQLiteOpenHelper{
                     + "    joueur2 text not null,"
                     + "    formatSet text not null,"
                     + "    formatMatch text not null,"
+
                     + "    scoreJ1Set1 text not null,"
                     + "    scoreJ1Set2 text not null,"
                     + "    scoreJ1Set3 text not null,"
                     + "    scoreJ2Set1 text not null,"
                     + "    scoreJ2Set2 text not null,"
-                    + "    scoreJ2Set3 text not null"
+                    + "    scoreJ2Set3 text not null,"
+
+                    + "    doubleFauteJoueur1 text not null,"
+                    + "    doubleFauteJoueur2 text not null,"
+                    + "    aceJoueur1 text not null,"
+                    + "    aceJoueur2 text not null,"
+                    + "    gagnantJoueur1 text not null,"
+                    + "    gagnantJoueur2 text not null,"
+                    + "    fauteJoueur1 text not null,"
+                    + "    fauteJoueur2 text not null"
                     + ")";
 
             db.execSQL( strSql );
@@ -88,6 +108,15 @@ public class DatabaseManager extends SQLiteOpenHelper{
             db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set2 TEXT DEFAULT null");
             db.execSQL("ALTER TABLE T_match ADD COLUMN scoreJ2Set3 TEXT DEFAULT null");
 
+            db.execSQL("ALTER TABLE T_match ADD COLUMN doubleFauteJoueur1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN doubleFauteJoueur2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN aceJoueur1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN aceJoueur2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN gagnantJoueur1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN gagnantJoueur2 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN fauteJoueur1 TEXT DEFAULT null");
+            db.execSQL("ALTER TABLE T_match ADD COLUMN fauteJoueur2 TEXT DEFAULT null");
+
              */
         }
 
@@ -95,7 +124,9 @@ public class DatabaseManager extends SQLiteOpenHelper{
     }
 
     public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch,
-                            String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3 ){
+                            String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3,
+                            String doubleFauteJoueur1, String doubleFauteJoueur2,String aceJoueur1, String aceJoueur2,
+                            String gagnantJoueur1, String gagnantJoueur2, String fauteJoueur1, String fauteJoueur2 ){
 
         // pour mettre les string entre ''
         joueur1 = joueur1.replace( "'", "''" );
@@ -107,10 +138,14 @@ public class DatabaseManager extends SQLiteOpenHelper{
         Log.i( "DATABASE", "preinsertMatch" );
 
         String strSql = "insert into T_Match (joueur1, joueur2, formatSet, formatMatch," +
-                "  scoreJ1Set1, scoreJ1Set2, scoreJ1Set3, scoreJ2Set1, scoreJ2Set2, scoreJ2Set3) " +
+                "  scoreJ1Set1, scoreJ1Set2, scoreJ1Set3, scoreJ2Set1, scoreJ2Set2, scoreJ2Set3, doubleFauteJoueur1, doubleFauteJoueur2, aceJoueur1, aceJoueur2, gagnantJoueur1, gagnantJoueur2, fauteJoueur1, fauteJoueur2) " +
                 "values ('" + joueur1 + "', '" + joueur2 + "', '"+ formatSet +"', '"+ formatMatch +"', " +
                 " '"+ scoreJ1Set1 +"', '"+ scoreJ1Set2 +"', '"+ scoreJ1Set3 +"'," +
-                "'"+ scoreJ2Set1 +"','"+ scoreJ2Set2 +"','"+ scoreJ2Set3 +"')";
+                "'"+ scoreJ2Set1 +"','"+ scoreJ2Set2 +"','"+ scoreJ2Set3 +"'," +
+                " '"+ doubleFauteJoueur1 +"','"+ doubleFauteJoueur2 +"', " +
+                " '"+ aceJoueur1 +"','"+ aceJoueur2 +"', " +
+                " '"+ gagnantJoueur1 +"','"+ gagnantJoueur2 +"', " +
+                " '"+ fauteJoueur1 +"','"+ fauteJoueur2 +"' )";
 
         // pour la date: new Date().getTime()
         // envoyer cette requete à la database
@@ -134,7 +169,9 @@ public class DatabaseManager extends SQLiteOpenHelper{
                     //String info = cursor.getString(cursor.getColumnIndex("idMatch"));
                     // creation d'un objet match
                     Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ),
-                            cursor.getString( 5 ),cursor.getString( 6),cursor.getString( 7 ), cursor.getString( 8 ), cursor.getString( 9 ),cursor.getString( 10 ));
+                            cursor.getString( 5 ),cursor.getString( 6),cursor.getString( 7 ), cursor.getString( 8 ), cursor.getString( 9 ),cursor.getString( 10 ),
+                            cursor.getString( 11 ),cursor.getString( 12),cursor.getString( 13 ), cursor.getString( 14 ),
+                            cursor.getString( 15 ),cursor.getString( 16),cursor.getString( 17 ), cursor.getString( 18 ));
                     // ajout du match dans l'arraylist
                     matches.add( match );
                 }while (cursor.moveToPrevious());
