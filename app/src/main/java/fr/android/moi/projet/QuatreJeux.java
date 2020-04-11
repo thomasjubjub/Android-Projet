@@ -915,16 +915,19 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
                 // ENREGISTREMENT DANS LA BDD
 
-                Log.d("In4jeux", "double faute J1" +String.valueOf(doubleFauteJoueur1));
-                Log.d("In4jeux", "ace J1" +String.valueOf(aceJoueur1));
+               // Log.d("In4jeux", "double faute J1" +String.valueOf(doubleFauteJoueur1));
+               // Log.d("In4jeux", "ace J1" +String.valueOf(aceJoueur1));
                 Log.d("In4jeux","gagnant J1" + String.valueOf(gagnantJoueur1));
-                Log.d("In4jeux","faute J1" + String.valueOf(fauteJoueur1));
+               // Log.d("In4jeux","faute J1" + String.valueOf(fauteJoueur1));
+
 
                 databaseManager = new DatabaseManager(this);
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
                         scoreSet1Joueur1.getText().toString(), scoreSet2Joueur1.getText().toString(), scoreSet3Joueur1.getText().toString(), scoreSet1Joueur2.getText().toString(), scoreSet2Joueur2.getText().toString(), scoreSet3Joueur2.getText().toString(),
-                        String.valueOf(doubleFauteJoueur1), String.valueOf(doubleFauteJoueur2), String.valueOf(aceJoueur1),String.valueOf(aceJoueur2),
-                        String.valueOf(gagnantJoueur1), String.valueOf(gagnantJoueur2), String.valueOf(fauteJoueur1), String.valueOf(fauteJoueur2));
+                        String.valueOf(doubleFauteJoueur1), String.valueOf(doubleFauteJoueur2),
+                        String.valueOf(aceJoueur1),String.valueOf(aceJoueur2),
+                        String.valueOf(gagnantJoueur1), String.valueOf(gagnantJoueur2),
+                        String.valueOf(fauteJoueur1), String.valueOf(fauteJoueur2));
 
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
                 Match match = new Match();

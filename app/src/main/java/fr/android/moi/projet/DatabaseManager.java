@@ -125,8 +125,10 @@ public class DatabaseManager extends SQLiteOpenHelper{
 
     public void insertMatch(String joueur1, String joueur2, String formatSet, String formatMatch,
                             String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3,
-                            String doubleFauteJoueur1, String doubleFauteJoueur2,String aceJoueur1, String aceJoueur2,
-                            String gagnantJoueur1, String gagnantJoueur2, String fauteJoueur1, String fauteJoueur2 ){
+                            String doubleFauteJoueur1, String doubleFauteJoueur2,
+                            String aceJoueur1, String aceJoueur2,
+                            String gagnantJoueur1, String gagnantJoueur2,
+                            String fauteJoueur1, String fauteJoueur2 ){
 
         // pour mettre les string entre ''
         joueur1 = joueur1.replace( "'", "''" );
@@ -135,10 +137,15 @@ public class DatabaseManager extends SQLiteOpenHelper{
         formatMatch = formatMatch.replace( "'", "''" );
 
 
-        Log.i( "DATABASE", "preinsertMatch" );
+        //Log.i( "DATABASE", "insertMatch" );
+        Log.d("insertMatch","gagnant J1" + gagnantJoueur1 );
 
         String strSql = "insert into T_Match (joueur1, joueur2, formatSet, formatMatch," +
-                "  scoreJ1Set1, scoreJ1Set2, scoreJ1Set3, scoreJ2Set1, scoreJ2Set2, scoreJ2Set3, doubleFauteJoueur1, doubleFauteJoueur2, aceJoueur1, aceJoueur2, gagnantJoueur1, gagnantJoueur2, fauteJoueur1, fauteJoueur2) " +
+                "  scoreJ1Set1, scoreJ1Set2, scoreJ1Set3, scoreJ2Set1, scoreJ2Set2, scoreJ2Set3, " +
+                "doubleFauteJoueur1, doubleFauteJoueur2, " +
+                "aceJoueur1, aceJoueur2, gagnantJoueur1, " +
+                "gagnantJoueur2, " +
+                "fauteJoueur1, fauteJoueur2) " +
                 "values ('" + joueur1 + "', '" + joueur2 + "', '"+ formatSet +"', '"+ formatMatch +"', " +
                 " '"+ scoreJ1Set1 +"', '"+ scoreJ1Set2 +"', '"+ scoreJ1Set3 +"'," +
                 "'"+ scoreJ2Set1 +"','"+ scoreJ2Set2 +"','"+ scoreJ2Set3 +"'," +
@@ -151,7 +158,6 @@ public class DatabaseManager extends SQLiteOpenHelper{
         // envoyer cette requete à la database
         // this = datamanager
         this.getWritableDatabase().execSQL( strSql );
-        Log.i( "DATABASE", "insertMatch" );
     }
 
     public List<Match> readMatch(){
@@ -173,6 +179,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
                             cursor.getString( 11 ),cursor.getString( 12),cursor.getString( 13 ), cursor.getString( 14 ),
                             cursor.getString( 15 ),cursor.getString( 16),cursor.getString( 17 ), cursor.getString( 18 ));
                     // ajout du match dans l'arraylist
+
+                    Log.d("InReadMatch_cursor", cursor.getInt( 0 ) + "gagnant J1 -" + cursor.getString( 15 ));
                     matches.add( match );
                 }while (cursor.moveToPrevious());
             }

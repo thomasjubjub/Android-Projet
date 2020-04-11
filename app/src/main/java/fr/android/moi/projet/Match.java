@@ -2,6 +2,7 @@ package fr.android.moi.projet;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Match implements Parcelable{
 
@@ -35,6 +36,8 @@ public class Match implements Parcelable{
                  String gagnantJoueur1, String gagnantJoueur2,
                  String fauteJoueur1, String fauteJoueur2 ) {
 
+        Log.d("classMatch","gagnant J1 -" + gagnantJoueur1 );
+
         this.setIdMatch( idMatch);
         this.setJoueur1( nomJ1 );
         this.setJoueur2( nomJ2 );
@@ -48,10 +51,10 @@ public class Match implements Parcelable{
         this.setScoreJ2Set2(scoreJ2Set2);
         this.setScoreJ2Set3(scoreJ2Set3);
 
-        this.setAceJoueur1 (aceJoueur1) ;
-        this.setAceJoueur2 (aceJoueur2) ;
         this.setDoubleFauteJoueur1 (doubleFauteJoueur1) ;
         this.setDoubleFauteJoueur2 (doubleFauteJoueur2) ;
+        this.setAceJoueur1 (aceJoueur1) ;
+        this.setAceJoueur2 (aceJoueur2) ;
         this.setGagnantJoueur1 (gagnantJoueur1) ;
         this.setGagnantJoueur2 (gagnantJoueur2) ;
         this.setFauteJoueur1 (fauteJoueur1) ;
@@ -99,7 +102,11 @@ public class Match implements Parcelable{
     // fonction affichage
     @Override
     public String toString() {
-        return idMatch + ": " + nomJ1 + " and " + nomJ2 + " plays a " + formatMatch + "with " + formatSet;
+        return idMatch + ": " + nomJ1 + " and " + nomJ2
+                + " doubleFauteJoueur1: " + doubleFauteJoueur1 + "- doubleFauteJoueur2: " + doubleFauteJoueur2
+                + "aceJoueur1:" + aceJoueur1 +  "- aceJoueur2: " + aceJoueur2
+                + " gagnantJoueur1: " + gagnantJoueur1 + "- gagnantJoueur2: " + gagnantJoueur2
+                + "fauteJoueur1:" + fauteJoueur1 +  "- fauteJoueur2: " + fauteJoueur2 ;
     }
 
     // fonction parceable
@@ -165,17 +172,17 @@ public class Match implements Parcelable{
         this.doubleFauteJoueur2 = doubleFauteJoueur2;
     }
     public void setGagnantJoueur1(String gagnantJoueur1) {
-         this.gagnantJoueur1  = doubleFauteJoueur2;
+         this.gagnantJoueur1  = gagnantJoueur1;
     }
     public void setGagnantJoueur2(String gagnantJoueur2) {
-        this.gagnantJoueur2 = gagnantJoueur1;
+        this.gagnantJoueur2 = gagnantJoueur2;
     }
     public void setFauteJoueur1(String fauteJoueur1) {
-         this.fauteJoueur1 = gagnantJoueur2;
+         this.fauteJoueur1 = fauteJoueur1;
     }
     public void setFauteJoueur2(String fauteJoueur2) {
 
-        this.fauteJoueur2 = fauteJoueur1;
+        this.fauteJoueur2 = fauteJoueur2;
     }
 
     private void setIdMatch(int idMatch) {
