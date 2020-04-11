@@ -2,6 +2,8 @@ package fr.android.moi.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import java.util.List;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Statistiques extends AppCompatActivity {
@@ -22,6 +25,8 @@ public class Statistiques extends AppCompatActivity {
     private TextView scoreJ2Set1;
     private TextView scoreJ2Set2;
     private TextView scoreJ2Set3;
+
+    private ImageView imageView;
 
 
 
@@ -48,6 +53,8 @@ public class Statistiques extends AppCompatActivity {
         TextView fauteJoueur1 = (TextView) findViewById(R.id.fauteJoueur1);
         TextView fauteJoueur2 = (TextView) findViewById(R.id.fauteJoueur2);
 
+        imageView = (ImageView) findViewById(R.id.photoMatch);
+
 
 
         // récupère l'objet match que dont on souhait afficher les infos
@@ -66,20 +73,22 @@ public class Statistiques extends AppCompatActivity {
         scoreJ2Set3.setText(match.getScoreJ2Set3());
 
         gagnantJoueur1.setText(match.getGagnantJoueur1());
-        Log.d("InStatistiques", "gagnant J1" + match.getGagnantJoueur1());
         gagnantJoueur2.setText(match.getGagnantJoueur2());
         aceJoueur1.setText(match.getAceJoueur1());
-        Log.d("InStatistiques", "ace J1" +match.getAceJoueur1());
         aceJoueur2.setText(match.getAceJoueur2());
         doubleFauteJoueur1.setText(match.getDoubleFauteJoueur1());
-        Log.d("InStatistiques", "doublefaute J1" +match.getDoubleFauteJoueur1());
         doubleFauteJoueur2.setText(match.getDoubleFauteJoueur2());
         fauteJoueur1.setText(match.getFauteJoueur1());
-        Log.d("InStatistiques", "faute J1" + match.getFauteJoueur1());
         fauteJoueur2.setText(match.getFauteJoueur2());
 
 
+        imageView.setImageBitmap(getImage(match.getImage()));
 
 
+
+    }
+    // convert from byte array to bitmap
+    public static Bitmap getImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 }

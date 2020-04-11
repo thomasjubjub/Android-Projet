@@ -21,7 +21,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
     // attributs
     private static final String DATABASE_NAME = "myBDD.db";
 
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 12;
 
 
     // constucteur
@@ -55,7 +55,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    gagnantJoueur1 text not null,"
                 + "    gagnantJoueur2 text not null,"
                 + "    fauteJoueur1 text not null,"
-                + "    fauteJoueur2 text not null"
+                + "    fauteJoueur2 text not null,"
+                + "    image text not null"
                 + ")";
 
         db.execSQL( strSql );
@@ -91,7 +92,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
                     + "    gagnantJoueur1 text not null,"
                     + "    gagnantJoueur2 text not null,"
                     + "    fauteJoueur1 text not null,"
-                    + "    fauteJoueur2 text not null"
+                    + "    fauteJoueur2 text not null,"
+                    + "    image blob not null"
                     + ")";
 
             db.execSQL( strSql );
@@ -128,7 +130,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
                             String doubleFauteJoueur1, String doubleFauteJoueur2,
                             String aceJoueur1, String aceJoueur2,
                             String gagnantJoueur1, String gagnantJoueur2,
-                            String fauteJoueur1, String fauteJoueur2 ){
+                            String fauteJoueur1, String fauteJoueur2,
+                            byte[] image){
 
         // pour mettre les string entre ''
         joueur1 = joueur1.replace( "'", "''" );
@@ -145,18 +148,17 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 "doubleFauteJoueur1, doubleFauteJoueur2, " +
                 "aceJoueur1, aceJoueur2, gagnantJoueur1, " +
                 "gagnantJoueur2, " +
-                "fauteJoueur1, fauteJoueur2) " +
+                "fauteJoueur1, fauteJoueur2," +
+                "image) " +
                 "values ('" + joueur1 + "', '" + joueur2 + "', '"+ formatSet +"', '"+ formatMatch +"', " +
                 " '"+ scoreJ1Set1 +"', '"+ scoreJ1Set2 +"', '"+ scoreJ1Set3 +"'," +
                 "'"+ scoreJ2Set1 +"','"+ scoreJ2Set2 +"','"+ scoreJ2Set3 +"'," +
                 " '"+ doubleFauteJoueur1 +"','"+ doubleFauteJoueur2 +"', " +
                 " '"+ aceJoueur1 +"','"+ aceJoueur2 +"', " +
                 " '"+ gagnantJoueur1 +"','"+ gagnantJoueur2 +"', " +
-                " '"+ fauteJoueur1 +"','"+ fauteJoueur2 +"' )";
+                " '"+ fauteJoueur1 +"','"+ fauteJoueur2 +"' " +
+                ",'"+ image +"' )";
 
-        // pour la date: new Date().getTime()
-        // envoyer cette requete à la database
-        // this = datamanager
         this.getWritableDatabase().execSQL( strSql );
     }
 
@@ -177,7 +179,8 @@ public class DatabaseManager extends SQLiteOpenHelper{
                     Match match = new Match( cursor.getInt( 0 ), cursor.getString( 1 ), cursor.getString( 2 ),  cursor.getString( 3 ), cursor.getString( 4 ),
                             cursor.getString( 5 ),cursor.getString( 6),cursor.getString( 7 ), cursor.getString( 8 ), cursor.getString( 9 ),cursor.getString( 10 ),
                             cursor.getString( 11 ),cursor.getString( 12),cursor.getString( 13 ), cursor.getString( 14 ),
-                            cursor.getString( 15 ),cursor.getString( 16),cursor.getString( 17 ), cursor.getString( 18 ));
+                            cursor.getString( 15 ),cursor.getString( 16),cursor.getString( 17 ), cursor.getString( 18 ),
+                            cursor.getBlob(19));
                     // ajout du match dans l'arraylist
 
                     Log.d("InReadMatch_cursor", cursor.getInt( 0 ) + "gagnant J1 -" + cursor.getString( 15 ));

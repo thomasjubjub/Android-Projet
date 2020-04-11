@@ -28,13 +28,17 @@ public class Match implements Parcelable{
     private String fauteJoueur1 ;
     private String fauteJoueur2 ;
 
+    private byte[] image;
+
+
     public Match(){}
     public Match(int idMatch, String nomJ1, String nomJ2, String formatMatch, String formatSet,
                  String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3,
                  String doubleFauteJoueur1, String doubleFauteJoueur2,
                  String aceJoueur1, String aceJoueur2,
                  String gagnantJoueur1, String gagnantJoueur2,
-                 String fauteJoueur1, String fauteJoueur2 ) {
+                 String fauteJoueur1, String fauteJoueur2,
+                 byte[] image ) {
 
         Log.d("classMatch","gagnant J1 -" + gagnantJoueur1 );
 
@@ -59,6 +63,8 @@ public class Match implements Parcelable{
         this.setGagnantJoueur2 (gagnantJoueur2) ;
         this.setFauteJoueur1 (fauteJoueur1) ;
         this.setFauteJoueur2 (fauteJoueur2) ;
+
+        this.setImage(image);
     }
 
     public Match(Parcel in) {
@@ -84,6 +90,8 @@ public class Match implements Parcelable{
         gagnantJoueur2 = in.readString();
         fauteJoueur1 = in.readString();
         fauteJoueur2 = in.readString();
+
+        image = in.createByteArray();
     }
 
 
@@ -141,6 +149,8 @@ public class Match implements Parcelable{
         dest.writeString(fauteJoueur1);
         dest.writeString(fauteJoueur2);
 
+        dest.writeByteArray(image);
+
     }
 
 
@@ -158,6 +168,7 @@ public class Match implements Parcelable{
     public String getGagnantJoueur2() { return gagnantJoueur2; }
     public String getFauteJoueur1() { return fauteJoueur1; }
     public String getFauteJoueur2() { return fauteJoueur2; }
+    public byte[] getImage() { return image; }
 
     public void setAceJoueur1(String aceJoueur1) {
          this.aceJoueur1 = aceJoueur1;
@@ -183,6 +194,9 @@ public class Match implements Parcelable{
     public void setFauteJoueur2(String fauteJoueur2) {
 
         this.fauteJoueur2 = fauteJoueur2;
+    }
+    public void setImage(byte[] image){
+        this.image = image;
     }
 
     private void setIdMatch(int idMatch) {

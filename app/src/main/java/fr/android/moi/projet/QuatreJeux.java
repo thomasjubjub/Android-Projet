@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
 
@@ -911,14 +914,24 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 }
         }
 
+        // convert from bitmap to byte array
+        public static byte[] getBytes(Bitmap bitmap) {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                return stream.toByteArray();
+        }
+
+        // convert from byte array to bitmap
+        public static Bitmap getImage(byte[] image) {
+                return BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
+
+
         public void finir(){
 
                 // ENREGISTREMENT DANS LA BDD
 
-               // Log.d("In4jeux", "double faute J1" +String.valueOf(doubleFauteJoueur1));
-               // Log.d("In4jeux", "ace J1" +String.valueOf(aceJoueur1));
-                Log.d("In4jeux","gagnant J1" + String.valueOf(gagnantJoueur1));
-               // Log.d("In4jeux","faute J1" + String.valueOf(fauteJoueur1));
+                byte[] image =  getBytes(imageBitmap);
 
 
                 databaseManager = new DatabaseManager(this);
@@ -927,7 +940,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         String.valueOf(doubleFauteJoueur1), String.valueOf(doubleFauteJoueur2),
                         String.valueOf(aceJoueur1),String.valueOf(aceJoueur2),
                         String.valueOf(gagnantJoueur1), String.valueOf(gagnantJoueur2),
-                        String.valueOf(fauteJoueur1), String.valueOf(fauteJoueur2));
+                        String.valueOf(fauteJoueur1), String.valueOf(fauteJoueur2),
+                        image);
 
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
                 Match match = new Match();
