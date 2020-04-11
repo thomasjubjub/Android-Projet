@@ -1,3 +1,9 @@
 <resources>
+
+    <!-- MainActivity -->
     <string name="app_name">Projet</string>
+    <string name="nouveau_match">Nouveau Match</string>
+    <string name="historique">Historique</string>
+
+    <!-- MainActivity -->
 </resources>

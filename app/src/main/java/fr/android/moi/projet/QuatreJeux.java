@@ -908,9 +908,11 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                Log.d("onActivutyResult", "onActivutyResult");
                 if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         imageBitmap = (Bitmap) extras.get("data");
+                        Log.d("Result", String.valueOf(imageBitmap));
                 }
         }
 
@@ -931,7 +933,9 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
                 // ENREGISTREMENT DANS LA BDD
 
+                Log.d("QuatreJeux avant conv", String.valueOf(imageBitmap));
                 byte[] image =  getBytes(imageBitmap);
+                Log.d("QuatreJeux", String.valueOf(image));
 
 
                 databaseManager = new DatabaseManager(this);

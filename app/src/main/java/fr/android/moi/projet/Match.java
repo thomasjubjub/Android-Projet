@@ -114,7 +114,7 @@ public class Match implements Parcelable{
                 + " doubleFauteJoueur1: " + doubleFauteJoueur1 + "- doubleFauteJoueur2: " + doubleFauteJoueur2
                 + "aceJoueur1:" + aceJoueur1 +  "- aceJoueur2: " + aceJoueur2
                 + " gagnantJoueur1: " + gagnantJoueur1 + "- gagnantJoueur2: " + gagnantJoueur2
-                + "fauteJoueur1:" + fauteJoueur1 +  "- fauteJoueur2: " + fauteJoueur2 ;
+                + "fauteJoueur1:" + fauteJoueur1 +  "- fauteJoueur2: " + fauteJoueur2 + "Image:" + image;
     }
 
     // fonction parceable

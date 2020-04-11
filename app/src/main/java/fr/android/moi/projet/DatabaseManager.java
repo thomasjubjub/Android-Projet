@@ -56,7 +56,7 @@ public class DatabaseManager extends SQLiteOpenHelper{
                 + "    gagnantJoueur2 text not null,"
                 + "    fauteJoueur1 text not null,"
                 + "    fauteJoueur2 text not null,"
-                + "    image text not null"
+                + "    image blob not null"
                 + ")";
 
         db.execSQL( strSql );
