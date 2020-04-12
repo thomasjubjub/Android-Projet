@@ -26,7 +26,7 @@ import android.view.View.OnClickListener;
 import java.util.List;
 
 
-public abstract class CinqJeux extends AppCompatActivity implements OnClickListener {
+public class CinqJeux extends AppCompatActivity implements OnClickListener {
 
 
     private TextView longitude;

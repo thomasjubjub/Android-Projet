@@ -19,20 +19,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.List;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import static fr.android.moi.projet.EnterData.BUNDLE_STATE_J2;
+
 public class QuatreJeux extends AppCompatActivity implements OnClickListener {
+
 
 
         //GPS
@@ -60,7 +60,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private Button buttonFinir;
         private DatabaseManager databaseManager;
         private List<Match> matches;
-
 
         private Button premiereBalle;
         private Button deuxiemeBalle;
@@ -121,11 +120,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_tb33);
 
-                longitude=(TextView) findViewById(R.id.longi);
-                latitude=(TextView) findViewById(R.id.lat);
                 buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
                 buttonFinir = (Button) findViewById(R.id.buttonFinir);
-
 
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -195,6 +191,11 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 fauteProvoqueeJoueur2.setOnClickListener(this);
                 fauteProvoqueeJoueur1.setOnClickListener(this);
 
+
+                // GPS //
+                longitude=(TextView) findViewById(R.id.longi);
+                latitude=(TextView) findViewById(R.id.lat);
+
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -244,7 +245,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         }
                 }
         }
-
 
         public void onClick(View v)
         {
@@ -912,7 +912,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         imageBitmap = (Bitmap) extras.get("data");
-                        Log.d("Result", String.valueOf(imageBitmap));
+                        Log.d("ResultBitmap", String.valueOf(imageBitmap));
                 }
         }
 
@@ -920,6 +920,7 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         public static byte[] getBytes(Bitmap bitmap) {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                Log.d("ResultBytes", String.valueOf(stream.toByteArray()));
                 return stream.toByteArray();
         }
 
@@ -933,9 +934,9 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
                 // ENREGISTREMENT DANS LA BDD
 
-                Log.d("QuatreJeux avant conv", String.valueOf(imageBitmap));
+                Log.d("FinirBitmap:", String.valueOf(imageBitmap));
                 byte[] image =  getBytes(imageBitmap);
-                Log.d("QuatreJeux", String.valueOf(image));
+                Log.d("FinirBytes:", String.valueOf(image));
 
 
                 databaseManager = new DatabaseManager(this);

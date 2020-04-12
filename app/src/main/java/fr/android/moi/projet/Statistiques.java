@@ -25,8 +25,10 @@ public class Statistiques extends AppCompatActivity {
     private TextView scoreJ2Set1;
     private TextView scoreJ2Set2;
     private TextView scoreJ2Set3;
-
+    private Button terminer;
+    private Button back;
     private ImageView imageView;
+
 
 
 
@@ -34,6 +36,22 @@ public class Statistiques extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistiques);
+
+        terminer = (Button) findViewById(R.id.buttonTerminer);
+        back = (Button) findViewById(R.id.back);
+        terminer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                terminer();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         TextView nomJ1 = (TextView) findViewById(R.id.nomJ1);
         TextView scoreJ1Set1 = (TextView) findViewById(R.id.scoreJ1Set1);
@@ -86,8 +104,15 @@ public class Statistiques extends AppCompatActivity {
 
 
     }
+
     // convert from byte array to bitmap
     public static Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
+    public  void terminer(){
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
