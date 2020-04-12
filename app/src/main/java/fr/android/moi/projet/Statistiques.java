@@ -81,9 +81,8 @@ public class Statistiques extends AppCompatActivity {
         fauteJoueur1.setText(match.getFauteJoueur1());
         fauteJoueur2.setText(match.getFauteJoueur2());
 
-
         imageView.setImageBitmap(getImage(match.getImage()));
-
+       // Log.d("InStatistiques", );
 
 
     }

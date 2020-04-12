@@ -1,9 +1,19 @@
 <resources>
 
     <!-- MainActivity -->
-    <string name="app_name">Projet</string>
-    <string name="nouveau_match">Nouveau Match</string>
-    <string name="historique">Historique</string>
+    <string name="app_name">Project</string>
+    <string name="nouveau_match">New Match</string>
+    <string name="historique">Previous Match</string>
 
-    <!-- MainActivity -->
+    <!-- Enter Data -->
+    <string name="demarrer">start</string>
+    <string name="joueur1">Player 1</string>
+    <string name="cinq_jeux">Five games</string>
+    <string name="quatre_jeux">Four games</string>
+    <string name="troisieme_set">Third set</string>
+    <string name="tie_break" translatable="false">Tie Break</string>
+
+
+
+
 </resources>
