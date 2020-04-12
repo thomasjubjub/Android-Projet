@@ -13,7 +13,8 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,7 @@
 
 
             <Button
-                android:id="@+id/buttonTerminer"
+                android:id="@+id/back"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -46,8 +47,8 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/imageMenu"
+            <Button
+                android:id="@+id/buttonTerminer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -86,7 +87,7 @@
                 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
 
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="1dp"
@@ -213,56 +214,12 @@
 
                 </TableLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="1dp">
-
-                    <Button
-                        android:id="@+id/match"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:text="Match"
-                        android:gravity="center_horizontal" />
-
-                    <Button
-                        android:id="@+id/set1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="Set 1"
-                        android:textAlignment="center" />
-
-                    <Button
-                        android:id="@+id/set2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:text="Set 2"
-                        android:gravity="center_horizontal" />
-
-                    <Button
-                        android:id="@+id/set3"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:text="Set 3"
-                        android:gravity="center_horizontal" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:orientation="vertical"
                 tools:layout_editor_absoluteX="1dp"
                 tools:layout_editor_absoluteY="1dp">
@@ -309,28 +266,7 @@
 
                     </TableRow>
 
-                    <TableRow
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
 
-                            <TextView
-                                android:id="@+id/duree"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="20dp"
-                                android:text="DURÉE"
-                                android:gravity="start" />
-                            <TextView
-                                android:id="@+id/dureeMatch"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:textAlignment="center"
-                                android:text="00:00"
-                                android:gravity="center_horizontal" />
-                    </TableRow>
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
@@ -345,20 +281,18 @@
                             android:text="POINTS GAGNÉS"
                             android:gravity="start" />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/gagnantJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="36"
                             />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/gagnantJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="34"
                             />
                     </TableRow>
                     <TableRow
@@ -393,35 +327,7 @@
                             android:background="#BDE3F4"/>
 
                     </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" 1ère BALLES" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="100%"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="50%"
-                            />
-                    </TableRow>
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
@@ -435,20 +341,18 @@
                             android:paddingLeft="20dp"
                             android:text=" ACES" />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/aceJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="5"
                             />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/aceJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="0"
                             />
                     </TableRow>
 
@@ -465,174 +369,24 @@
                             android:paddingLeft="20dp"
                             android:text=" DOUBLES FAUTES" />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/doubleFauteJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="0"
                             />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/doubleFauteJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="1"
-                            />
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" BALLES BREAK SAUVÉES" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="1/3"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="2/3"
                             />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" PTS GAGNÉS SUR 1ère BALLE" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="100%"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0%"
-                            />
-                    </TableRow>
 
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text="STATISTIQUES DE RETOUR"
-                            android:background="#BDE3F4" />
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Joueur 1"
-                            android:background="#BDE3F4"/>
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="Joueur 2"
-                            android:background="#BDE3F4"/>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" BALLES BREAK CONVERTIS" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0/0"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0/0"
-                            />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" PTS GAGNÉS SUR 2ème BALLE ADVERSE" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="X"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="X"
-                            />
-                    </TableRow>
 
                     <TableRow
                         android:layout_width="fill_parent"
@@ -667,6 +421,7 @@
 
                     </TableRow>
 
+
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
@@ -678,86 +433,45 @@
                             android:layout_weight="2"
                             android:textAlignment="textStart"
                             android:paddingLeft="20dp"
-                            android:text=" POINTS GAGNANTS" />
+                            android:text=" FAUTES " />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/fauteJoueur1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="0"
                             />
                         <TextView
-                            android:id="@+id/textScore4"
+                            android:id="@+id/fauteJoueur2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:textAlignment="center"
-                            android:text="0"
                             />
                     </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" FAUTES DIRECTS" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0"
-                            />
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:textAlignment="textStart"
-                            android:paddingLeft="20dp"
-                            android:text=" FAUTES PROVOQUÉES" />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0"
-                            />
-                        <TextView
-                            android:id="@+id/textScore4"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:textAlignment="center"
-                            android:text="0"
-                            />
-                    </TableRow>
-
 
                 </TableLayout>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+                <ImageView
+                    android:id="@+id/photoMatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ImageView>
+
+            </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

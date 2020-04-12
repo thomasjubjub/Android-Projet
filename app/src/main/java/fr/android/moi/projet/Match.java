@@ -2,6 +2,7 @@ package fr.android.moi.projet;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Match implements Parcelable{
 
@@ -18,13 +19,28 @@ public class Match implements Parcelable{
     private String scoreJ2Set2 ;
     private String scoreJ2Set3 ;
 
-    private boolean J1Gagnant  = true;
+    private String doubleFauteJoueur1 ;
+    private String doubleFauteJoueur2;
+    private String aceJoueur1 ;
+    private String aceJoueur2 ;
+    private String gagnantJoueur1 ;
+    private String gagnantJoueur2 ;
+    private String fauteJoueur1 ;
+    private String fauteJoueur2 ;
 
+    private byte[] image;
 
 
     public Match(){}
     public Match(int idMatch, String nomJ1, String nomJ2, String formatMatch, String formatSet,
-                 String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3){
+                 String scoreJ1Set1, String scoreJ1Set2, String scoreJ1Set3, String scoreJ2Set1, String scoreJ2Set2, String scoreJ2Set3,
+                 String doubleFauteJoueur1, String doubleFauteJoueur2,
+                 String aceJoueur1, String aceJoueur2,
+                 String gagnantJoueur1, String gagnantJoueur2,
+                 String fauteJoueur1, String fauteJoueur2,
+                 byte[] image ) {
+
+        Log.d("classMatch","gagnant J1 -" + gagnantJoueur1 );
 
         this.setIdMatch( idMatch);
         this.setJoueur1( nomJ1 );
@@ -38,6 +54,17 @@ public class Match implements Parcelable{
         this.setScoreJ2Set1(scoreJ2Set1);
         this.setScoreJ2Set2(scoreJ2Set2);
         this.setScoreJ2Set3(scoreJ2Set3);
+
+        this.setDoubleFauteJoueur1 (doubleFauteJoueur1) ;
+        this.setDoubleFauteJoueur2 (doubleFauteJoueur2) ;
+        this.setAceJoueur1 (aceJoueur1) ;
+        this.setAceJoueur2 (aceJoueur2) ;
+        this.setGagnantJoueur1 (gagnantJoueur1) ;
+        this.setGagnantJoueur2 (gagnantJoueur2) ;
+        this.setFauteJoueur1 (fauteJoueur1) ;
+        this.setFauteJoueur2 (fauteJoueur2) ;
+
+        this.setImage(image);
     }
 
     public Match(Parcel in) {
@@ -54,6 +81,17 @@ public class Match implements Parcelable{
         scoreJ2Set1 = in.readString();
         scoreJ2Set2 = in.readString();
         scoreJ2Set3 = in.readString();
+
+        doubleFauteJoueur1  = in.readString();
+        doubleFauteJoueur2 = in.readString();
+        aceJoueur1 = in.readString();
+        aceJoueur2 = in.readString();
+        gagnantJoueur1 = in.readString();
+        gagnantJoueur2 = in.readString();
+        fauteJoueur1 = in.readString();
+        fauteJoueur2 = in.readString();
+
+        image = in.createByteArray();
     }
 
 
@@ -72,7 +110,11 @@ public class Match implements Parcelable{
     // fonction affichage
     @Override
     public String toString() {
-        return idMatch + ": " + nomJ1 + " and " + nomJ2 + " plays a " + formatMatch + "with " + formatSet;
+        return idMatch + ": " + nomJ1 + " and " + nomJ2
+                + " doubleFauteJoueur1: " + doubleFauteJoueur1 + "- doubleFauteJoueur2: " + doubleFauteJoueur2
+                + "aceJoueur1:" + aceJoueur1 +  "- aceJoueur2: " + aceJoueur2
+                + " gagnantJoueur1: " + gagnantJoueur1 + "- gagnantJoueur2: " + gagnantJoueur2
+                + "fauteJoueur1:" + fauteJoueur1 +  "- fauteJoueur2: " + fauteJoueur2 + "Image:" + image;
     }
 
     // fonction parceable
@@ -98,9 +140,65 @@ public class Match implements Parcelable{
         dest.writeString(scoreJ2Set2);
         dest.writeString(scoreJ2Set3);
 
+        dest.writeString(doubleFauteJoueur1);
+        dest.writeString(doubleFauteJoueur2);
+        dest.writeString(aceJoueur1);
+        dest.writeString(aceJoueur2);
+        dest.writeString(gagnantJoueur1);
+        dest.writeString(gagnantJoueur2);
+        dest.writeString(fauteJoueur1);
+        dest.writeString(fauteJoueur2);
+
+        dest.writeByteArray(image);
+
     }
 
+
     // getter and setter
+
+    public String getAceJoueur1() {
+        return aceJoueur1;
+    }
+    public String getAceJoueur2() {
+        return aceJoueur2;
+    }
+    public String getDoubleFauteJoueur1() { return doubleFauteJoueur1; }
+    public String getDoubleFauteJoueur2() { return doubleFauteJoueur2; }
+    public String getGagnantJoueur1() { return gagnantJoueur1; }
+    public String getGagnantJoueur2() { return gagnantJoueur2; }
+    public String getFauteJoueur1() { return fauteJoueur1; }
+    public String getFauteJoueur2() { return fauteJoueur2; }
+    public byte[] getImage() { return image; }
+
+    public void setAceJoueur1(String aceJoueur1) {
+         this.aceJoueur1 = aceJoueur1;
+    }
+    public void setAceJoueur2(String aceJoueur2) {
+         this.aceJoueur2 = aceJoueur2;
+    }
+    public void setDoubleFauteJoueur1(String doubleFauteJoueur1) {
+         this.doubleFauteJoueur1 = doubleFauteJoueur1;
+    }
+    public void setDoubleFauteJoueur2(String doubleFauteJoueur2) {
+        this.doubleFauteJoueur2 = doubleFauteJoueur2;
+    }
+    public void setGagnantJoueur1(String gagnantJoueur1) {
+         this.gagnantJoueur1  = gagnantJoueur1;
+    }
+    public void setGagnantJoueur2(String gagnantJoueur2) {
+        this.gagnantJoueur2 = gagnantJoueur2;
+    }
+    public void setFauteJoueur1(String fauteJoueur1) {
+         this.fauteJoueur1 = fauteJoueur1;
+    }
+    public void setFauteJoueur2(String fauteJoueur2) {
+
+        this.fauteJoueur2 = fauteJoueur2;
+    }
+    public void setImage(byte[] image){
+        this.image = image;
+    }
+
     private void setIdMatch(int idMatch) {
         this.idMatch = idMatch;
     }
@@ -136,6 +234,7 @@ public class Match implements Parcelable{
     public void setFormatSet(String formatSet) {
         this.formatSet = formatSet;
     }
+
     public String getScoreJ1Set1() {
         return scoreJ1Set1;
     }
@@ -184,12 +283,12 @@ public class Match implements Parcelable{
         this.scoreJ2Set3 = scoreJ2Set3;
     }
 
-    public boolean isJ1Gagnant() {
+    /* public boolean isJ1Gagnant() {
         return J1Gagnant;
     }
 
-    public void setJ1Gagnant(boolean j1Gagnant) {
+     public void setJ1Gagnant(boolean j1Gagnant) {
         J1Gagnant = j1Gagnant;
     }
-
+    */
 }

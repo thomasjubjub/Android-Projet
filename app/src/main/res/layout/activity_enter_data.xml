@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Nouveau Match"
+                android:text="@string/nouveau_match"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:background="#007EA7"/>
@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Demarrer"
+                android:text="@string/demarrer"
                 android:textColor="#FFFFFF"
                 android:background="#007EA7"/>
 
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Joueur 1 "
+                android:hint="joueur 1"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="336dp" />
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Joueur 2 "
+                android:hint="joueur 2"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="336dp" />
@@ -104,13 +104,13 @@
                     android:id="@+id/tb33"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cinq Jeux" />
+                    android:text="@string/cinq_jeux" />
 
                 <RadioButton
                     android:id="@+id/tb44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Quatre Jeux" />
+                    android:text="@string/quatre_jeux" />
 
             </RadioGroup>
         </LinearLayout>
@@ -134,13 +134,13 @@
                     android:id="@+id/troisiemeSet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3 ème SET" />
+                    android:text="@string/troisieme_set" />
 
                 <RadioButton
                     android:id="@+id/tieBreak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tie Break" />
+                    android:text="@string/tie_break" />
             </RadioGroup>
         </LinearLayout>
 

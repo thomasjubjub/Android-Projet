@@ -7,6 +7,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
@@ -21,20 +22,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.List;
-import android.graphics.Bitmap;
-import android.provider.MediaStore;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import static fr.android.moi.projet.Photo.REQUEST_IMAGE_CAPTURE;
+import static fr.android.moi.projet.EnterData.BUNDLE_STATE_J2;
+
 
 public class QuatreJeux extends AppCompatActivity implements OnClickListener {
+
 
 
         //GPS
@@ -43,8 +42,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private String provider;
         private TextView longitude;
         private TextView latitude;
-
-
 
 
         //JEU
@@ -57,7 +54,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         private Button buttonFinir;
         private DatabaseManager databaseManager;
         private List<Match> matches;
-
 
         private Button premiereBalle;
         private Button deuxiemeBalle;
@@ -131,11 +127,8 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_tb33);
 
-                longitude=(TextView) findViewById(R.id.longi);
-                latitude=(TextView) findViewById(R.id.lat);
                 buttonPhoto=(ImageButton) findViewById(R.id.imagePhoto);
                 buttonFinir = (Button) findViewById(R.id.buttonFinir);
-
 
                 buttonPhoto.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -205,6 +198,11 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                 fauteProvoqueeJoueur2.setOnClickListener(this);
                 fauteProvoqueeJoueur1.setOnClickListener(this);
 
+
+                // GPS //
+                longitude=(TextView) findViewById(R.id.longi);
+                latitude=(TextView) findViewById(R.id.lat);
+
                 // on fait appel à un nouveau service système pour accéder à localisation
                 locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -254,7 +252,6 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
                         }
                 }
         }
-
 
         public void onClick(View v)
         {
@@ -968,27 +965,27 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
         public void marqueUnPoint (TextView scoreJeuJoueur, TextView scoreSetJoueur, int scoreJoueur, int scoreJoueurJeu)
         {
 
-                        if(scoreJoueur == 0)
-                        {
-                                scoreJoueur=15;
+                if(scoreJoueur == 0)
+                {
+                        scoreJoueur=15;
 
-                        }
-                        else if(scoreJoueur == 15)
-                        {
-                                scoreJoueur =30;
-                        }
-                        else if (scoreJoueur == 30)
-                        {
-                                scoreJoueur =40;
-                        }
-                        else if(scoreJoueur == 40)
-                        {
-                                scoreJoueur = 0;
-                                scoreJoueurJeu++;
-                                scoreSetJoueur.setText(String.valueOf(scoreJoueurJeu));
+                }
+                else if(scoreJoueur == 15)
+                {
+                        scoreJoueur =30;
+                }
+                else if (scoreJoueur == 30)
+                {
+                        scoreJoueur =40;
+                }
+                else if(scoreJoueur == 40)
+                {
+                        scoreJoueur = 0;
+                        scoreJoueurJeu++;
+                        scoreSetJoueur.setText(String.valueOf(scoreJoueurJeu));
 
-                        }
-                        scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
+                }
+                scoreJeuJoueur.setText(String.valueOf(scoreJoueur));
 
         }
 
@@ -1010,20 +1007,46 @@ public class QuatreJeux extends AppCompatActivity implements OnClickListener {
 
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                Log.d("onActivutyResult", "onActivutyResult");
                 if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         imageBitmap = (Bitmap) extras.get("data");
+                        Log.d("ResultBitmap", String.valueOf(imageBitmap));
                 }
 
         }
+
+        // convert from bitmap to byte array
+        public static byte[] getBytes(Bitmap bitmap) {
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                Log.d("ResultBytes", String.valueOf(stream.toByteArray()));
+                return stream.toByteArray();
+        }
+
+        // convert from byte array to bitmap
+        public static Bitmap getImage(byte[] image) {
+                return BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
+
 
         public void finir(){
 
                 // ENREGISTREMENT DANS LA BDD
 
+                Log.d("FinirBitmap:", String.valueOf(imageBitmap));
+                byte[] image =  getBytes(imageBitmap);
+                Log.d("FinirBytes:", String.valueOf(image));
+
+
                 databaseManager = new DatabaseManager(this);
                 databaseManager.insertMatch( nomJoueur1, nomJoueur2, "oui", "non",
-                        scoreSet1Joueur1.getText().toString(), scoreSet2Joueur1.getText().toString(), scoreSet3Joueur1.getText().toString(), scoreSet1Joueur2.getText().toString(), scoreSet2Joueur2.getText().toString(), scoreSet3Joueur2.getText().toString());
+                        scoreSet1Joueur1.getText().toString(), scoreSet2Joueur1.getText().toString(), scoreSet3Joueur1.getText().toString(), scoreSet1Joueur2.getText().toString(), scoreSet2Joueur2.getText().toString(), scoreSet3Joueur2.getText().toString(),
+                        String.valueOf(doubleFauteJoueur1), String.valueOf(doubleFauteJoueur2),
+                        String.valueOf(aceJoueur1),String.valueOf(aceJoueur2),
+                        String.valueOf(gagnantJoueur1), String.valueOf(gagnantJoueur2),
+                        String.valueOf(fauteJoueur1), String.valueOf(fauteJoueur2),
+                        image);
 
                 matches = databaseManager.readMatch(); // Récuperation de liste d'array de match
                 Match match = new Match();
